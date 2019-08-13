@@ -34,7 +34,7 @@
             <div class="header__notifications">
                 <i class="fas fa-bell fa-lg text_gray"></i>
             </div>
-            <div class="header__profile__wrap light-blue">
+            <div class="header__profile__wrap sky-blue">
                 <div class="header__profile">
                     <img src="img/avatar.png" alt="Avatar">
                     <i class="fas fa-chevron-down text_ligth-gray fa-sm"></i>
@@ -45,7 +45,7 @@
 
     <aside class="aside white">
         <ul class="aside__menu">
-            <li class="aside__menu__item light-blue">
+            <li class="aside__menu__item active">
                 <i class="fas fa-chart-bar fa-2x text_white"></i>
             </li>
             <li class="aside__menu__item">
@@ -79,26 +79,35 @@
                     <div class="main__header__headline">
                         <i class="fas fa-chart-bar fa-2x text_blue"></i>
                         <h2>Sales</h2>
-                        <i class="fas fa-chevron-down text_ligth-gray fa-sm"></i>
+                        <i class="fas fa-chevron-down text_dark-blue fa-sm"></i>
                     </div>
                     <p>Welcome to kavina CRM Sales Dashboard</p>
                 </div>
                 <div>
-                    <button class="button light-blue text_white">
+                    <button class="button sky-blue text_white">
                         <i class="button-icon fas fa-plus"></i>
                         Add Dashiet
                     </button>
                 </div>
             </section>
-            <section>
-                <article></article>
-                <article></article>
-                <article></article>
-                <article></article>
-                <article></article>
-                <article></article>
-                <article></article>
-                <article></article>
+            <section class="container">
+                <div class="row">
+                    <div class="container__item col-lg-4 sky-blue"></div>
+                    <div class="container__item col-lg-4 sky-blue"></div>
+                    <div class="container__item col-lg-4 sky-blue"></div>
+                    <div class="container__item col-lg-6 sky-blue">
+                        <div class="chart" id="chart__customers"></div>
+                    </div>
+                    <div class="container__item col-lg-6 sky-blue">
+                        <div class="chart" id="chart__daily-sales"></div>
+                    </div>
+                    <div class="container__item col-lg-6 sky-blue">
+                        <div class="chart" id="chart_monthly-sales"></div>
+                    </div>
+                    <div class="container__item col-lg-6 sky-blue">
+                        <div class="chart" id="chart_department-sales"></div>
+                    </div>
+                </div>
             </section>
         </div>
     </main>
@@ -108,8 +117,15 @@
         <i class="fas fa-ellipsis-h"></i>
         <i class="fas fa-shopping-cart"></i> 
         <i class="fas fa-box-open"></i> articles
+
+
+        https://developers.google.com/chart/interactive/docs/gallery/areachart
+        https://developers.google.com/chart/interactive/docs/gallery/linechart
+        https://developers.google.com/chart/interactive/docs/gallery/piechart#donut
     -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/charts.js"></script>
 </body>
 </html>
