@@ -205,9 +205,14 @@ p {
     background-color: #71b1f1;
     cursor: pointer;
 }
+.header__profile__img {
+    width: 50px;
+    height: 50px;
+}
 .header__profile > * {
     margin: auto 7px;
 }
+
 .search_select {
     top: 60px;
     right: -10px;
@@ -263,14 +268,23 @@ p {
     width: 100%;
     display: flex;
 }
+.header__profile .profile__img {
+    width: 50px;
+    height: 50px;
+}
+
+.profile__avatar .profile__img {
+    width: 100px;
+    height: 100px;
+    margin: auto;  
+}
+
+.profile__img {
+    border-radius: 100px;
+}
 
 .profile__avatar {
     height: 130px;
-}
-.profile__avatar img {
-    width: 100px;
-    height: 100px;
-    margin: auto;   
 }
 .profile__name {
     padding: 10px 0;
@@ -491,7 +505,7 @@ p {
     display: flex;
     font-size: 16px;
     font-weight: bold;
-    z-index: 15;
+    z-index: 1;
 }
 
 .container__item__head > div {

@@ -57,7 +57,6 @@ function drawProductOrder() {
   for (var i = 0; i < data.getNumberOfRows(); i++) {
     var label = data.getValue(i, 0);
     var val = data.getValue(i, 1);
-    var percentual = Math.round(((val / total) * 100));
     data.setFormattedValue(i, 0, val + '\n' + label);
   }
 
@@ -67,6 +66,7 @@ function drawProductOrder() {
     titlePosition: 'none',
     chartArea:{ left: 20, top: 75, width:"90%", height:"55%" },
     pieSliceText: 'none',
+    pieStartAngle: 200,
     fontSize: 16,
     fontName: 'Montserrat',
     colors: '#2c3e50',

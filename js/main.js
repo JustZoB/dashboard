@@ -166,10 +166,6 @@ $('body').on('click', ".container__item .minimize", function() {
 });
 
 
-
-
-
-
 $('.header__menu').on('click', function() {
     if ($(this).hasClass("menu_active")) {
         $(".aside").css("left", "-90px");
