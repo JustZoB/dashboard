@@ -10,10 +10,10 @@
     <title>Dashboard</title>
 </head>
 <body class="gray">
-    <header class="header white">
+    <header class="header white box-shadow_bottom">
         <div class="header__left">
-            <div class="header__menu">
-                <i class="text_blue fas fa-ellipsis-h fa-2x"></i>
+            <div class="header__menu menu_active">
+                <i class="text_blue fas fa-bars fa-2x"></i>
             </div>
             <div class="header__logo">
                 <p class="header__letter dark-blue text_white">k</p>
@@ -22,107 +22,165 @@
         </div>
         <div class="header__center">
             <div class="header__search">
-                <i class="fas fa-search text_gray"></i>
+                <i class="header__search__button fas fa-search text_gray"></i>
                 <input class="header__search__input" type="text" placeholder="Type text to search......">
             </div>
             <hr class="text_gray" />
+            <div class="search_select header__pop__wrap white box-shadow hidden">
+                <div class="search_select__content header__pop">
+                    <div class="search_select__item light-sky-blue text_light-blue">
+                        <img src="img/basket.png" alt="Shoping basket">
+                        <p class="search_select__item">Solid items</p>
+                    </div>
+                    <div class="search_select__item light-green text_green">
+                        <img src="img/box.png" alt="Box">
+                        <p class="search_select__item">Order</p>
+                    </div>
+                </div>
+            </div>
         </div>
+        
         <div class="header__right">
-            <div class="header__mail">
-                <i class="fas fa-envelope fa-lg text_gray"></i>
+            <div class="header__messages">
+                <div class="header__messages__icon">
+                    <i class="fas fa-envelope fa-lg text_ligth-gray"></i>
+                    <span class="messages_not-read"></span>
+                </div>
+                <div class="header__pop__wrap messages white box-shadow hidden">
+                    <div class="change">
+                        <div class="change__button">
+                            <i class="text_light-blue-gray fas fa-times fa-lg"></i>
+                        </div>
+                    </div>
+                    <div class="header__pop messages__content">
+                        <div class="sky-blue message">
+                            <p class="text_ligth-gray">Henlou human, it's your dog Steave. Can you buy food for me, please? Bye.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
             <div class="header__notifications">
-                <i class="fas fa-bell fa-lg text_gray"></i>
+                <div class="header__notifications__icon">
+                    <i class="fas fa-bell fa-lg text_ligth-gray"></i>
+                    <div class="notifications__counts">
+                        <span class="notifications_light-red-circle"></span>
+                        <span class="notifications_red-circle"></span>
+                        <span class="notifications_number text_white">3</span>
+                    </div>
+                </div>
+                <div class="header__pop__wrap notifications white box-shadow hidden">
+                    <div class="header__pop notifications__content">
+                        <div class="change">
+                            <div class="change__button">
+                                <i class="text_light-blue-gray fas fa-times fa-lg"></i>
+                            </div>
+                        </div>
+    
+                        <div class="notifications__item">
+                            <div class="notifications__item__icon">
+                                <i class="fas fa-info-circle fa-lg"></i>
+                            </div>
+                            <div class="notifications__item__text-block">
+                                <h3 class="notifications__item__head">News</h3>
+                                <p class="notifications__item__text">Vladimir Putin molodec</p>
+                            </div>
+                        </div>
+    
+                        <div class="notifications__item">
+                            <div class="notifications__item__icon">
+                                <i class="fas fa-address-card fa-lg"></i>
+                            </div>
+                            <div class="notifications__item__text-block">
+                                <h3 class="notifications__item__head">Your address changed</h3>
+                                <p class="notifications__item__text">If you didn't do this, please...</p>
+                            </div>
+                        </div>
+    
+                        <div class="notifications__item">
+                            <div class="notifications__item__icon">
+                                <i class="fas fa-exclamation-triangle fa-lg"></i>
+                            </div>
+                            <div class="notifications__item__text-block">
+                                <h3 class="notifications__item__head">Warning</h3>
+                                <p class="notifications__item__text">Don't show your password to...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div class="header__profile__wrap sky-blue">
                 <div class="header__profile">
                     <img src="img/avatar.png" alt="Avatar">
                     <i class="fas fa-chevron-down text_ligth-gray fa-sm"></i>
                 </div>
+                <div class="header__pop__wrap profile white box-shadow hidden">
+                    <div class="header__pop profile__content">
+                        <div class="change">
+                            <div class="change__button">
+                                <i class="text_light-blue-gray fas fa-times fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="profile__avatar">
+                            <img src="img/avatar.png" alt="Avatar">
+                        </div>
+                        <div class="profile__name">
+                            <h2>Laura Black</h2>
+                        </div>
+                        <div class="profile__online">
+                            <span class="online__circle"></span><p>Online</p>
+                        </div>
+                        <div class="profile__menu">
+                            <div class="profile__menu__profile">
+                                <i class="fas fa-user-cog"></i>
+                                <p>Profile</p>
+                            </div>
+                            <div class="profile__menu__settings">
+                                <i class="fas fa-cog"></i>
+                                <p>Settings</p>
+                            </div>
+                            <div class="profile__menu__sign-out text_red">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <p>Sign out</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
         </div>
     </header>
 
     <aside class="aside white">
-        <ul class="aside__menu">
-            <li class="aside__menu__item active">
-                <i class="fas fa-chart-bar fa-2x text_white"></i>
-            </li>
-            <li class="aside__menu__item">
-                <i class="fas fa-user-friends fa-2x text_blue"></i>
-            </li>
-            <li class="aside__menu__item">
-                <i class="fas fa-file-invoice-dollar fa-2x text_blue"></i>
-            </li>
-            <li class="aside__menu__item">
-                <i class="fas fa-tablet-alt fa-2x text_blue"></i>
-            </li>
-            <li class="aside__menu__item">
-                <i class="fas fa-calendar-alt fa-2x text_blue"></i>
-            </li>
-            <li class="aside__menu__item">
-                <i class="fas fa-file-invoice fa-2x text_blue"></i>
-            </li>
-            <li class="aside__menu__item">
-                <i class="fas fa-sliders-h fa-2x text_blue"></i>
-            </li>
-            <li class="aside__menu__item">
-                <i class="fas fa-power-off fa-2x text_blue"></i>
-            </li>
-        </ul>
+        <ul class="aside__menu"></ul>
     </aside>
 
     <main class="main-wrap">
         <div class="main">
-            <section class="main__header">
-                <div>
-                    <div class="main__header__headline">
-                        <i class="fas fa-chart-bar fa-2x text_blue"></i>
-                        <h2>Sales</h2>
-                        <i class="fas fa-chevron-down text_dark-blue fa-sm"></i>
+            <section class="main__header-wrap">
+                <div class="main__header">
+                    <div>
+                        <div class="main__header__headline">
+                            <i class="fas fa-chart-bar fa-2x text_blue"></i>
+                            <h2>Sales</h2>
+                            <i class="sales__select fas fa-chevron-down text_dark-blue fa-sm"></i>
+                        </div>
+                        <p class="text_dark_gray bold">Welcome to kavina CRM Sales Dashboard</p>
                     </div>
-                    <p>Welcome to kavina CRM Sales Dashboard</p>
-                </div>
-                <div>
-                    <button class="button sky-blue text_white">
-                        <i class="button-icon fas fa-plus"></i>
-                        Add Dashiet
-                    </button>
+                    <div>
+                        <button class="button sky-blue text_white">
+                            <i class="button-icon fas fa-plus"></i>
+                            Add Dashiet
+                        </button>
+                    </div>
                 </div>
             </section>
             <section class="container">
-                <div class="row">
-                    <div class="container__item col-lg-4 sky-blue"></div>
-                    <div class="container__item col-lg-4 sky-blue"></div>
-                    <div class="container__item col-lg-4 sky-blue"></div>
-                    <div class="container__item col-lg-6 sky-blue">
-                        <div class="chart" id="chart__customers"></div>
-                    </div>
-                    <div class="container__item col-lg-6 sky-blue">
-                        <div class="chart" id="chart__daily-sales"></div>
-                    </div>
-                    <div class="container__item col-lg-6 sky-blue">
-                        <div class="chart" id="chart_monthly-sales"></div>
-                    </div>
-                    <div class="container__item col-lg-6 sky-blue">
-                        <div class="chart" id="chart_department-sales"></div>
-                    </div>
-                </div>
+                <div class="row"></div>
             </section>
         </div>
     </main>
-    <!--
-        <i class="fas fa-plus"></i> buttons
-        
-        <i class="fas fa-ellipsis-h"></i>
-        <i class="fas fa-shopping-cart"></i> 
-        <i class="fas fa-box-open"></i> articles
-
-
-        https://developers.google.com/chart/interactive/docs/gallery/areachart
-        https://developers.google.com/chart/interactive/docs/gallery/linechart
-        https://developers.google.com/chart/interactive/docs/gallery/piechart#donut
-    -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="js/main.js"></script>

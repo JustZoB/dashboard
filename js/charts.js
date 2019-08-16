@@ -1,93 +1,41 @@
-
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawDailySales);
+google.charts.setOnLoadCallback(drawRevenue);
 
-function drawDailySales() {
-
-    var data = google.visualization.arrayToDataTable([
-      ['Daily Sales', 'First', 'Second', 'Third'],
-      ['04:00 AM', [4, 0], [4, 0], [4, 0]],
-      ['06:00 AM', [10, 0], [6, 0], [12, 0]],
-      ['08:00 AM', [6, 0], [10, 0], [8, 0]],
-      ['10:00 AM', [9, 30], [8, 0], [6, 30]],
-      ['12:00 AM', [11, 30], [12, 0], [0, 0]]
-    ]);
-
-    /*data.addColumn('timeofday', 'Time of Day');
-    [{v: [8, 0, 0], f: '8 am'}, 1, .25],
-    [{v: [9, 0, 0], f: '9 am'}, 2, .5],
-    [{v: [10, 0, 0], f:'10 am'}, 3, 1],
-    [{v: [11, 0, 0], f: '11 am'}, 4, 2.25],
-    [{v: [12, 0, 0], f: '12 pm'}, 5, 2.25],
-    [{v: [13, 0, 0], f: '1 pm'}, 6, 3],
-    [{v: [14, 0, 0], f: '2 pm'}, 7, 4],
-    [{v: [15, 0, 0], f: '3 pm'}, 8, 5.25],
-    [{v: [16, 0, 0], f: '4 pm'}, 9, 7.5],
-    [{v: [17, 0, 0], f: '5 pm'}, 10, 10],
-    format: 'h:mm a',
-      viewWindow: {
-        min: [7, 30, 0],
-        max: [17, 30, 0]
-      } */
-
-    var options = {
-        title: 'Daily Sales',
-        fontSize: 16,
-        fontName: 'Montserrat',
-        colors: '#2c3e50',
-        hAxis: {textPosition: 'none'},
-        legend: {position: 'none'},
-        //annotations: {strokeWidth: 0},
-        series: {
-          0: { color: '#5ad5a8'},
-          1: { color: '#a4e4dd'},
-          2: { color: '#84b0dd'},
-        },
-        //hAxis: {},
-        //vAxis: {minValue: 0}
-    };
-
-    var chart = new google.visualization.AreaChart(document.getElementById('chart__daily-sales'));
-    chart.draw(data, options);
-}
-
-google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(drawDepartmentSales);
-
-function drawDepartmentSales() {
-  var data = new google.visualization.DataTable();
-  data.addColumn('string', 'Department Sales');
-  data.addColumn('number', 'Percent');
-  data.addRows([
-    ['Clothing', 10],
-    ['Electronics', 24],
-    ['Kitchen Utility', 35],
-    ['Cardening', 17],
-    ['Food', 14] 
+function drawRevenue() {
+  var data = google.visualization.arrayToDataTable([
+    ['Month', 'Amouts'],
+    ['JUL', 20],
+    ['AUG', 25],
+    ['SEP', 21],
+    ['OCT', 25],
+    ['NOV', 19],
+    ['DES', 26],
+    ['JAN', 33]
   ]);
 
   var options = {
-    title: 'Department Sales',
-    chartArea:{ left: 33, top: 73, width:"75%", height:"75%" },
-    pieSliceText: 'none',
-    pieHole: 0.75,
+    height: 370,
+    title: 'Revenue This year',
+    //subtitle: 'This year',
     fontSize: 16,
     fontName: 'Montserrat',
-    colors: '#2c3e50',
-    legend: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
-    tooltip: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
-    slices: {
-      0: { color: '#f8e367' },
-      1: { color: '#e18197' },
-      2: { color: '#8abe6e' },
-      3: { color: '#93ccce' },
-      4: { color: '#7ababc' },
+    vAxis: {textPosition: 'none', minValue: 0, gridlines: {count: 0}, minorGridlines: {count: 0}},
+    hAxis: {textStyle: {color: '#286aab'}, textPosition: 'in'},
+    legend: {position: 'none'},
+    //annotations: {highContrast: true},
+    lineWidth: 4,
+    areaOpacity: 0.5,
+    chartArea:{ left: 0, top: 110, width:"100%", height:"81%" },
+    series: {
+      0: { color: '#5a98d5'},
     }
   };
 
-  var chart = new google.visualization.PieChart(document.getElementById('chart_department-sales'));
-  chart.draw(data, options);
+  var chart = new google.visualization.AreaChart(document.getElementById('chart__revenue'));
+  chart.draw(data, options); 
 }
+
+
 
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawCustomers);
@@ -98,13 +46,13 @@ function drawCustomers() {
   data.addColumn('number', 'DAY TIME');
   data.addColumn('number', 'NIGHT TIME');
   data.addRows([
-    ['06:00 AM', 270, 260],
+    ['06:00 AM', 265, 255],
     ['09:00 AM', 285, 280],
     ['12:00 AM', 300, 300],
     ['03:00 PM', 310, 312],
-    ['06:00 PM', 320, 325],
-    ['09:00 AM', 340, 338], 
-    ['11:00 PM', 365, 357]
+    ['06:00 PM', 319, 322],
+    ['09:00 AM', 330, 332], 
+    ['11:00 PM', 348, 340]
   ]);
 
   var options = {
@@ -115,20 +63,15 @@ function drawCustomers() {
     fontName: 'Montserrat',
     colors: '#2c3e50',
     explorer: {zoomDelta: 3},
-    legend: {position: 'top', textStyle: {color: '#2c3e50', fontName: 'Montserrat', fontSize: 14}},
+    legend: {position: 'top', textStyle: {color: '#2c3e50', fontName: 'Montserrat', fontSize: 14, bold: true}},
+    vAxis: {textPosition: 'none', gridlines: {count: 3},  minorGridlines: {count: 0}},
     hAxis: {textPosition: 'none'},
-    vAxis: {textPosition: 'none'},
     lineWidth: 4,
-    chartArea: {width: '90%', height: '40%'},
+    chartArea:{ left: 34, top: 150, width:"85%", height:"45%"},
     series: {
       0: { color: '#467cb2' },
       1: { color: '#accbea' },
     }
-    //hAxis: {format: 'none'}
-    //chartArea:{ left: 33, top: 73, width:"75%", height:"75%" },
-    //fontName: 'Montserrat',
-    //colors: '#2c3e50',
-    
     //tooltip: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
     
   };
@@ -136,6 +79,46 @@ function drawCustomers() {
   var chart = new google.visualization.LineChart(document.getElementById('chart__customers'));
   chart.draw(data, options);
 }
+
+
+
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawDailySales);
+
+function drawDailySales() {
+  var data = google.visualization.arrayToDataTable([
+    ['Daily Sales', 'Green', 'Light-green', 'Blue'],
+    ['1', new Date(2016, 10, 22, 4, 0), new Date(2016, 10, 22, 6, 0), new Date(2016, 10, 22, 4, 0)],
+    ['2', new Date(2016, 10, 22, 10, 0), new Date(2016, 10, 22, 8, 0), new Date(2016, 10, 22, 4, 0)],
+    ['3', new Date(2016, 10, 22, 6, 0), new Date(2016, 10, 22, 10, 0), new Date(2016, 10, 22, 12, 0)],
+    ['4', new Date(2016, 10, 22, 9, 30), new Date(2016, 10, 22, 8, 0), new Date(2016, 10, 22, 7, 0)],
+    ['5', new Date(2016, 10, 22, 11, 30), new Date(2016, 10, 22, 10, 0), new Date(2016, 10, 22, 8, 30)],
+    ['6', new Date(2016, 10, 22, 4, 0), new Date(2016, 10, 22, 12, 0), new Date(2016, 10, 22, 4, 0)]
+  ]);
+  
+  var options = {
+    title: 'Daily Sales',
+    fontSize: 16,
+    fontName: 'Montserrat',
+    vAxis: {textStyle: {color: '#a1a1a1'}},
+    hAxis: {textPosition: 'none', minValue: [4, 0]},
+    legend: {position: 'none', textStyle: {color: '#a1a1a1', fontSize: 14}},
+    lineWidth: 0,
+    areaOpacity: 0.7,
+    chartArea:{ left: 120, top: 120, width:"70%", height:"64%" },
+    series: {
+      0: { color: '#5ad5a8'},
+      1: { color: '#a4e4dd'},
+      2: { color: '#84b0dd'},
+    }
+  };
+
+  var chart = new google.visualization.AreaChart(document.getElementById('chart__daily-sales'));
+  chart.draw(data, options); 
+}
+
+
+
 
 
 google.charts.load('current', {packages: ['corechart', 'bar']});
@@ -162,9 +145,14 @@ function drawMonthlySales() {
   var options = {
     title: 'Monthly Sales (In Millions)',
     isStacked: true,
-    hAxis: { textPosition: 'none' },
+    vAxis: { textStyle: {color: '#a1a1a1'}, minValue: 20, ticks: [20, 30, 50, 100, 200], gridlines: {count: 0}},
+    hAxis: { textPosition: 'none', gridlines: {count: 0}, minorGridlines: {count: 0}},
     legend: { position: 'none' },
-    vAxis: { minValue: 20 },
+    fontSize: 16,
+    fontName: 'Montserrat',
+    colors: '#2c3e50',
+    chartArea:{ left: 70, top: 120, width:"70%", height:"64%" },
+    bar: {groupWidth: "40%"},
     series: {
       0: { color: '#accbea' },
       1: { color: '#9ab6d3' },
@@ -172,5 +160,46 @@ function drawMonthlySales() {
   };
 
   var chart = new google.visualization.ColumnChart(document.getElementById('chart_monthly-sales'));
+  chart.draw(data, options);
+}
+
+
+
+
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawDepartmentSales);
+
+function drawDepartmentSales() {
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Department Sales');
+  data.addColumn('number', 'Percent');
+  data.addRows([
+    ['Clothing', 10],
+    ['Electronics', 24],
+    ['Kitchen Utility', 35],
+    ['Cardening', 17],
+    ['Food', 14] 
+  ]);
+
+  var options = {
+    title: 'Department Sales',
+    chartArea:{ left: 33, top: 120, width:"75%", height:"75%" },
+    pieSliceText: 'none',
+    pieHole: 0.75,
+    fontSize: 16,
+    fontName: 'Montserrat',
+    colors: '#2c3e50',
+    legend: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
+    tooltip: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
+    slices: {
+      0: { color: '#f8e367' },
+      1: { color: '#e18197' },
+      2: { color: '#8abe6e' },
+      3: { color: '#93ccce' },
+      4: { color: '#7ababc' },
+    }
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('chart_department-sales'));
   chart.draw(data, options);
 }
