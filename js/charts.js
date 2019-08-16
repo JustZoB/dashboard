@@ -117,7 +117,7 @@ function drawCustomers() {
     vAxis: {textPosition: 'none', gridlines: {count: 3},  minorGridlines: {count: 0}},
     hAxis: {textPosition: 'none'},
     lineWidth: 4,
-    chartArea:{ left: 34, top: 150, width:"85%", height:"45%"},
+    chartArea:{ left: 34, top: 200, width:"85%", height:"45%"},
     series: {
       0: { color: '#467cb2' },
       1: { color: '#accbea' },

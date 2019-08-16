@@ -4,9 +4,12 @@ let Container = {
             row = container.find(".row");
 
             Container.addBlockGraph(row, 'medium', 'chart__revenue', 'Revenue', 'This year');
+            Container.addTextInGraphTop($(".container__item").last(), 'container__item__text_left', '$433,534,300', 'Sold 12.332 Items');
             Container.addBlockGraph(row, 'medium', 'chart__product-order', 'Product Order', 'This month');
             Container.addDoubleBlock(row, 'medium');
             Container.addBlockGraph(row, 'big', 'chart__customers', 'Customers');
+            Container.addTextInGraphTop($(".container__item").last(), 'container__item__text_center', '284,123');
+            Container.addTextInGraphBottom($(".container__item").last(), 'container__item__text_bottom', 'Yesterday - 22 October 2016', '06:00 AM > 11:00 PM');
             Container.addBlockGraph(row, 'big', 'chart__daily-sales', 'Daily Sales');
             Container.addBlockGraph(row, 'big', 'chart__monthly-sales', 'Monthly Sales', '(In Millions)');
             Container.addBlockGraph(row, 'big', 'chart__department-sales', 'Department Sales');
@@ -79,6 +82,23 @@ let Container = {
                     <span class="text_big">${ span_text }</span><p class="">${ text }</p>
                 </div>
             </div>  
+        </div>`);
+    },
+
+    addTextInGraphTop: function(list, position, title, subtitle) {
+        if (subtitle === undefined) {
+            subtitle = "";
+        }
+        $(list).append(`<div class="${ position }">
+            <p class="text_dark-blue text_big">${ title }</p>
+            <p class="text_gray">${ subtitle }</p>
+        </div>`);
+    },
+
+    addTextInGraphBottom: function(list, position, text_1, text_2) { 
+        $(list).append(`<div class="${ position } text_gray">
+            <p>${ text_1 }</p>
+            <p>${ text_2 }</p>
         </div>`);
     }
 }
