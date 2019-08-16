@@ -3,13 +3,45 @@ let Container = {
         let container = $(".container"),
             row = container.find(".row");
 
-            Container.addBlockGraph(row, 'medium', 'chart__revenue');
-            Container.addBlockGraph(row, 'medium', 'chart__product-order');
+            Container.addBlockGraph(row, 'medium', 'chart__revenue', 'Revenue', 'This year');
+            Container.addBlockGraph(row, 'medium', 'chart__product-order', 'Product Order', 'This month');
             Container.addDoubleBlock(row, 'medium');
-            Container.addBlockGraph(row, 'big', 'chart__customers');
-            Container.addBlockGraph(row, 'big', 'chart__daily-sales');
-            Container.addBlockGraph(row, 'big', 'chart_monthly-sales');
-            Container.addBlockGraph(row, 'big', 'chart_department-sales');
+            Container.addBlockGraph(row, 'big', 'chart__customers', 'Customers');
+            Container.addBlockGraph(row, 'big', 'chart__daily-sales', 'Daily Sales');
+            Container.addBlockGraph(row, 'big', 'chart__monthly-sales', 'Monthly Sales', '(In Millions)');
+            Container.addBlockGraph(row, 'big', 'chart__department-sales', 'Department Sales');
+    },
+    
+    addBlockGraph: function(list, size, graph_id, title, subtitle) {
+        let block_size = 'col-lg-4';
+        if (size === 'medium') {
+            block_size = 'col-lg-4';
+        } else if (size === 'big') {
+            block_size = 'col-lg-6';
+        }
+        if (subtitle === undefined) {
+            subtitle = "";
+        }
+        $(list).append(`<div class="container__item container_${ size } ${ block_size } white box-shadow">
+            <div class="options">
+                <div class="options__button">
+                    <i class="text_light-blue-gray fas fa-ellipsis-h fa-lg"></i>
+                </div>
+            </div>
+            <div class="change">
+                <div class="change__button minimize">
+                    <i class="text_light-blue-gray far fa-window-minimize fa-lg"></i>
+                </div>
+                <div class="change__button close">
+                    <i class="text_light-blue-gray fas fa-times fa-lg"></i>
+                </div>
+            </div>
+            <div class="container__item__head">
+                <div class="container__item__title text_dark-blue">${ title }</div>
+                <div class="container__item__subtitle text_ligth-gray">${ subtitle }</div>
+            </div>
+            <div class="chart" id="${ graph_id }"></div>
+        </div>`);
     },
 
     addDoubleBlock: function(list, size) {
@@ -19,16 +51,7 @@ let Container = {
         } else if (size === 'big') {
             block_size = 'col-lg-6';
         }
-        $(list).append(`<div class="container__item container_${ size } container__double-block ${ block_size }">
-            <div class="change">
-                <div class="change__button">
-                    <i class="text_ligth-gray far fa-window-minimize fa-lg"></i>
-                </div>
-                <div class="change__button">
-                    <i class="text_ligth-gray fas fa-times fa-lg"></i>
-                </div>
-            </div>
-        </div>`);
+        $(list).append(`<div class="container__item container_${ size } container__double-block ${ block_size }"></div>`);
         Container.addHalfBlock($('.container__double-block'), 'light-sky-blue', 'img/basket.png', 'Shopping basket', 'text_light-blue', '$433,534,300', 'Sold 12.332 Items');
         Container.addHalfBlock($('.container__double-block'), 'light-green', 'img/box.png', 'Box', 'text_green', '53.345', 'Order');
     },
@@ -41,38 +64,21 @@ let Container = {
                         <i class="text_ligth-gray fas fa-ellipsis-h fa-lg"></i>
                     </div>
                 </div>
+                <div class="change">
+                    <div class="change__button minimize">
+                        <i class="text_ligth-gray far fa-window-minimize fa-lg"></i>
+                    </div>
+                    <div class="change__button close">
+                        <i class="text_ligth-gray fas fa-times fa-lg"></i>
+                    </div>
+                </div>
                 <div class="container__half-block__img">
                     <img src="${ img_src }" alt="${ img_alt }">
                 </div>
-                <div class="container__half-block__text">
-                    <p class="${ text_color }"><span class="text_big">${ span_text }</span><br />${ text }</p>
+                <div class="container__half-block__text ${ text_color }">
+                    <span class="text_big">${ span_text }</span><p class="">${ text }</p>
                 </div>
             </div>  
-        </div>`);
-    },
-
-    addBlockGraph: function(list, size, graph_id) {
-        let block_size = 'col-lg-4';
-        if (size === 'medium') {
-            block_size = 'col-lg-4';
-        } else if (size === 'big') {
-            block_size = 'col-lg-6';
-        }
-        $(list).append(`<div class="container__item container_${ size } ${ block_size } white box-shadow">
-            <div class="options">
-                <div class="options__button">
-                    <i class="text_light-blue-gray fas fa-ellipsis-h fa-lg"></i>
-                </div>
-            </div>
-            <div class="change">
-                <div class="change__button">
-                    <i class="text_light-blue-gray far fa-window-minimize fa-lg"></i>
-                </div>
-                <div class="change__button">
-                    <i class="text_light-blue-gray fas fa-times fa-lg"></i>
-                </div>
-            </div>
-            <div class="chart" id="${ graph_id }"></div>
         </div>`);
     }
 }
@@ -121,6 +127,48 @@ $('.header__notifications').on('click', function() {
 $('.header__search__input').on('click', function() {
     $(".search_select").toggleClass("hidden");
 });
+
+$('body').on('click', ".container__half-block-wrap .close", function() {
+    let half_block = $(this).parents().eq(2),
+        block = $(this).parents().eq(3);
+    if (half_block.hasClass("container__half-block__minimize")) {
+        block.height(block.height() - 100);
+    } else {
+        block.height(block.height() - 200);
+    }
+        
+    half_block.detach();
+    if (block.is(":empty")) {
+        block.detach();
+    }
+});
+$('body').on('click', ".container__half-block-wrap .minimize", function() {
+    let half_block = $(this).parents().eq(2),
+        block = $(this).parents().eq(3);
+    if (half_block.hasClass("container__half-block__minimize")) {
+        block.height(block.height() + 100);
+    } else {
+        block.height(block.height() - 100);
+    }
+    half_block.toggleClass('container__half-block__minimize');
+    half_block.find(".container__half-block__img").toggleClass("hidden");
+    half_block.find("span").toggleClass("hidden");
+    half_block.find(".container__half-block__text").toggleClass("container__text__minimize");
+});
+
+$('body').on('click', ".container__item .close", function() {
+    $(this).parents().eq(1).detach();
+});
+$('body').on('click', ".container__item .minimize", function() {
+    let block = $(this).parents().eq(1);
+    block.toggleClass('container__item__minimize');
+    block.find(".chart").toggleClass("hidden");
+});
+
+
+
+
+
 
 $('.header__menu').on('click', function() {
     if ($(this).hasClass("menu_active")) {

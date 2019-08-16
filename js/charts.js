@@ -16,7 +16,7 @@ function drawRevenue() {
   var options = {
     height: 370,
     title: 'Revenue This year',
-    //subtitle: 'This year',
+    titlePosition: 'none',
     fontSize: 16,
     fontName: 'Montserrat',
     vAxis: {textPosition: 'none', minValue: 0, gridlines: {count: 0}, minorGridlines: {count: 0}},
@@ -25,7 +25,7 @@ function drawRevenue() {
     //annotations: {highContrast: true},
     lineWidth: 4,
     areaOpacity: 0.5,
-    chartArea:{ left: 0, top: 110, width:"100%", height:"81%" },
+    chartArea:{ left: 0, top: 90, width:"100%", height:"81%" },
     series: {
       0: { color: '#5a98d5'},
     }
@@ -33,6 +33,55 @@ function drawRevenue() {
 
   var chart = new google.visualization.AreaChart(document.getElementById('chart__revenue'));
   chart.draw(data, options); 
+}
+
+
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawProductOrder);
+
+function drawProductOrder() {
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'Product Order');
+  data.addColumn('number', 'Amounts');
+  data.addRows([
+    ['Finished', 23043],
+    ['Pending', 12435],
+    ['Reject', 4503] 
+  ]);
+
+  var total = 0;
+  for (var i = 0; i < data.getNumberOfRows(); i++) {
+    total = total + data.getValue(i, 1);
+  }
+
+  for (var i = 0; i < data.getNumberOfRows(); i++) {
+    var label = data.getValue(i, 0);
+    var val = data.getValue(i, 1);
+    var percentual = Math.round(((val / total) * 100));
+    data.setFormattedValue(i, 0, val + '\n' + label);
+  }
+
+  var options = {
+    title: 'Product Order',
+    height: 370,
+    titlePosition: 'none',
+    chartArea:{ left: 20, top: 75, width:"90%", height:"55%" },
+    pieSliceText: 'none',
+    fontSize: 16,
+    fontName: 'Montserrat',
+    colors: '#2c3e50',
+    legend: {position: 'bottom', textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
+    tooltip: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
+    slices: {
+      0: { color: '#486afa' },
+      1: { color: '#f8e367' },
+      2: { color: '#f05757' }
+    }
+  };
+
+
+  var chart = new google.visualization.PieChart(document.getElementById('chart__product-order'));
+  chart.draw(data, options);
 }
 
 
@@ -57,6 +106,7 @@ function drawCustomers() {
 
   var options = {
     title: 'Customers',
+    titlePosition: 'none',
     curveType: 'function',
     crosshair: {opacity: 0.2},
     fontSize: 16,
@@ -98,6 +148,7 @@ function drawDailySales() {
   
   var options = {
     title: 'Daily Sales',
+    titlePosition: 'none',
     fontSize: 16,
     fontName: 'Montserrat',
     vAxis: {textStyle: {color: '#a1a1a1'}},
@@ -144,6 +195,7 @@ function drawMonthlySales() {
 
   var options = {
     title: 'Monthly Sales (In Millions)',
+    titlePosition: 'none',
     isStacked: true,
     vAxis: { textStyle: {color: '#a1a1a1'}, minValue: 20, ticks: [20, 30, 50, 100, 200], gridlines: {count: 0}},
     hAxis: { textPosition: 'none', gridlines: {count: 0}, minorGridlines: {count: 0}},
@@ -151,7 +203,7 @@ function drawMonthlySales() {
     fontSize: 16,
     fontName: 'Montserrat',
     colors: '#2c3e50',
-    chartArea:{ left: 70, top: 120, width:"70%", height:"64%" },
+    chartArea:{ left: 70, top: 130, width:"70%", height:"64%" },
     bar: {groupWidth: "40%"},
     series: {
       0: { color: '#accbea' },
@@ -159,7 +211,7 @@ function drawMonthlySales() {
     }
   };
 
-  var chart = new google.visualization.ColumnChart(document.getElementById('chart_monthly-sales'));
+  var chart = new google.visualization.ColumnChart(document.getElementById('chart__monthly-sales'));
   chart.draw(data, options);
 }
 
@@ -174,22 +226,35 @@ function drawDepartmentSales() {
   data.addColumn('string', 'Department Sales');
   data.addColumn('number', 'Percent');
   data.addRows([
-    ['Clothing', 10],
-    ['Electronics', 24],
-    ['Kitchen Utility', 35],
-    ['Cardening', 17],
-    ['Food', 14] 
+    ['Clothing', 20],
+    ['Electronics', 48],
+    ['Kitchen Utility', 70],
+    ['Cardening', 34],
+    ['Food', 28] 
   ]);
+
+  var total = 0;
+  for (var i = 0; i < data.getNumberOfRows(); i++) {
+    total = total + data.getValue(i, 1);
+  }
+
+  for (var i = 0; i < data.getNumberOfRows(); i++) {
+    var label = data.getValue(i, 0);
+    var val = data.getValue(i, 1);
+    var percentual = Math.round(((val / total) * 100));
+    data.setFormattedValue(i, 0, ' (' + percentual + '%) ' + label);
+  }
 
   var options = {
     title: 'Department Sales',
-    chartArea:{ left: 33, top: 120, width:"75%", height:"75%" },
+    titlePosition: 'none',
+    chartArea:{ left: 33, top: 70, width:"85%", height:"75%" },
     pieSliceText: 'none',
     pieHole: 0.75,
     fontSize: 16,
     fontName: 'Montserrat',
     colors: '#2c3e50',
-    legend: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
+    legend: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}, alignment: 'center'},
     tooltip: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
     slices: {
       0: { color: '#f8e367' },
@@ -200,6 +265,7 @@ function drawDepartmentSales() {
     }
   };
 
-  var chart = new google.visualization.PieChart(document.getElementById('chart_department-sales'));
+
+  var chart = new google.visualization.PieChart(document.getElementById('chart__department-sales'));
   chart.draw(data, options);
 }
