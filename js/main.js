@@ -235,3 +235,19 @@ $('.header__menu').on('click', function() {
         $(this).addClass("menu_active");
     }
 });
+
+/*eventsClose(".options__popup");
+eventsClose(".header__pop");
+
+function eventsClose (classes) {
+    $(document).mouseup(function (e){
+        let div = $(classes);
+        div.each(function(key, elem) {
+            if ((!$(elem).is(e.target)) && ($(elem).has(e.target).length === 0) 
+            && (!$(elem).prev().is(e.target)) && ($(elem).prev().has(e.target).length === 0)) {
+                $(elem).addClass("hidden");
+            }
+        });
+    });
+}
+*/

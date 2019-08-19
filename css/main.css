@@ -415,6 +415,40 @@ p {
     max-width: 1170px;
 }
 
+/*@media (max-width: 1290px) {
+    .row .col-md-1 {
+        min-width: 36px;
+        width: 5.5%;
+        max-width: 55px;
+    }
+    .row .col-md-2 {
+        min-width: 102px;
+        width: 11%;
+        max-width: 140px;
+    }
+    .row .col-md-3 {
+        min-width: 168px;
+        width: 23%;
+        max-width: 225px;
+    }
+    .row .col-md-4 {
+        min-width: 234px;
+        width: 31%;
+        max-width: 310px;
+    }
+    .row .col-md-6 {
+        min-width: 366px;
+        width: 48%;
+        max-width: 480px;
+    }
+    .row .col-md-12 {
+        min-width: 768px;
+        width: 100%;
+        max-width: 990px;
+    }
+}*/
+
+
 .container__double-block {
     position: relative;
     display: flex;
