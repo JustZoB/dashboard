@@ -489,6 +489,31 @@ p {
 .options__button i {
     margin: auto;
 }
+
+.options__popup {
+    position: absolute;
+    width: 150px;
+    z-index: 6;
+    background-color: #eeeeee;
+    border-radius: 4px;
+}
+.options__item {
+    display: flex;
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+.options__item:hover {
+    background-color: #dddddd;
+}
+.options__item__icon {
+    display: flex;
+    width: 30px;
+}
+.options__item__icon i{
+    margin: auto;
+}
+
+
 .container__item {
     position: relative;
     margin: 15px auto;

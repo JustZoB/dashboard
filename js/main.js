@@ -30,6 +30,20 @@ let Container = {
                 <div class="options__button">
                     <i class="text_light-blue-gray fas fa-ellipsis-h fa-lg"></i>
                 </div>
+                <div class="options__popup hidden">
+                    <div class="options__item">
+                        <div class="options__item__icon"><i class="fas fa-share-alt"></i></div>
+                        <p>Option 1</p>
+                    </div>
+                    <div class="options__item">
+                        <div class="options__item__icon"><i class="fas fa-copy"></i></div>
+                        <p>Option 2</p>
+                    </div>
+                    <div class="options__item">
+                        <div class="options__item__icon"><i class="fas fa-comments"></i></div>
+                        <p>Option 3</p>
+                    </div>
+                </div>
             </div>
             <div class="change">
                 <div class="change__button minimize">
@@ -65,6 +79,20 @@ let Container = {
                 <div class="options">
                     <div class="options__button">
                         <i class="text_ligth-gray fas fa-ellipsis-h fa-lg"></i>
+                    </div>
+                    <div class="options__popup hidden">
+                        <div class="options__item">
+                            <div class="options__item__icon"><i class="fas fa-share-alt"></i></div>
+                            <p>Option 1</p>
+                        </div>
+                        <div class="options__item">
+                            <div class="options__item__icon"><i class="fas fa-copy"></i></div>
+                            <p>Option 2</p>
+                        </div>
+                        <div class="options__item">
+                            <div class="options__item__icon"><i class="fas fa-comments"></i></div>
+                            <p>Option 3</p>
+                        </div>
                     </div>
                 </div>
                 <div class="change">
@@ -133,7 +161,9 @@ Container.add();
 Aside.add();
 
 
-
+$('body').on('click', ".options__button", function() {
+    $(this).parents().eq(1).find(".options__popup").toggleClass("hidden");
+});
 
 $('.header__profile__wrap').on('click', function() {
     $(".profile").toggleClass("hidden");
