@@ -3,26 +3,28 @@ google.charts.setOnLoadCallback(drawRevenue);
 
 function drawRevenue() {
   var data = google.visualization.arrayToDataTable([
-    ['Month', 'Amouts'],
-    ['JUL', 20],
-    ['AUG', 25],
-    ['SEP', 21],
-    ['OCT', 25],
-    ['NOV', 19],
-    ['DES', 26],
-    ['JAN', 33]
+    ['Month', 'Amouts', {'type': 'string','role': 'style'}],
+    ['JUL', 20, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
+    ['AUG', 25, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
+    ['SEP', 21, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
+    ['OCT', 25, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
+    ['NOV', 19, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
+    ['DES', 26, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
+    ['JAN', 33, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}']
   ]);
 
   var options = {
     height: 370,
     title: 'Revenue This year',
-    titlePosition: 'none',
+    titlePosition: 'none',  
     fontSize: 16,
     fontName: 'Montserrat',
-    vAxis: {textPosition: 'none', minValue: 0, gridlines: {count: 0}, minorGridlines: {count: 0}},
-    hAxis: {textStyle: {color: '#286aab'}, textPosition: 'in'},
+    vAxis: {textPosition: 'none', minValue: 0, gridlines: {count: 0}, minorGridlines: {count: 0}, baselineColor: '#accbea'},
+    hAxis: {textStyle: {color: '#286aab', bold: true, highlight: "#5AD3D1"}, textPosition: 'in'},
     legend: {position: 'none'},
-    //annotations: {highContrast: true},
+    pointSize: 17,
+    pointsVisible: false,
+    //annotations: {highContrast: false},
     lineWidth: 4,
     areaOpacity: 0.5,
     chartArea:{ left: 0, top: 90, width:"100%", height:"81%" },
@@ -33,6 +35,11 @@ function drawRevenue() {
 
   var chart = new google.visualization.AreaChart(document.getElementById('chart__revenue'));
   chart.draw(data, options); 
+
+  google.visualization.events.addListener(chart, 'ready', readyHandler);
+  function readyHandler(e) {
+      chart.setSelection([{"row":5,"column":1}]);
+  }
 }
 
 
@@ -49,7 +56,7 @@ function drawProductOrder() {
     ['Reject', 4503] 
   ]);
 
-  var total = 0;
+  /*var total = 0;
   for (var i = 0; i < data.getNumberOfRows(); i++) {
     total = total + data.getValue(i, 1);
   }
@@ -58,7 +65,7 @@ function drawProductOrder() {
     var label = data.getValue(i, 0);
     var val = data.getValue(i, 1);
     data.setFormattedValue(i, 0, val + '\n' + label);
-  }
+  }*/
 
   var options = {
     title: 'Product Order',
@@ -196,7 +203,13 @@ function drawMonthlySales() {
   var options = {
     title: 'Monthly Sales (In Millions)',
     titlePosition: 'none',
-    vAxis: { logScale: true, viewWindow: {min: 20}, textStyle: {color: '#a1a1a1', fontSize: 14}, ticks: [20, 30, 50, 100, 200], gridlines: {count: 0, color: '#edebeb'}},
+    vAxis: { 
+      logScale: true, 
+      viewWindow: {min: 20}, 
+      textStyle: {color: '#a1a1a1', fontSize: 14}, 
+      ticks: [20, 30, 50, 100, 200], 
+      gridlines: {count: 0, color: '#edebeb'}
+    },
     hAxis: { textPosition: 'none', gridlines: {count: 0}, minorGridlines: {count: 0}},
     legend: { position: 'none' },
     fontSize: 16,

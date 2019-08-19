@@ -530,6 +530,7 @@ p {
     width: 100%;
     bottom: 20px;
     display: flex;
+    font-size: 14px;
     justify-content: space-around;
 }
 
