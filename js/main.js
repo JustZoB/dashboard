@@ -4,12 +4,12 @@ let Container = {
             row = container.find(".row");
 
             Container.addBlockGraph(row, 'medium', 'chart__revenue', 'Revenue', 'This year');
-            Container.addTextInGraphTop($(".container__item").last(), 'container__item__text_left', '$433,534,300', 'Sold 12.332 Items');
+            Container.addTextInGraphTop($(".container__item").last(), 'container__item__text container__item__text_left', '$433,534,300', 'Sold 12.332 Items');
             Container.addBlockGraph(row, 'medium', 'chart__product-order', 'Product Order', 'This month');
             Container.addDoubleBlock(row, 'medium');
             Container.addBlockGraph(row, 'big', 'chart__customers', 'Customers');
-            Container.addTextInGraphTop($(".container__item").last(), 'container__item__text_center', '284,123');
-            Container.addTextInGraphBottom($(".container__item").last(), 'container__item__text_bottom', 'Yesterday - 22 October 2016', '06:00 AM > 11:00 PM');
+            Container.addTextInGraphTop($(".container__item").last(), 'container__item__text container__item__text_center', '284,123');
+            Container.addTextInGraphBottom($(".container__item").last(), 'container__item__text container__item__text_bottom', 'Yesterday - 22 October 2016', '06:00 AM > 11:00 PM');
             Container.addBlockGraph(row, 'big', 'chart__daily-sales', 'Daily Sales');
             Container.addBlockGraph(row, 'big', 'chart__monthly-sales', 'Monthly Sales', '(In Millions)');
             Container.addBlockGraph(row, 'big', 'chart__department-sales', 'Department Sales');
@@ -132,11 +132,7 @@ let Aside = {
 Container.add();
 Aside.add();
 
-/*$(".header__profile").hover(function() {
-    $(".header__profile__wrap").css("background-color", "#71b1f1").css("cursor", "pointer");
-}, function() {
-    $(".header__profile__wrap").css("background-color", "#5a98d5").css("cursor", "default");
-},);*/
+
 
 
 $('.header__profile__wrap').on('click', function() {
@@ -193,6 +189,7 @@ $('body').on('click', ".container__item .close", function() {
 $('body').on('click', ".container__item .minimize", function() {
     let block = $(this).parents().eq(1);
     block.toggleClass('container__item__minimize');
+    block.find(".container__item__text").toggleClass("hidden");
     block.find(".chart").toggleClass("hidden");
 });
 
