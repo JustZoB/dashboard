@@ -132,14 +132,14 @@ let Aside = {
 Container.add();
 Aside.add();
 
-$(".header__profile").hover(function() {
+/*$(".header__profile").hover(function() {
     $(".header__profile__wrap").css("background-color", "#71b1f1").css("cursor", "pointer");
 }, function() {
     $(".header__profile__wrap").css("background-color", "#5a98d5").css("cursor", "default");
-},);
+},);*/
 
 
-$('.header__profile').on('click', function() {
+$('.header__profile__wrap').on('click', function() {
     $(".profile").toggleClass("hidden");
 });
 $('.header__pop .close').on('click', function() {
@@ -147,11 +147,11 @@ $('.header__pop .close').on('click', function() {
 });
 
 
-$('.header__messages__icon').on('click', function() {
+$('.header__messages').on('click', function() {
     $(".messages").toggleClass("hidden");
     $(".messages_not-read").addClass("hidden");
 });
-$('.header__notifications__icon').on('click', function() {
+$('.header__notifications').on('click', function() {
     $(".notifications").toggleClass("hidden");
     $(".notifications__counts").addClass("hidden");
 });

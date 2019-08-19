@@ -110,12 +110,17 @@ p {
     height: 100%;
     display: flex;
 }
+.wrap {
+    position: relative;
+}
+
 .header__notifications,
 .header__messages {
     display: flex;
     cursor: pointer;
     height: 100%;
     margin: auto;
+    width: 60px;
 }
 
 .header__profile {
@@ -125,17 +130,9 @@ p {
 
 .header__notifications__icon,
 .header__messages__icon {
+    position: relative;
     display: flex;
     margin: 37px auto 10px auto;
-}
-.header__notifications,
-.header__messages {
-    width: 60px;
-    position: relative;
-}
-.header__notifications__icon,
-.header__messages__icon {
-    position: relative;
 }
 
 .messages_not-read {
@@ -202,6 +199,10 @@ p {
     height: 100%;
     width: 130px;
     margin-left: 10px;
+    cursor: pointer;
+}
+.header__profile__wrap:hover {
+    background-color: #71b1f1;
 }
 .header__profile__img {
     width: 50px;
