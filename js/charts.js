@@ -149,6 +149,7 @@ function drawDailySales() {
   var options = {
     title: 'Daily Sales',
     titlePosition: 'none',
+    chartArea:{ left: 120, top: 120, width:"70%", height:"64%" },
     fontSize: 16,
     fontName: 'Montserrat',
     vAxis: {textStyle: {color: '#a1a1a1'}},
@@ -156,7 +157,6 @@ function drawDailySales() {
     legend: {position: 'none', textStyle: {color: '#a1a1a1', fontSize: 14}},
     lineWidth: 0,
     areaOpacity: 0.7,
-    chartArea:{ left: 120, top: 120, width:"70%", height:"64%" },
     series: {
       0: { color: '#5ad5a8'},
       1: { color: '#a4e4dd'},
@@ -182,27 +182,27 @@ function drawMonthlySales() {
   data.addColumn('number', 'Second');
 
   data.addRows([
-    [1, 50, 20],
-    [2, 90, 60],
-    [3, 45, 30],
-    [4, 26, 20],
+    [1, 50, 10],
+    [2, 87, 60],
+    [3, 40, 25],
+    [4, 28, 13],
     [5, 35, 15],
     [6, 30, 15],
-    [7, 24, 20],
-    [8, 60, 35],
-    [9, 35, 8]
+    [7, 26, 10],
+    [8, 65, 30],
+    [9, 36, 7]
   ]);
 
   var options = {
     title: 'Monthly Sales (In Millions)',
     titlePosition: 'none',
-    isStacked: true,
-    vAxis: { textStyle: {color: '#a1a1a1'}, minValue: 20, ticks: [20, 30, 50, 100, 200], gridlines: {count: 0}},
+    vAxis: { logScale: true, viewWindow: {min: 20}, textStyle: {color: '#a1a1a1', fontSize: 14}, ticks: [20, 30, 50, 100, 200], gridlines: {count: 0, color: '#edebeb'}},
     hAxis: { textPosition: 'none', gridlines: {count: 0}, minorGridlines: {count: 0}},
     legend: { position: 'none' },
     fontSize: 16,
     fontName: 'Montserrat',
     colors: '#2c3e50',
+    isStacked: true,
     chartArea:{ left: 70, top: 130, width:"70%", height:"64%" },
     bar: {groupWidth: "40%"},
     series: {
@@ -242,7 +242,7 @@ function drawDepartmentSales() {
     var label = data.getValue(i, 0);
     var val = data.getValue(i, 1);
     var percentual = Math.round(((val / total) * 100));
-    data.setFormattedValue(i, 0, ' (' + percentual + '%) ' + label);
+    data.setFormattedValue(i, 0, ' ' + percentual + '% ' + label);
   }
 
   var options = {
