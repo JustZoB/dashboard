@@ -16,11 +16,11 @@ let Container = {
     },
     
     addBlockGraph: function(list, size, graph_id, title, subtitle) {
-        let block_size = 'col-lg-4';
+        let block_size = 'col-lg-4 col-md-6 col-xs-12';
         if (size === 'medium') {
-            block_size = 'col-lg-4';
+            block_size = 'col-lg-4 col-md-6 col-xs-12';
         } else if (size === 'big') {
-            block_size = 'col-lg-6';
+            block_size = 'col-lg-6 col-md-12 col-xs-12';
         }
         if (subtitle === undefined) {
             subtitle = "";
@@ -64,13 +64,13 @@ let Container = {
     },
 
     addDoubleBlock: function(list, size) {
-        let block_size = 'col-lg-4';
+        let block_size = 'col-lg-4 col-md-6 col-xs-12';
         if (size === 'medium') {
-            block_size = 'col-lg-4';
+            block_size = 'col-lg-4 col-md-6 col-xs-12';
         } else if (size === 'big') {
-            block_size = 'col-lg-6';
+            block_size = 'col-lg-6 col-md-12 col-xs-12';
         }
-        $(list).append(`<div class="container__item container_${ size } container__double-block ${ block_size }"></div>`);
+        $(list).append(`<div class="container_${ size } container__double-block ${ block_size }"></div>`);
         Container.addHalfBlock($('.container__double-block'), 'light-sky-blue', 'img/basket.png', 'Shopping basket', 'text_light-blue', '$433,534,300', 'Sold 12.332 Items');
         Container.addHalfBlock($('.container__double-block'), 'light-green', 'img/box.png', 'Box', 'text_green', '53.345', 'Order');
     },
@@ -162,6 +162,10 @@ let Aside = {
 Container.add();
 Aside.add();
 
+
+$(".header__center__mini").on('click', function() {
+    $(".header__center__normal").toggleClass("header__search__active");
+})
 
 $('body').on('click', ".options__button", function() {
     $(this).parents().eq(1).find(".options__popup").toggleClass("hidden");

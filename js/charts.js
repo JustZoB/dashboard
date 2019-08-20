@@ -3,14 +3,14 @@ google.charts.setOnLoadCallback(initRevenue);
 
 function initRevenue() {
   var data = google.visualization.arrayToDataTable([
-    ['Month', 'Amouts', {'type': 'string','role': 'style'}],
-    ['JUL', 20, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
-    ['AUG', 25, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
-    ['SEP', 21, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
-    ['OCT', 25, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
-    ['NOV', 19, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
-    ['DES', 26, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
-    ['JAN', 33, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}']
+    ['Month', 'Items', {'type': 'string','role': 'style'}],
+    ['JUL', 1000, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
+    ['AUG', 1250, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
+    ['SEP', 1050, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
+    ['OCT', 1250, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
+    ['NOV', 950, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
+    ['DES', 1300, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}'],
+    ['JAN', 1650, 'point {fill-color: #accbea; stroke-color: #5a98d5; stroke-width: 4;}']
   ]);
 
   var options = {
@@ -170,7 +170,7 @@ google.charts.setOnLoadCallback(initDailySales);
 
 function initDailySales() {
   var data = google.visualization.arrayToDataTable([
-    ['Daily Sales', 'Green', 'Light-green', 'Blue'],
+    ['Daily Sales', 'USA', 'Canada', 'Mexico'],
     ['1', new Date(2016, 10, 22, 4, 0), new Date(2016, 10, 22, 6, 0), new Date(2016, 10, 22, 4, 0)],
     ['2', new Date(2016, 10, 22, 10, 0), new Date(2016, 10, 22, 8, 0), new Date(2016, 10, 22, 4, 0)],
     ['3', new Date(2016, 10, 22, 6, 0), new Date(2016, 10, 22, 10, 0), new Date(2016, 10, 22, 12, 0)],
@@ -217,20 +217,20 @@ google.charts.setOnLoadCallback(initMonthlySales);
 
 function initMonthlySales() {
   var data = new google.visualization.DataTable();
-  data.addColumn('number', 'Header');
-  data.addColumn('number', 'First');
-  data.addColumn('number', 'Second');
+  data.addColumn('string', 'Month');
+  data.addColumn('number', 'Day time');
+  data.addColumn('number', 'Night time');
 
   data.addRows([
-    [1, 50, 10],
-    [2, 87, 60],
-    [3, 40, 25],
-    [4, 28, 13],
-    [5, 35, 15],
-    [6, 30, 15],
-    [7, 26, 10],
-    [8, 65, 30],
-    [9, 36, 7]
+    ["April", 50, 10],
+    ["May", 87, 60],
+    ["June", 40, 25],
+    ["July", 28, 13],
+    ["August", 35, 15],
+    ["September", 30, 15],
+    ["October", 26, 10],
+    ["November", 65, 30],
+    ["December", 36, 7]
   ]);
 
   var options = {
