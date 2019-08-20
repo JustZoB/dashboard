@@ -110,6 +110,10 @@ p {
 }
 .header__search__active {
     display: flex;
+    position: absolute;
+    top: 100px;
+    left: 40px;
+    transform: translate(-50%, 0%);
 }
 
 @media (max-width: 900px) {
@@ -218,6 +222,7 @@ p {
     right: 5px;
     z-index: 10;
     cursor: default;
+    
 }
 .header__pop {
     position: relative;
@@ -266,7 +271,10 @@ p {
 }
 
 
-
+.notifications,
+.messages {
+    transform: translate(20%, 0%);
+}
 .messages__content,
 .notifications__content {
     padding-top: 50px;
@@ -505,7 +513,7 @@ p {
 }
 .container__half-block-wrap {
     position: relative;
-    margin: 15px;
+    margin: 15px 0;
     height: 45%;
     display: flex;
 }
@@ -611,9 +619,11 @@ p {
     font-weight: bold;
     z-index: 1;
 }
-
-.container__item__head > div {
+.container__item__title {
     margin: 2px;
+}
+.container__item__subtitle {
+    margin: 2px 2px 2px 6px;
 }
 .container__item__text {
     position: absolute;
@@ -745,7 +755,7 @@ p {
         width: 5.5%;
         max-width: 55px;
     }
-    .row .col-md-2 {
+    .row .col-md-2 { 
         min-width: 102px;
         width: 11%;
         max-width: 140px;
@@ -766,7 +776,7 @@ p {
         max-width: 480px;
     }
     .row .col-md-12 {
-        min-width: 768px;
+        /*min-width: 768px;*/
         width: 100%;
         max-width: 990px;
     }
@@ -776,9 +786,7 @@ p {
     .main {
         padding: 30px;
     }
-    .container__half-block-wrap {
-        margin: 15px 0;
-    }
+
     .row .col-xs-1 {
         min-width: 12px;
         width: 5.5%;

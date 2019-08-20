@@ -66,7 +66,7 @@ let Container = {
     addDoubleBlock: function(list, size) {
         let block_size = 'col-lg-4 col-md-6 col-xs-12';
         if (size === 'medium') {
-            block_size = 'col-lg-4 col-md-6 col-xs-12';
+            block_size = 'col-lg-4 col-md-12 col-xs-12';
         } else if (size === 'big') {
             block_size = 'col-lg-6 col-md-12 col-xs-12';
         }
