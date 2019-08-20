@@ -258,6 +258,7 @@ p {
 }
 .message p {
     margin: 10px;
+    padding: 5px;
 }
 
 .profile__avatar,
@@ -355,12 +356,12 @@ p {
 }
 .main__header-wrap {
     width: 100%;
+    max-width: 1170px;
     margin-bottom: 20px;
+    margin: auto;
 }
 .main__header {
     display: flex;
-    width: 1170px;
-    margin: auto;
     justify-content: space-between;
 }
 
@@ -376,14 +377,22 @@ p {
 
 .container {
     width: 100%;
+    max-width: 1200px;
+    margin: auto;
 }
 .row {
     display: flex;
     flex-wrap: wrap;
-    width: 1200px;
     margin: 0 auto;
 }
-
+/*
+.container_medium {
+    height: 370px;
+}
+.container_big {
+    height: 500px;
+}
+*/
 .row .col-lg-1 {
     min-width: 55px;
     width: 5.5%;
@@ -400,7 +409,7 @@ p {
     max-width: 270px;
 }
 .row .col-lg-4 {
-    min-width: 310px;
+    min-width: 330px;
     width: 31%;
     max-width: 370px;
 }
@@ -454,15 +463,16 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-height: 340px;
 }
 .container__half-block-wrap {
-    height: 170px;
+    height: 45%;
     display: flex;
     position: relative;
 }
 .container__half-block {
     display: flex;
-    margin: auto 0;
+    margin-top: 20px;
 }
 .container__half-block__minimize {
     height: 70px;
@@ -470,10 +480,12 @@ p {
 .container__text__minimize {
     position: absolute;
     top: 22px;
-    left: 100px;
+    left: 20%;
     font-size: 16px;
     font-weight: bold;
-
+}
+.container__half-block__text {
+    margin: auto;
 }
 
 .container__half-block__img {
@@ -484,12 +496,7 @@ p {
     margin: auto;
 }
 
-.container_medium {
-    height: 370px;
-}
-.container_big {
-    height: 500px;
-}
+
 
 .change {
     position: absolute;
@@ -575,8 +582,8 @@ p {
 }
 
 .container__item__text_left {
-    top: 80px;
-    left: 30px;
+    top: 20%;
+    left: 10%;
 }
 .container__item__text_center {
     top: 70px;
@@ -586,16 +593,24 @@ p {
     
 }
 .container__item__text_bottom {
-    width: 100%;
-    bottom: 20px;
+    width: 88%;
+    bottom: 6%;
     display: flex;
     font-size: 14px;
-    justify-content: space-around;
+    margin: 0 6%;
+    justify-content: space-between;
 }
-
+.chart__wrap {
+    position: relative;
+    padding-bottom: 100%;
+    height: 0;
+}
 .chart {
-    width: 100%; 
-    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /*#chart_department-sales svg > g::eq(1) > g {

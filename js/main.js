@@ -57,7 +57,9 @@ let Container = {
                 <div class="container__item__title text_dark-blue">${ title }</div>
                 <div class="container__item__subtitle text_ligth-gray">${ subtitle }</div>
             </div>
-            <div class="chart" id="${ graph_id }"></div>
+            <div class="chart__wrap">
+                <div class="chart" id="${ graph_id }"></div>
+            </div>
         </div>`);
     },
 
@@ -202,10 +204,11 @@ $('body').on('click', ".container__half-block-wrap .close", function() {
 $('body').on('click', ".container__half-block-wrap .minimize", function() {
     let half_block = $(this).parents().eq(2),
         block = $(this).parents().eq(3);
+        console.log(block.css('min-height'));
     if (half_block.hasClass("container__half-block__minimize")) {
-        block.height(block.height() + 100);
+        block.css("min-height", parseInt(block.css('min-height'),10) + 100);
     } else {
-        block.height(block.height() - 100);
+        block.css("min-height", parseInt(block.css('min-height'),10) - 100);
     }
     half_block.toggleClass('container__half-block__minimize');
     half_block.find(".container__half-block__img").toggleClass("hidden");
