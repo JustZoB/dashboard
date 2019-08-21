@@ -243,8 +243,8 @@ $('.header__menu').on('click', function() {
     }
 });
 
-/*eventsClose(".options__popup");
-eventsClose(".header__pop");
+eventsClose(".options__popup");
+eventsClose(".header__pop__wrap");
 
 function eventsClose (classes) {
     $(document).mouseup(function (e){
@@ -257,4 +257,3 @@ function eventsClose (classes) {
         });
     });
 }
-*/
