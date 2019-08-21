@@ -368,10 +368,10 @@ p {
 .aside {
     position: fixed;
     top: 80px;
-    left: 0;
+    left: -90px;
     width: 90px;
     height: 100%;
-    z-index: 10;
+    z-index: 20;
 }
 .aside__menu {
     margin: 0;
@@ -386,11 +386,17 @@ p {
 .aside__menu__item i {
     margin: auto;
 }
-
-
 .main-wrap {
+    margin: 80px 0 0 0;
+}
+.aside_active {
+    left: 0;
+}
+.main_aside-active {
     margin: 80px 0 0 90px;
 }
+
+
 .main {
     position: relative;
     padding: 50px;

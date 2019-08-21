@@ -230,18 +230,15 @@ $('body').on('click', ".container__item .minimize", function() {
     block.find(".chart").toggleClass("hidden");
 });
 
-
 $('.header__menu').on('click', function() {
-    if ($(this).hasClass("menu_active")) {
-        $(".aside").css("left", "-90px");
-        $(".main-wrap").css("margin-left", "0");
-        $(this).removeClass("menu_active");
-    } else {
-        $(".aside").css("left", "0");
-        $(".main-wrap").css("margin-left", "90px");
-        $(this).addClass("menu_active");
+
+    $(".aside").toggleClass("aside_active");
+    if ($(window).width() >= '550') {
+        $(".main-wrap").toggleClass("main_aside-active");
     }
+    $(this).toggleClass("menu_active");
 });
+
 
 /*eventsClose(".options__popup");
 eventsClose(".header__pop");
