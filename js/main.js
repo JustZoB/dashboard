@@ -164,7 +164,7 @@ Aside.add();
 
 
 $(".header__center__mini").on('click', function() {
-    $(".header__center__normal").toggleClass("header__search__active");
+    $(".header__center__normal").toggleClass("header__search__active white box-shadow");
 })
 
 $('body').on('click', ".options__button", function() {
