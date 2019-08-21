@@ -343,6 +343,6 @@ $(window).on("resize", function (event) {
     initDailySales();
     initMonthlySales();
     initDepartmentSales();         
-  }, 250);
+  }, 300);
   
 });
