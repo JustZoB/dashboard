@@ -13,12 +13,15 @@
 body {
     font-family: 'Montserrat', serif;
 }
-h2 {
+h1, h2, h3, h4, h5, h6 {
     margin: 0;
+    padding: 0;
+}
+h2 {
     font-size: 30px;
 }
 p {
-    margin: 5px 0;
+    margin: 0;
 }
 .button {
     border: 0;
@@ -212,10 +215,6 @@ p {
     font-size: 13px;
 }
 
-
-
-
-
 /* -----Header pops------ */
 .header__pop__wrap {
     position: absolute;
@@ -364,7 +363,7 @@ p {
     margin: auto 10px auto 20px;
 }
 
-
+/* -----Aside------ */
 .aside {
     position: fixed;
     top: 80px;
@@ -387,7 +386,7 @@ p {
     margin: auto;
 }
 
-
+/* -----Main------ */
 .main-wrap {
     margin: 80px 0 0 90px;
 }
@@ -411,13 +410,17 @@ p {
 .main__header__headline h2{
     margin: 0 15px;
 }
+
+.main__header p {
+    line-height: 30px;
+}
 .main__header__headline .fa-chevron-down {
     margin: auto 0;
 }
 .sales__select {
     cursor: pointer;
 }
-
+/* -----Container------ */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -466,8 +469,6 @@ p {
     width: 100%;
     max-width: 1170px;
 }
-
-
 
 
 
@@ -543,7 +544,6 @@ p {
 .container__half-block__img img {
     margin: auto;
 }
-
 
 
 .change {
@@ -681,7 +681,7 @@ p {
 .aside__menu__item.active:hover {
     background-color: #5a98d5;
 }
-
+/* -----Colors------ */
 .white {
     background-color: #fff;
 }
