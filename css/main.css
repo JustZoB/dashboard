@@ -273,7 +273,7 @@ p {
 
 .notifications,
 .messages {
-    transform: translate(20%, 0%);
+    transform: translate(35%, 0%);
 }
 .messages__content,
 .notifications__content {
