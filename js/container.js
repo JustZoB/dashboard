@@ -5,7 +5,7 @@ let Container = {
 
             Container.addBlockGraph(row, 'medium', 'chart__revenue', 'Revenue', 'This year');
             Container.addTextInGraphTop($(".container__item").last(), 'container__item__text container__item__text_left', '$433,534,300', 'Sold 12.332 Items');
-            Container.addBlockGraph(row, 'medium', 'chart__product-order', 'Product Order', 'This month');
+            Container.addBlockGraph(row, 'medium', 'chart__product-order', 'Product Order'); /* , 'This month' */
             Container.addDoubleBlock(row, 'medium');
             Container.addBlockGraph(row, 'big', 'chart__customers', 'Customers');
             Container.addTextInGraphTop($(".container__item").last(), 'container__item__text container__item__text_center', '284,123');
