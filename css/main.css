@@ -40,6 +40,7 @@ p {
     justify-content: space-between;
     z-index: 100;
 }
+
 /* -----Header left------ */
 .header__left {
     height: 100%;
