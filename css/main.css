@@ -446,51 +446,13 @@ p {
     max-width: 370px;
 }
 .row .col-lg-6 {
-    /*min-width: 480px;*/
     width: 48%;
     max-width: 570px;
 }
 .row .col-lg-12 {
-    min-width: 990px;
     width: 100%;
     max-width: 1170px;
 }
-
-
-
-/*@media (max-width: 1290px) {
-    .row .col-md-1 {
-        min-width: 36px;
-        width: 5.5%;
-        max-width: 55px;
-    }
-    .row .col-md-2 {
-        min-width: 102px;
-        width: 11%;
-        max-width: 140px;
-    }
-    .row .col-md-3 {
-        min-width: 168px;
-        width: 23%;
-        max-width: 225px;
-    }
-    .row .col-md-4 {
-        min-width: 234px;
-        width: 31%;
-        max-width: 310px;
-    }
-    .row .col-md-6 {
-        min-width: 366px;
-        width: 48%;
-        max-width: 480px;
-    }
-    .row .col-md-12 {
-        min-width: 768px;
-        width: 100%;
-        max-width: 990px;
-    }
-}*/
-
 
 .container__double-block {
     position: relative;
@@ -651,9 +613,6 @@ p {
     height: 100%;
 }
 
-/*#chart_department-sales svg > g::eq(1) > g {
-    margin: 0 10px;
-}*/
 
 .hidden {
     display: none;
@@ -740,32 +699,26 @@ p {
 
 @media (max-width: 990px) {
     .row .col-md-1 {
-        min-width: 36px;
         width: 5.5%;
         max-width: 55px;
     }
     .row .col-md-2 { 
-        min-width: 102px;
         width: 11%;
         max-width: 140px;
     }
     .row .col-md-3 {
-        min-width: 168px;
         width: 23%;
         max-width: 225px;
     }
     .row .col-md-4 {
-        min-width: 234px;
         width: 31%;
         max-width: 310px;
     }
     .row .col-md-6 {
-        min-width: 366px;
         width: 48%;
         max-width: 480px;
     }
     .row .col-md-12 {
-        /*min-width: 768px;*/
         width: 100%;
         max-width: 990px;
     }
@@ -787,32 +740,26 @@ p {
     }
 
     .row .col-xs-1 {
-        /*min-width: 12px;*/
         width: 5.5%;
         max-width: 36px;
     }
     .row .col-xs-2 {
-        /*min-width: 54px;*/
         width: 11%;
         max-width: 102px;
     }
     .row .col-xs-3 {
-        /*min-width: 97px;*/
         width: 23%;
         max-width: 168px;
     }
     .row .col-xs-4 {
-        /*min-width: 138px;*/
         width: 31%;
         max-width: 234px;
     }
     .row .col-xs-6 {
-        /*min-width: 222px;*/
         width: 48%;
         max-width: 366px;
     }
     .row .col-xs-12 {
-        /*min-width: 474px;*/
         width: 100%;
         max-width: 762px;
     }
