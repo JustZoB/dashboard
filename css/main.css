@@ -658,7 +658,7 @@ p {
 .hidden {
     display: none;
 }
-.button.sky-blue:hover,
+.button.sky-blue-bg:hover,
 .aside__menu__item:hover {
     background-color: #8fbff0;
 }
@@ -670,26 +670,26 @@ p {
     background-color: #5a98d5;
 }
 /* -----Colors------ */
-.white {
+.white-bg {
     background-color: #fff;
 }
-.gray {
+.gray-bg {
     background-color: #fafafa;
 }
 
-.light-green {
+.light-green-bg {
     background-color: #cbecbc;
 }
-.light-sky-blue {
+.light-sky-blue-bg {
     background-color: #bceaec;
 }
-.light-blue {
+.light-blue-bg {
     background-color: #74aadf;
 }
-.sky-blue {
+.sky-blue-bg {
     background-color: #5a98d5;
 }
-.dark-blue {
+.dark-blue-bg {
     background-color: #3b5a79;
 }
 
