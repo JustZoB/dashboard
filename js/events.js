@@ -70,17 +70,18 @@ $('body').on('click', ".container__item .minimize", function() {
 });
 
 $('.header__menu').on('click', function() {
+    $(".aside__menu__item__name").toggleClass("hidden");
     $(".aside").toggleClass("active");
-    if ($(window).width() >= '550') {
-        $(".main-wrap").toggleClass("active");
-    }
     $(this).toggleClass("active");
-    initRevenue();
-    initProductOrder();
-    initCustomers();
-    initDailySales();
-    initMonthlySales();
-    initDepartmentSales();
+    if ($(window).width() >= '768') {
+        $(".main-wrap").toggleClass("active");
+        initRevenue();
+        initProductOrder();
+        initCustomers();
+        initDailySales();
+        initMonthlySales();
+        initDepartmentSales();
+    }
 });
 
 eventsClose(".options__popup");
