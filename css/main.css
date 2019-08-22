@@ -20,6 +20,9 @@ h1, h2, h3, h4, h5, h6 {
 h2 {
     font-size: 30px;
 }
+ul, li {
+    list-style-type: none;
+}
 p {
     margin: 0;
 }
@@ -119,7 +122,7 @@ p {
     display: block;
     position: absolute;
     top: 90px;
-    left: 40px;
+    left: 100%;
     transform: translate(-50%, 0%);
     padding: 20px;
 }
@@ -367,10 +370,11 @@ p {
 .aside {
     position: fixed;
     top: 80px;
-    left: -90px;
+    left: 0;
     width: 90px;
     height: 100%;
     z-index: 5;
+    overflow-y: auto;
 }
 .aside__menu {
     margin: 0;
@@ -379,24 +383,40 @@ p {
     transition: 0.15s all ease;*/
 }
 .aside__menu__item {
+    position: relative;
     display: flex;
     height: 90px;
-    list-style-type: none;
     cursor: pointer;
 }
-.aside__menu__item i {
+.aside__menu__item__icon {
+    display: flex;
+    width: 90px;
+    height: 90px;
+}
+.aside__menu__item__icon i {
     margin: auto;
+}
+.aside__menu__item__name {
+    display: flex;
+    height: 90px;
+    width: 150px;
+    
+}
+.aside__menu__item__name p {
+    margin: auto 0;
+    font-weight: bold;
 }
 
 .main-wrap {
     margin-top: 80px;
-    margin-left: 0;
+    margin-left: 90px;
 }
 .aside.active {
     left: 0;
+    width: 240px;
 }
 .main-wrap.active {
-    margin-left: 90px;
+    margin-left: 240px;
 }
 
 
@@ -640,17 +660,7 @@ p {
 .hidden {
     display: none;
 }
-.button.sky-blue-bg:hover,
-.aside__menu__item:hover {
-    background-color: #8fbff0;
-}
-.aside__menu__item.active {
-    background-color: #5a98d5;
-    cursor: default;
-}
-.aside__menu__item.active:hover {
-    background-color: #5a98d5;
-}
+
 /* -----Colors------ */
 .white-bg {
     background-color: #fff;
@@ -720,6 +730,18 @@ p {
     color: #ff6e6e;
 }
 
+.button.sky-blue-bg:hover,
+.aside__menu__item:hover {
+    background-color: #8fbff0;
+}
+.aside__menu__item.active {
+    background-color: #5a98d5;
+    cursor: default;
+}
+.aside__menu__item.active:hover {
+    background-color: #5a98d5;
+}
+
 @media (max-width: 990px) {
     .row .col-md-1 {
         width: 5.5%;
@@ -748,6 +770,15 @@ p {
 }
 
 @media (max-width: 768px) {
+    .aside {
+        left: -90px;
+    }
+    .main-wrap {
+        margin-left: 0px;
+    }
+    .main-wrap.active {
+        margin-left: 0px;
+    }
     .main {
         padding: 30px;
     }
@@ -780,5 +811,10 @@ p {
 @media (max-width: 580px) {
     .header__logo-text {
         display: none;
+    }
+}
+@media (max-width: 480px) {
+    .aside.active {
+        width: 100%;
     }
 }
