@@ -31,9 +31,10 @@ p {
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
+    white-space: nowrap;
 }
 .button-icon {
-    margin-right: 0.5rem;
+    margin-right: 0.5em;
 }
 
 .header {
