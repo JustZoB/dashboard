@@ -431,14 +431,7 @@ p {
     flex-wrap: wrap;
     margin: 0 auto;
 }
-/*
-.container_medium {
-    height: 370px;
-}
-.container_big {
-    height: 500px;
-}
-*/
+
 .row .col-lg-1 {
     min-width: 55px;
     width: 5.5%;
