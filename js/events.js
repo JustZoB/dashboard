@@ -1,5 +1,5 @@
 $(".header__center__mini").on('click', function() {
-    $(".header__center__normal").toggleClass("header__search__active");
+    $(".header__center__normal").toggleClass("active");
 })
 
 $('body').on('click', ".options__button", function() {
@@ -66,10 +66,19 @@ $('body').on('click', ".container__item .minimize", function() {
 });
 
 $('.header__menu').on('click', function() {
-
     $(".aside").toggleClass("aside_active");
     if ($(window).width() >= '550') {
         $(".main-wrap").toggleClass("main_aside-active");
     }
     $(this).toggleClass("menu_active");
+    initRevenue();
+    initProductOrder();
+    initCustomers();
+    initDailySales();
+    initMonthlySales();
+    initDepartmentSales();
 });
+
+/*eventsClose(".options__popup");
+eventsClose(".header__pop");
+*/

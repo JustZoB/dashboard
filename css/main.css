@@ -13,12 +13,15 @@
 body {
     font-family: 'Montserrat', serif;
 }
-h2 {
+h1, h2, h3, h4, h5, h6 {
     margin: 0;
+    padding: 0;
+}
+h2 {
     font-size: 30px;
 }
 p {
-    margin: 5px 0;
+    margin: 0;
 }
 .button {
     border: 0;
@@ -38,7 +41,7 @@ p {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    z-index: 100;
+    z-index: 5;
 }
 
 /* -----Header left------ */
@@ -105,7 +108,7 @@ p {
 .header__center__normal {
     margin: auto;
 }
-.header__search__active {
+.header__center__mini.active {
     display: flex;
     position: absolute;
     top: 100px;
@@ -179,7 +182,7 @@ p {
     border-radius: 100%;
     opacity: 0.4;
     background-color: #ff6e6e;
-    z-index: 5;
+    z-index: 1;
 }
 .notifications_red-circle {
     position: absolute;
@@ -189,32 +192,30 @@ p {
     height: 19px;
     border-radius: 100%; 
     background-color: #ff6e6e;
-    z-index: 6;
+    z-index: 2;
 }
 .notifications_number {
     position: absolute;
     top: -11px;
     right: -7px;
-    z-index: 7;
+    z-index: 3;
     font-weight: bold;
     font-size: 13px;
 }
-
 
 /* -----Header pops------ */
 .header__pop__wrap {
     position: absolute;
     top: 90px;
     right: 5px;
-    z-index: 10;
+    z-index: 3;
     cursor: default;
-    
+    border-radius: 2px;
 }
 .header__pop {
     position: relative;
     display: flex;
     flex-direction: column;
-    border-radius: 2px;
     padding: 5px;
 }
 .header__profile__wrap {
@@ -349,14 +350,14 @@ p {
     margin: auto 10px auto 20px;
 }
 
-
+/* -----Aside------ */
 .aside {
     position: fixed;
     top: 80px;
     left: -90px;
     width: 90px;
     height: 100%;
-    z-index: 20;
+    z-index: 5;
 }
 .aside__menu {
     margin: 0;
@@ -373,6 +374,7 @@ p {
 .aside__menu__item i {
     margin: auto;
 }
+
 .main-wrap {
     margin-top: 80px;
     margin-left: 0;
@@ -405,6 +407,10 @@ p {
 .main__header__headline h2{
     margin: 0 15px;
 }
+
+.main__header p {
+    line-height: 30px;
+}
 .main__header__headline .fa-chevron-down {
     margin: auto 0;
 }
@@ -414,7 +420,7 @@ p {
 .sales__select {
     cursor: pointer;
 }
-
+/* -----Container------ */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -425,14 +431,7 @@ p {
     flex-wrap: wrap;
     margin: 0 auto;
 }
-/*
-.container_medium {
-    height: 370px;
-}
-.container_big {
-    height: 500px;
-}
-*/
+
 .row .col-lg-1 {
     min-width: 55px;
     width: 5.5%;
@@ -454,53 +453,13 @@ p {
     max-width: 370px;
 }
 .row .col-lg-6 {
-    /*min-width: 480px;*/
     width: 48%;
     max-width: 570px;
 }
 .row .col-lg-12 {
-    min-width: 990px;
     width: 100%;
     max-width: 1170px;
 }
-
-
-
-
-
-/*@media (max-width: 1290px) {
-    .row .col-md-1 {
-        min-width: 36px;
-        width: 5.5%;
-        max-width: 55px;
-    }
-    .row .col-md-2 {
-        min-width: 102px;
-        width: 11%;
-        max-width: 140px;
-    }
-    .row .col-md-3 {
-        min-width: 168px;
-        width: 23%;
-        max-width: 225px;
-    }
-    .row .col-md-4 {
-        min-width: 234px;
-        width: 31%;
-        max-width: 310px;
-    }
-    .row .col-md-6 {
-        min-width: 366px;
-        width: 48%;
-        max-width: 480px;
-    }
-    .row .col-md-12 {
-        min-width: 768px;
-        width: 100%;
-        max-width: 990px;
-    }
-}*/
-
 
 .container__double-block {
     position: relative;
@@ -544,12 +503,11 @@ p {
 }
 
 
-
 .change {
     position: absolute;
     top: 20px;
     right: 25px;
-    z-index: 11;
+    z-index: 1;
     display: flex;
 }
 .change__button {
@@ -566,7 +524,7 @@ p {
     position: absolute;
     top: 20px;
     left: 25px;
-    z-index: 11;
+    z-index: 2;
 }
 .options__button {
     width: 30px;
@@ -581,7 +539,7 @@ p {
 .options__popup {
     position: absolute;
     width: 150px;
-    z-index: 6;
+    z-index: 3;
     background-color: #eeeeee;
     border-radius: 4px;
 }
@@ -662,45 +620,42 @@ p {
     height: 100%;
 }
 
-/*#chart_department-sales svg > g::eq(1) > g {
-    margin: 0 10px;
-}*/
 
 .hidden {
     display: none;
 }
-.button.sky-blue:hover,
+.button.sky-blue-bg:hover,
 .aside__menu__item:hover {
     background-color: #8fbff0;
 }
-.active {
+.aside__menu__item.active {
     background-color: #5a98d5;
     cursor: default;
 }
 .aside__menu__item.active:hover {
     background-color: #5a98d5;
 }
-
-.white {
+/* -----Colors------ */
+.white-bg {
     background-color: #fff;
 }
-.gray {
+.gray-bg {
     background-color: #fafafa;
 }
 
-.light-green {
+.light-green-bg {
     background-color: #cbecbc;
 }
-.light-sky-blue {
+.light-sky-blue-bg {
     background-color: #bceaec;
 }
-.light-blue {
+.light-blue-bg {
     background-color: #74aadf;
 }
-.sky-blue {
+.sky-blue-bg {
     background-color: #5a98d5;
 }
-.dark-blue {
+.dark-blue-bg {
     background-color: #3b5a79;
 }
 
@@ -751,32 +706,26 @@ p {
 
 @media (max-width: 990px) {
     .row .col-md-1 {
-        min-width: 36px;
         width: 5.5%;
         max-width: 55px;
     }
     .row .col-md-2 { 
-        min-width: 102px;
         width: 11%;
         max-width: 140px;
     }
     .row .col-md-3 {
-        min-width: 168px;
         width: 23%;
         max-width: 225px;
     }
     .row .col-md-4 {
-        min-width: 234px;
         width: 31%;
         max-width: 310px;
     }
     .row .col-md-6 {
-        min-width: 366px;
         width: 48%;
         max-width: 480px;
     }
     .row .col-md-12 {
-        /*min-width: 768px;*/
         width: 100%;
         max-width: 990px;
     }
@@ -798,32 +747,26 @@ p {
     }
 
     .row .col-xs-1 {
-        /*min-width: 12px;*/
         width: 5.5%;
         max-width: 36px;
     }
     .row .col-xs-2 {
-        /*min-width: 54px;*/
         width: 11%;
         max-width: 102px;
     }
     .row .col-xs-3 {
-        /*min-width: 97px;*/
         width: 23%;
         max-width: 168px;
     }
     .row .col-xs-4 {
-        /*min-width: 138px;*/
         width: 31%;
         max-width: 234px;
     }
     .row .col-xs-6 {
-        /*min-width: 222px;*/
         width: 48%;
         max-width: 366px;
     }
     .row .col-xs-12 {
-        /*min-width: 474px;*/
         width: 100%;
         max-width: 762px;
     }
