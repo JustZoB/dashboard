@@ -33,7 +33,7 @@ p {
     cursor: pointer;
 }
 .button-icon {
-    margin-right: 7px;
+    margin-right: 0.5rem;
 }
 
 .header {
@@ -449,6 +449,11 @@ p {
 }
 .main__header button {
     display: flex;
+}
+.main__header button > * {
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .sales__select__wrap {
     margin: auto 0;
