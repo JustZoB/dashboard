@@ -22,7 +22,6 @@ function initRevenue() {
     titlePosition: 'none',
 
     fontSize: 16,
-    fontName: 'Montserrat',
     
     pointSize: 17,
     pointsVisible: false,
@@ -85,14 +84,13 @@ function initProductOrder() {
     titlePosition: 'none',
 
     fontSize: 16,
-    fontName: 'Montserrat',
     colors: '#2c3e50',
 
     pieSliceText: 'none',
     pieStartAngle: 200,
     
-    tooltip: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
-    legend: {position: 'bottom', textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
+    tooltip: {textStyle: {color: '#aaaaaa', fontSize: 14}},
+    legend: {position: 'bottom', textStyle: {color: '#aaaaaa', fontSize: 14}},
     slices: {
       0: { color: '#486afa' },
       1: { color: '#f8e367' },
@@ -136,7 +134,6 @@ function initCustomers() {
     titlePosition: 'none',
 
     fontSize: 16,
-    fontName: 'Montserrat',
     colors: '#2c3e50',
 
     curveType: 'function',
@@ -146,13 +143,12 @@ function initCustomers() {
     
     vAxis: {textPosition: 'none', gridlines: {count: 3},  minorGridlines: {count: 0}},
     hAxis: {textPosition: 'none'},
-    legend: {position: 'top', textStyle: {color: '#2c3e50', fontName: 'Montserrat', fontSize: 14, bold: true}},
+    legend: {position: 'top', textStyle: {color: '#2c3e50', fontSize: 14, bold: true}},
     
     series: {
       0: { color: '#467cb2' },
       1: { color: '#accbea' },
     }
-    //tooltip: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
   };
   drawCustomers(data, options);
 }
@@ -187,8 +183,6 @@ function initDailySales() {
     titlePosition: 'none',
     
     fontSize: 16,
-    fontName: 'Montserrat',
-
     lineWidth: 0,
 
     vAxis: {textStyle: {color: '#a1a1a1'}, minorGridlines: {count: 0}, gridlines: {count: 5}},
@@ -241,7 +235,6 @@ function initMonthlySales() {
     titlePosition: 'none',
 
     fontSize: 16,
-    fontName: 'Montserrat',
     colors: '#2c3e50',
 
     isStacked: true,
@@ -308,14 +301,13 @@ function initDepartmentSales() {
     titlePosition: 'none',
     
     fontSize: 16,
-    fontName: 'Montserrat',
     colors: '#2c3e50',
 
     pieSliceText: 'none',
     pieHole: 0.75,
     
-    legend: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 16}, alignment: 'center'},
-    tooltip: {textStyle: {color: '#aaaaaa', fontName: 'Montserrat', fontSize: 14}},
+    legend: {textStyle: {color: '#aaaaaa', fontSize: 16}, alignment: 'center'},
+    tooltip: {textStyle: {color: '#aaaaaa', fontSize: 14}},
     slices: {
       0: { color: '#f8e367' },
       1: { color: '#e18197' },
@@ -341,7 +333,7 @@ $(window).on("resize", function (event) {
     initCustomers();
     initDailySales();
     initMonthlySales();
-    initDepartmentSales();         
-  }, 300);
+    initDepartmentSales();
+  }, 50);
   
 });
