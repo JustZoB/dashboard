@@ -374,13 +374,14 @@ p {
     margin: auto;
 }
 .main-wrap {
-    margin: 80px 0 0 0;
+    margin-top: 80px;
+    margin-left: 0;
 }
 .aside_active {
     left: 0;
 }
 .main_aside-active {
-    margin: 80px 0 0 90px;
+    margin-left: 90px;
 }
 
 
