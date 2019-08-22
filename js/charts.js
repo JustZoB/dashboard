@@ -52,7 +52,6 @@ function drawRevenue(data, options) {
 }
 
 
-
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(initProductOrder);
 
