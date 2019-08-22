@@ -41,7 +41,7 @@ p {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    z-index: 100;
+    z-index: 5;
 }
 
 /* -----Header left------ */
@@ -182,7 +182,7 @@ p {
     border-radius: 100%;
     opacity: 0.4;
     background-color: #ff6e6e;
-    z-index: 5;
+    z-index: 1;
 }
 .notifications_red-circle {
     position: absolute;
@@ -192,13 +192,13 @@ p {
     height: 19px;
     border-radius: 100%; 
     background-color: #ff6e6e;
-    z-index: 6;
+    z-index: 2;
 }
 .notifications_number {
     position: absolute;
     top: -11px;
     right: -7px;
-    z-index: 7;
+    z-index: 3;
     font-weight: bold;
     font-size: 13px;
 }
@@ -208,15 +208,14 @@ p {
     position: absolute;
     top: 90px;
     right: 5px;
-    z-index: 10;
+    z-index: 3;
     cursor: default;
-    
+    border-radius: 2px;
 }
 .header__pop {
     position: relative;
     display: flex;
     flex-direction: column;
-    border-radius: 2px;
     padding: 5px;
 }
 .header__profile__wrap {
@@ -358,7 +357,7 @@ p {
     left: 0;
     width: 90px;
     height: 100%;
-    z-index: 10;
+    z-index: 5;
 }
 .aside__menu {
     margin: 0;
@@ -500,7 +499,7 @@ p {
     position: absolute;
     top: 20px;
     right: 25px;
-    z-index: 11;
+    z-index: 1;
     display: flex;
 }
 .change__button {
@@ -517,7 +516,7 @@ p {
     position: absolute;
     top: 20px;
     left: 25px;
-    z-index: 11;
+    z-index: 2;
 }
 .options__button {
     width: 30px;
@@ -532,7 +531,7 @@ p {
 .options__popup {
     position: absolute;
     width: 150px;
-    z-index: 6;
+    z-index: 3;
     background-color: #eeeeee;
     border-radius: 4px;
 }
