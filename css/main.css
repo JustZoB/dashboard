@@ -502,11 +502,12 @@ p {
     display: flex;
     flex-direction: column;
     min-height: 330px;
-    margin: 0 auto;
+    margin: 0 1%;
+    float: left;
 }
 .container__half-block-wrap {
     position: relative;
-    margin: 15px 0;
+    margin: 3% 0;
     height: 45%;
     min-height: 150px;
     display: flex;
@@ -601,7 +602,8 @@ p {
 
 .container__item {
     position: relative;
-    margin: 15px auto;
+    margin: 1%;
+    float: left;
 }
 .container__item__minimize {
     height: 70px;
