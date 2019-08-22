@@ -6,6 +6,10 @@ $('body').on('click', ".options__button", function() {
     $(this).parents().eq(1).find(".options__popup").toggleClass("hidden");
 });
 
+$('.sales__select i').on('click', function() {
+    $(this).parent().find(".options__popup").toggleClass("hidden");
+});
+
 $('.header__profile__wrap').on('click', function() {
     $(".profile").toggleClass("hidden");
 });

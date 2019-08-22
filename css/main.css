@@ -450,7 +450,10 @@ p {
 .main__header button {
     display: flex;
 }
-.sales__select {
+.sales__select__wrap {
+    margin: auto 0;
+}
+.sales__select i{
     cursor: pointer;
 }
 /* -----Container------ */
@@ -812,7 +815,14 @@ p {
     .header__logo-text {
         display: none;
     }
+    .main__header {
+        flex-direction: column;
+    }
+    .main__header > div {
+        margin: 10px auto;
+    }
 }
+
 @media (max-width: 480px) {
     .aside.active {
         width: 100%;
