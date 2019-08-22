@@ -33,7 +33,7 @@ p {
     cursor: pointer;
 }
 .button-icon {
-    margin-right: 2px;
+    margin-right: 7px;
 }
 
 .header {
@@ -501,13 +501,14 @@ p {
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     min-height: 330px;
     margin: 0 1%;
     float: left;
 }
 .container__half-block-wrap {
     position: relative;
-    margin: 3% 0;
+    margin: 2.5% 0;
     height: 45%;
     min-height: 150px;
     display: flex;
@@ -765,6 +766,7 @@ p {
         max-width: 310px;
     }
     .row .col-md-6 {
+        min-width: 250px;
         width: 48%;
         max-width: 480px;
     }
