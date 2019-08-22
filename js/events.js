@@ -1,6 +1,7 @@
 $(".header__center__mini").on('click', function() {
-    $(".header__center__normal").toggleClass("active");
-})
+    $(".header__center__normal").toggleClass("active white box-shadow");
+});
+
 
 $('body').on('click', ".options__button", function() {
     $(this).parents().eq(1).find(".options__popup").toggleClass("hidden");
