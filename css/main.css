@@ -115,8 +115,8 @@ p {
     margin: auto;
 }
 
-.header__center__mini.active {
-    display: flex;
+.header__center__normal.active {
+    display: block;
     position: absolute;
     top: 90px;
     left: 40px;
@@ -392,10 +392,10 @@ p {
     margin-top: 80px;
     margin-left: 0;
 }
-.aside_active {
+.aside.active {
     left: 0;
 }
-.main_aside-active {
+.main-wrap.active {
     margin-left: 90px;
 }
 
@@ -502,6 +502,9 @@ p {
     left: 65px;
     font-size: 16px;
     font-weight: bold;
+}
+.container__text__minimize p {
+    margin-top: 5px;
 }
 .container__half-block__text {
     margin: auto;
@@ -741,13 +744,6 @@ p {
     .row .col-md-12 {
         width: 100%;
         max-width: 990px;
-    }
-}
-
-@media (max-width: 900px) {
-    .header__center__normal {
-        display: none;
-        position: absolute;
     }
 }
 
