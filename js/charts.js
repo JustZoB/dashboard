@@ -22,14 +22,12 @@ function initRevenue() {
     titlePosition: 'none',
 
     fontSize: 16,
-    //,
     pointSize: 17,
     pointsVisible: false,
     lineWidth: 4,
     
     vAxis: {textPosition: 'none', minValue: 0, gridlines: {count: 0}, minorGridlines: {count: 0}, baselineColor: '#accbea'},
     hAxis: {textStyle: {color: '#286aab', bold: true}, textPosition: 'in'},
-    //tooltip: {textStyle: {color: '#286aab'}},
     legend: {position: 'none'},
 
     areaOpacity: 0.5,
