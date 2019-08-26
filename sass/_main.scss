@@ -7,7 +7,7 @@ $aside__name_width: 150px;
     &.active {
         margin-left: $aside__icon_width + $aside__name_width;
     }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 792px) {
         & {
             margin-left: 0px;
             &.active {
@@ -68,7 +68,7 @@ $aside__name_width: 150px;
         }
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 792px) {
         & {
             padding: 30px;
         }
@@ -89,8 +89,7 @@ $aside__name_width: 150px;
         $max-width: 1200px;
         $max-col: 12;
         $margin: 30px;
-        $columns: 1 2 3 4 6 12;
-        @each $col in $columns {
+        @for $col from 1 through $max-col {
             .col-lg-#{$col} {
                 min-width: ($min-width - $max-col * $margin / $col) / $max-col * $col;
                 width: 100% / $max-col * $col - 2%;
@@ -101,7 +100,7 @@ $aside__name_width: 150px;
         @media screen and (max-width: 1020px) {
             & {
                 $max-width: 1020px;
-                @each $col in $columns {
+                @for $col from 1 through $max-col {
                     .col-md-#{$col} {
                         min-width: unset;
                         width: 100% / $max-col * $col - 2%;
@@ -114,7 +113,7 @@ $aside__name_width: 150px;
         @media screen and (max-width: 792px) {
             & {
                 $max-width: 792px;
-                @each $col in $columns {
+                @for $col from 1 through $max-col {
                     .col-xs-#{$col} {
                         width: 100% / $max-col * $col - 2%;
                         max-width: ($max-width - $max-col * $margin / $col) / $max-col * $col;
