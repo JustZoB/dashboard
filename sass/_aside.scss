@@ -1,0 +1,73 @@
+.aside {
+    $width: 90px;
+    $height: 90px;
+    $width_name: 150px;
+
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: $width;
+    height: 100%;
+    z-index: 5;
+    overflow-y: auto;
+
+    &.active {
+        left: 0;
+        width: $width + $width_name;
+    }
+
+    &__menu {
+        margin: 0;
+        padding: 0;
+
+        &__item {
+            position: relative;
+            display: flex;
+            height: $height;
+            cursor: pointer;
+
+            &__icon {
+                display: flex;
+                width: $width;
+                height: $height;
+
+                i {
+                    margin: auto;
+                }
+            }
+
+            &__name {
+                display: flex;
+                width: $width_name;
+                height: $height;
+    
+                p {
+                    margin: auto 0;
+                    font-weight: bold;
+                }
+            }
+
+            &:hover {
+                background-color: #8fbff0;
+            }
+            &.active {
+                background-color: #5a98d5;
+                cursor: default;
+            }
+            &.active:hover {
+                background-color: #5a98d5;
+            }
+        }
+    }
+    @media screen and (max-width: 768px) {
+        & {
+            left: -$width;
+        }
+    }
+    
+    @media screen and (max-width: 480px) {
+        &.active {
+            width: 100%;
+        }
+    }
+}
