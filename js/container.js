@@ -25,10 +25,10 @@ let Container = {
         if (subtitle === undefined) {
             subtitle = "";
         }
-        $(list).append(`<div class="container__item container_${ size } ${ block_size } white-bg box-shadow">
+        $(list).append(`<div class="container__item container_${ size } ${ block_size }">
             <div class="options">
                 <div class="options__button">
-                    <i class="text_light-blue-gray fas fa-ellipsis-h fa-lg"></i>
+                    <i class="fas fa-ellipsis-h fa-lg"></i>
                 </div>
                 <div class="options__popup hidden">
                     <div class="options__item">
@@ -45,12 +45,12 @@ let Container = {
                     </div>
                 </div>
             </div>
-            <div class="change">
-                <div class="change__button minimize">
-                    <i class="text_light-blue-gray far fa-window-minimize fa-lg"></i>
+            <div class="window-control">
+                <div class="window-control__button minimize">
+                    <i class="far fa-window-minimize fa-lg"></i>
                 </div>
-                <div class="change__button close">
-                    <i class="text_light-blue-gray fas fa-times fa-lg"></i>
+                <div class="window-control__button close">
+                    <i class="fas fa-times fa-lg"></i>
                 </div>
             </div>
             <div class="container__item__head">
@@ -76,11 +76,11 @@ let Container = {
     },
 
     addHalfBlock: function(list, block_color, img_src, img_alt, text_color, span_text, text) {
-        $(list).append(`<div class="container__half-block-wrap ${ block_color } box-shadow">
+        $(list).append(`<div class="container__half-block-wrap ${ block_color }">
             <div class="container__half-block">
                 <div class="options">
                     <div class="options__button">
-                        <i class="text_ligth-gray fas fa-ellipsis-h fa-lg"></i>
+                        <i class="fas fa-ellipsis-h fa-lg"></i>
                     </div>
                     <div class="options__popup hidden">
                         <div class="options__item">
@@ -97,12 +97,12 @@ let Container = {
                         </div>
                     </div>
                 </div>
-                <div class="change">
-                    <div class="change__button minimize">
-                        <i class="text_ligth-gray far fa-window-minimize fa-lg"></i>
+                <div class="window-control">
+                    <div class="window-control__button minimize">
+                        <i class="far fa-window-minimize fa-lg"></i>
                     </div>
-                    <div class="change__button close">
-                        <i class="text_ligth-gray fas fa-times fa-lg"></i>
+                    <div class="window-control__button close">
+                        <i class="fas fa-times fa-lg"></i>
                     </div>
                 </div>
                 <div class="container__half-block__img">

@@ -1,10 +1,17 @@
 $white: #ffffff;
 $gray: #fafafa;
-$light-green: #cbecbc;
+
 $light-sky-blue: #bceaec;
+$lighter-blue: #8fbff0;
 $light-blue: #74aadf;
 $sky-blue: #5a98d5;
 $dark-blue: #3b5a79;
+
+$lighter-green: #cbecbc;
+$light-green: #83ad70;
+$green: #4cc052;
+$red: #ff6e6e;
+$yellow: #ecda41;
 
 .white-bg {
     background-color: $white;
@@ -13,7 +20,7 @@ $dark-blue: #3b5a79;
     background-color: $gray;
 }
 .light-green-bg {
-    background-color: $light-green;
+    background-color: $lighter-green;
 }
 .light-sky-blue-bg {
     background-color: $light-sky-blue;
@@ -28,8 +35,6 @@ $dark-blue: #3b5a79;
     background-color: $dark-blue;
 }
 
-$red: #ff6e6e;
-$green: #83ad70;
 .text_white {
     color: $white;
 }
@@ -46,7 +51,7 @@ $green: #83ad70;
     color: #9fa1a2;
 }
 .text_green {
-    color: $green;
+    color: $light-green;
 }
 .text_light-blue {
     color: #639fa2;

@@ -75,8 +75,6 @@ $('.header__menu').on('click', function() {
     $(this).toggleClass("active");
     if ($(window).width() >= '768') {
         $(".main-wrap").toggleClass("active");
-    }
-    if (($(window).width() >= '768') && ($(window).width() <= '1500')) {
         initRevenue();
         initProductOrder();
         initCustomers();

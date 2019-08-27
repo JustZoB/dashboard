@@ -5,35 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="css/normalize.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
     <link href="style.css" rel="stylesheet">
     <title>Dashboard</title>
 </head>
-<body class="gray-bg">
-    <header class="header white-bg box-shadow_bottom">
+<body>
+    <header class="header">
         <div class="header__left">
             <div class="header__menu active">
-                <i class="text_blue fas fa-bars fa-2x"></i>
+                <i class="fas fa-bars fa-2x"></i>
             </div>
             <div class="header__logo">
-                <p class="header__letter dark-blue-bg text_white">k</p>
-                <p class="header__logo-text text_gray">kavina</p>
+                <div class="header__logo__letter">
+                    <p>k</p>
+                </div>
+                <div class="header__logo__text">
+                    <p>kavina</p>
+                </div>
             </div>
         </div>
 
         <div class="header__center">
             <div class="header__center__mini">
-                <div class="header__search__mini__button">
-                    <i class="header__search__mini__icon fas fa-search fa-lg text_ligth-gray"></i>
-                </div>
+                <i class="fas fa-search fa-lg"></i>
             </div>
             <div class="header__center__normal">
                 <div class="header__search">
-                    <i class="header__search__button fas fa-search text_gray"></i>
+                    <i class="header__search__button fas fa-search"></i>
                     <input class="header__search__input" type="text" placeholder="Type text to search......">
                 </div>
-                <hr class="text_gray" />
-                <div class="search_select header__pop__wrap white-bg box-shadow hidden">
+                <hr />
+                <div class="header__pop__wrap search_select hidden">
                     <div class="search_select__content header__pop">
                         <div class="search_select__item light-sky-blue-bg text_light-blue">
                             <img src="img/basket.png" alt="Shoping basket">
@@ -53,20 +55,20 @@
             <div class="wrap">
                 <div class="header__messages">
                     <div class="header__messages__icon">
-                        <i class="fas fa-envelope fa-lg text_ligth-gray"></i>
+                        <i class="fas fa-envelope fa-lg"></i>
                         <span class="messages_not-read"></span>
                     </div>
                 </div>
-                <div class="header__pop__wrap messages white-bg box-shadow hidden">
+                <div class="header__pop__wrap messages hidden">
                     <div class="header__pop">
-                        <div class="change">
-                            <div class="change__button close">
-                                <i class="text_light-blue-gray fas fa-times fa-lg"></i>
+                        <div class="window-control">
+                            <div class="window-control__button close">
+                                <i class="fas fa-times fa-lg"></i>
                             </div>
                         </div>
                         <div class="messages__content">
-                            <div class="sky-blue-bg message">
-                                <p class="text_ligth-gray">Henlou human, it's your dog Steave. Can you buy food for me, please? Bye.</p>
+                            <div class="message">
+                                <p>Henlou human, it's your dog Steave. Can you buy food for me, please? Bye.</p>
                             </div>
                         </div>
                     </div>
@@ -76,19 +78,19 @@
             <div class="wrap">
                 <div class="header__notifications">
                     <div class="header__notifications__icon">
-                        <i class="fas fa-bell fa-lg text_ligth-gray"></i>
+                        <i class="fas fa-bell fa-lg"></i>
                         <div class="notifications__counts">
                             <span class="notifications_light-red-circle"></span>
                             <span class="notifications_red-circle"></span>
-                            <span class="notifications_number text_white">3</span>
+                            <span class="notifications_number">3</span>
                         </div>
                     </div>
                 </div>
-                <div class="header__pop__wrap notifications white-bg box-shadow hidden">
+                <div class="header__pop__wrap notifications hidden">
                     <div class="header__pop notifications__content">
-                        <div class="change">
-                            <div class="change__button close">
-                                <i class="text_light-blue-gray fas fa-times fa-lg"></i>
+                        <div class="window-control">
+                            <div class="window-control__button close">
+                                <i class="fas fa-times fa-lg"></i>
                             </div>
                         </div>
     
@@ -107,7 +109,7 @@
                                 <i class="fas fa-address-card fa-lg"></i>
                             </div>
                             <div class="notifications__item__text-block">
-                                <h3 class="notifications__item__head">Your address changed</h3>
+                                <h3 class="notifications__item__head">Your address window-controld</h3>
                                 <p class="notifications__item__text">If you didn't do this, please...</p>
                             </div>
                         </div>
@@ -126,21 +128,21 @@
             </div>
             
             <div class="wrap">
-                <div class="header__profile__wrap sky-blue-bg">
+                <div class="header__profile__wrap">
                     <div class="header__profile">
-                        <img class="header__profile__img img_round" src="img/avatar.jpg" alt="Avatar">
-                        <i class="fas fa-chevron-down text_ligth-gray fa-sm"></i>
+                        <img class="header__profile__img" src="img/avatar.jpg" alt="Avatar">
+                        <i class="fas fa-chevron-down fa-sm"></i>
                     </div>
                 </div>
-                <div class="header__pop__wrap profile white-bg box-shadow hidden">
+                <div class="header__pop__wrap profile hidden">
                     <div class="header__pop profile__content">
-                        <div class="change">
-                            <div class="change__button close">
-                                <i class="text_light-blue-gray fas fa-times fa-lg"></i>
+                        <div class="window-control">
+                            <div class="window-control__button close">
+                                <i class="fas fa-times fa-lg"></i>
                             </div>
                         </div>
                         <div class="profile__avatar">
-                            <img class="profile__img img_round" src="img/avatar.jpg" alt="Avatar">
+                            <img class="profile__avatar__img" src="img/avatar.jpg" alt="Avatar">
                         </div>
                         <div class="profile__name">
                             <h2>Laura Black</h2>
@@ -170,7 +172,7 @@
     </header>
 
 
-    <aside class="aside white-bg">
+    <aside class="aside">
         <ul class="aside__menu"></ul>
     </aside>
 
@@ -180,11 +182,11 @@
                 <div class="main__header">
                     <div>
                         <div class="main__header__headline">
-                            <i class="fas fa-chart-bar fa-2x text_blue"></i>
+                            <i class="fas fa-chart-bar fa-2x"></i>
                             <h2>Sales</h2>
                             <div class="sales__select__wrap">
                                 <div class="sales__select">
-                                    <i class="fas fa-chevron-down text_dark-blue fa-sm"></i>
+                                    <i class="fas fa-chevron-down fa-sm"></i>
                                     <div class="options__popup hidden">
                                         <div class="options__item">
                                             <div class="options__item__icon"><i class="fas fa-share-alt"></i></div>
@@ -202,10 +204,10 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text_dark_gray bold">Welcome to kavina CRM Sales Dashboard</p>
+                        <p class="main__header__text">Welcome to kavina CRM Sales Dashboard</p>
                     </div>
                     <div>
-                        <button class="button sky-blue-bg text_white">
+                        <button class="button">
                             <i class="button-icon fas fa-plus"></i><span>Add Dashiet</span>
                         </button>
                     </div>

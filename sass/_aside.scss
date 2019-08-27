@@ -1,19 +1,20 @@
-.aside {
-    $width: 90px;
-    $height: 90px;
-    $width_name: 150px;
+$aside__icon_width: 90px;
+$aside__icon_height: 90px;
+$aside__name_width: 150px;
 
+.aside {
+    @extend .white-bg;
     position: fixed;
     top: 80px;
     left: 0;
-    width: $width;
+    width: $aside__icon_width;
     height: 100%;
     z-index: 5;
     overflow-y: auto;
 
     &.active {
         left: 0;
-        width: $width + $width_name;
+        width: $aside__icon_width + $aside__name_width;
     }
 
     &__menu {
@@ -23,49 +24,40 @@
         &__item {
             position: relative;
             display: flex;
-            height: $height;
+            height: $aside__icon_height;
             cursor: pointer;
 
             &__icon {
                 display: flex;
-                width: $width;
-                height: $height;
-
-                i {
-                    margin: auto;
-                }
+                justify-content: center;
+                align-items: center;
+                width: $aside__icon_width;
             }
 
             &__name {
                 display: flex;
-                width: $width_name;
-                height: $height;
-    
-                p {
-                    margin: auto 0;
-                    font-weight: bold;
-                }
+                align-items: center;
+                width: $aside__name_width;
+                font-weight: bold;
             }
 
             &:hover {
-                background-color: #8fbff0;
+                background-color: $lighter-blue;
             }
             &.active {
-                background-color: #5a98d5;
+                background-color: $sky-blue;
                 cursor: default;
             }
             &.active:hover {
-                background-color: #5a98d5;
+                background-color: $sky-blue;
             }
         }
     }
-    @media screen and (max-width: 792px) {
-        & {
-            left: -$width;
-        }
+    @media screen and (max-width: 768px) {
+        left: -$aside__icon_width;
     }
     
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 580px) {
         &.active {
             width: 100%;
         }

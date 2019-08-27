@@ -1,5 +1,6 @@
-
 .header {
+    @extend .box_shadow_bottom;
+    @extend .white-bg;
     position: fixed;
     top: 0;
     left: 0;
@@ -16,50 +17,71 @@
     &__menu {
         display: flex;
         cursor: pointer;
+        justify-content: center;
+        align-items: center;
         width: 90px;
         height: 100%;
-        margin: auto;
-        &:hover {
-            background-color: #8fbff0;
-        }
+
         i {
-            margin: auto;
+            @extend .text_blue;
+        }
+        &:hover {
+            background-color: $lighter-blue;
         }
     }
     &__logo {
         display: flex;
         cursor: pointer;
         height: 100%;
-        margin: auto;
-    }
-    &__letter {
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        font-size: 18px;
-        text-align: center;
-        margin: auto 15px;
-        text-transform: uppercase;
-    }
-    &__logo-text {
-        font-family: 'Exo', serif;
-        font-size: 22px;
-        line-height: 30px;
-        font-weight: bold;
-        margin: auto 5px;
 
-        @media screen and (max-width: 580px) {
-            & {
+        &__letter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 100%;
+
+            p {
+                @extend .dark-blue-bg;
+                @extend .text_white;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                font-size: 18px;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+        &__text {
+            @extend .text_gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100%;
+            
+            p {
+                font-family: 'Exo', 'Montserrat', Sans-Serif;
+                font-size: 22px;
+                line-height: 30px;
+                font-weight: bold;
+            }
+            
+            @media screen and (max-width: 580px) {
                 display: none;
             }
         }
     }
+    
 
 
     &__center {
         position: relative;
         display: flex;
+        justify-content: center;
+        align-items: center;
+
         hr {
             margin: 0;
         }
@@ -68,47 +90,51 @@
             display: none;
             width: 60px;
             height: 80px;
-            margin: auto;
-            .header__search__mini__button {
-                margin: auto;
+            i {
+                @extend .text_ligth-gray;
             }
-            @media screen and (max-width: 900px) {
-                & {
-                    display: flex;
-                }
+            @media screen and (max-width: 1024px) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
         &__normal {
-            margin: auto;
             &.active {
                 display: block;
                 position: absolute;
                 top: 90px;
-                left: 100%;
-                transform: translate(-50%, 0%);
                 padding: 20px;
-            }
-            @media screen and (max-width: 900px) {
-                & {
-                    display: none;
-                    position: absolute;
+
+                @media screen and (max-width: 580px) {
+                    margin-left: 40px;
                 }
+            }
+            @media screen and (max-width: 1024px) {
+                display: none;
+                position: absolute;
             }
         }
     }
     &__search {
         display: flex;
+
         &__input {
             border: 0;
             margin: 10px 15px;
             width: 300px;
+
             &::placeholder {
                 color: #b2b2b2;
             }
         }
         &__button {
+            @extend .text_gray;
             cursor: pointer;
             margin: auto;
+        }
+        hr {
+            @extend .text_gray;
         }
     }
 
@@ -120,15 +146,19 @@
     &__notifications,
     &__messages {
         display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
         height: 100%;
-        margin: auto;
         width: 60px;
         padding-top: 2px;
+
+        i {
+            @extend .text_ligth-gray;
+        }
         &__icon {
             position: relative;
             display: flex;
-            margin: auto;
         }
     }
     .messages_not-read {
@@ -138,7 +168,7 @@
         width: 10px;
         height: 10px;
         border-radius: 100%;
-        background-color: #ecda41; 
+        background-color: $yellow; 
     }
     .notifications_light-red-circle {
         position: absolute;
@@ -148,7 +178,7 @@
         height: 29px;
         border-radius: 100%;
         opacity: 0.4;
-        background-color: #ff6e6e;
+        background-color: $red;
         z-index: 1;
     }
     .notifications_red-circle {
@@ -158,10 +188,11 @@
         width: 19px;
         height: 19px;
         border-radius: 100%; 
-        background-color: #ff6e6e;
+        background-color: $red;
         z-index: 2;
     }
     .notifications_number {
+        @extend .text_white;
         position: absolute;
         top: -11px;
         right: -7px;
@@ -171,19 +202,23 @@
     }
 
     &__profile__wrap {
-        display: flex;
+        @extend .sky-blue-bg;
         position: relative;
-        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 130px;
+        height: 100%;
         margin-left: 10px;
         cursor: pointer;
+
         &:hover {
-            background-color: #71b1f1;
+            background-color: $light-blue;
         }
     }
     &__profile {
         display: flex;
-        margin: auto;
+
         &__img {
             width: 50px;
             height: 50px;
@@ -191,14 +226,16 @@
             margin: auto 7px;
         }
         i {
+            @extend .text_ligth-gray;
             margin: auto 7px;
         }
     }
 
     &__pop__wrap {
+        @extend .white-bg;
+        @extend .box_shadow;
         position: absolute;
         top: 90px;
-        right: 5px;
         z-index: 3;
         cursor: default;
         border-radius: 2px;
@@ -213,6 +250,7 @@
     .search_select {
         top: 60px;
         right: 3px;
+
         &__content {
             width: 370px;
         }
@@ -220,8 +258,9 @@
             display: flex;
             height: 55px;
             margin: 2px;
+
             img{
-                margin: auto 20px auto 20px;
+                margin: auto 20px;
             }
             p {
                 line-height: 50px;
@@ -231,11 +270,13 @@
     }
     
     .notifications {
-        transform: translate(35%, 0%);
+        right: -120px;
+
         &__item {
             display: flex;
+
             &__icon {
-                margin: auto 20px auto 20px;
+                margin: auto 20px;
             }
             &__text, 
             &__head {
@@ -249,7 +290,8 @@
     }
     
     .messages {
-        transform: translate(35%, 0%);
+        right: -170px;
+
         p {
             margin: 10px;
             padding: 5px;
@@ -257,7 +299,10 @@
         &__content{
             padding-top: 50px;
             width: 350px;
+
             .message {
+                @extend .sky-blue-bg;
+                @extend .text_ligth-gray;
                 margin: 10px;
                 border-radius: 7px;
             }
@@ -265,27 +310,28 @@
     }
     
     .profile {
+        right: 10px;
+
         &__content {
             width: 300px;
         }
         &__avatar {
-            width: 100%;
             display: flex;
-            height: 130px;  
-        }
-        &__img {
-            width: 100px;
-            height: 100px;
-            border-radius: 100px;
-            margin: auto;  
+            justify-content: center;
+            align-items: center;
+            height: 130px;
+
+            &__img {
+                width: 100px;
+                height: 100px;
+                border-radius: 100px;
+            }
         }
         &__name {
             width: 100%;
             display: flex;
+            justify-content: center;
             padding: 10px 0;
-            h2 {
-                margin: auto;
-            }
         }
         &__online {
             width: 100%;
@@ -293,6 +339,7 @@
             padding: 5px 0;
             display: flex;
             justify-content: center;
+
             span, p {
                 margin: 0;
             }
@@ -301,16 +348,16 @@
                 width: 10px;
                 height: 10px;
                 border-radius: 100%; 
-                background-color: #4cc052;
+                background-color: $green;
             }
         }
         &__menu {
-            width: 100%;
             display: flex;
-            margin-top: 15px;
+            margin: 10px;
             flex-direction: column;
+
             i {
-                margin: auto 10px auto 20px;
+                margin: auto 10px;
             }
             & > div {
                 display: flex;
