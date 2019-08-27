@@ -1,5 +1,5 @@
 $aside__icon_width: 90px;
-$aside__icon_height: 90px;
+$aside__icon_height: $aside__icon_width;
 $aside__name_width: 150px;
 
 .aside {
@@ -37,7 +37,6 @@ $aside__name_width: 150px;
             &__name {
                 display: flex;
                 align-items: center;
-                width: $aside__name_width;
                 font-weight: bold;
             }
 

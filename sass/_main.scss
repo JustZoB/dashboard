@@ -27,7 +27,7 @@
     &__header {
         display: flex;
         justify-content: space-between;
-        margin: 1%;
+        margin: 15px;
 
         p {
             line-height: 30px;
@@ -93,7 +93,7 @@
         @extend .white-bg;
         @extend .box_shadow;
         position: relative;
-        margin: 1%;
+        margin: 15px;
         float: left;
 
         &__head {
@@ -157,7 +157,7 @@
         justify-content: space-between;
         float: left;
         min-height: 330px;
-        margin: 0 1%;
+        margin: 0 15px;
 
         .container__half-block-wrap {
             @extend .box_shadow;
