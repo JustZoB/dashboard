@@ -9,7 +9,7 @@ $xs: 768px;
     $margin: 30px;
     @for $col from 1 through $max-col {
         .col-lg-#{$col} {
-            width: 100% / $max-col * $col - 30px;
+            width: calc(100% / #{$max-col} * #{$col} - 30px);
             max-width: ($max-width - $max-col * $margin / $col) / $max-col * $col;
         }
     }
@@ -18,7 +18,7 @@ $xs: 768px;
         $max-width: $md;
         @for $col from 1 through $max-col {
             .col-md-#{$col} {
-                width: 100% / $max-col * $col - 30px;
+                width: calc(100% / #{$max-col} * #{$col} - 30px);
                 max-width: ($max-width - $max-col * $margin / $col) / $max-col * $col;
             }
         }
@@ -28,7 +28,7 @@ $xs: 768px;
         $max-width: $sm;
         @for $col from 1 through $max-col {
             .col-md-#{$col} {
-                width: 100% / $max-col * $col - 30px;
+                width: calc(100% / #{$max-col} * #{$col} - 30px);
                 max-width: ($max-width - $max-col * $margin / $col) / $max-col * $col;
             }
         }
@@ -38,7 +38,7 @@ $xs: 768px;
         $max-width: $xs;
         @for $col from 1 through $max-col {
             .col-xs-#{$col} {
-                width: 100% / $max-col * $col - 30px;
+                width: calc(100% / #{$max-col} * #{$col} - 30px);
                 max-width: ($max-width - $max-col * $margin / $col) / $max-col * $col;
             }
         }
