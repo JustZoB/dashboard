@@ -1,8 +1,6 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var server = require('gulp-server-livereload');
-
-sass.compiler = require('node-sass');
+var gulp = require('gulp'),
+    watch = require('gulp-watch'),
+    server = require('gulp-server-livereload');
 
 gulp.task('default', function() {
   gulp.src('')
@@ -14,12 +12,14 @@ gulp.task('default', function() {
     }));
 });
 
-gulp.task('sass', function () {
-  return gulp.src('./sass/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./css'));
+gulp.task('stream', function () {
+  return watch('css/*.css', { ignoreInitial: false })
+      .pipe(gulp.dest('build'));
 });
- 
-gulp.task('sass:watch', function () {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+
+gulp.task('callback', function () {
+  return watch('css/*.css', function () {
+      gulp.src('css/*.css')
+          .pipe(gulp.dest('build'));
+  });
 });
