@@ -75,12 +75,7 @@ $('.header__menu').on('click', function() {
     $(this).toggleClass("active");
     if ($(window).width() >= '768') {
         $(".main-wrap").toggleClass("active");
-        initRevenue();
-        initProductOrder();
-        initCustomers();
-        initDailySales();
-        initMonthlySales();
-        initDepartmentSales();
+        setTimeout(reInitCharts, 300);
     }
 });
 

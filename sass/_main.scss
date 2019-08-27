@@ -1,6 +1,7 @@
 .main-wrap {
     margin-top: 80px;
     margin-left: $aside__icon_width;
+    transition: 0.3s ease-in-out;
 
     &.active {
         margin-left: $aside__icon_width + $aside__name_width;
@@ -165,7 +166,7 @@
             display: flex;
             height: 45%;
             min-height: 150px;
-            margin: 2.5% 0;
+            margin: 15px 0;
 
             .container__half-block {
                 display: flex;

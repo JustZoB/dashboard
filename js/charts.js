@@ -327,12 +327,15 @@ var resizeTimer;
 $(window).on("resize", function (event) {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(function() {
-    initRevenue();
-    initProductOrder();
-    initCustomers();
-    initDailySales();
-    initMonthlySales();
-    initDepartmentSales();
-  }, 50);
-  
+    reInitCharts();
+  }, 50);  
 });
+
+function reInitCharts() {
+  initRevenue();
+  initProductOrder();
+  initCustomers();
+  initDailySales();
+  initMonthlySales();
+  initDepartmentSales();
+}

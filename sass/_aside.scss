@@ -11,6 +11,7 @@ $aside__name_width: 150px;
     height: 100%;
     z-index: 5;
     overflow-y: auto;
+    transition: 0.3s ease-in-out;
 
     &.active {
         left: 0;
@@ -22,6 +23,7 @@ $aside__name_width: 150px;
         padding: 0;
 
         &__item {
+            @extend .text_blue;
             position: relative;
             display: flex;
             height: $aside__icon_height;
@@ -32,18 +34,21 @@ $aside__name_width: 150px;
                 justify-content: center;
                 align-items: center;
                 width: $aside__icon_width;
+                min-width: $aside__icon_width;
             }
 
             &__name {
                 display: flex;
                 align-items: center;
                 font-weight: bold;
+                white-space: nowrap;
             }
 
             &:hover {
                 background-color: $lighter-blue;
             }
             &.active {
+                @extend .text_white;
                 background-color: $sky-blue;
                 cursor: default;
             }
