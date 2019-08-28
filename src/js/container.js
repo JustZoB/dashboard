@@ -72,7 +72,7 @@ let Container = {
         }
         $(list).append(`<div class="container_${ size } container__double-block ${ block_size }"></div>`);
         Container.addHalfBlock($('.container__double-block'), 'light-sky-blue-bg', 'img/basket.png', 'Shopping basket', 'text_light-blue', '$433,534,300', 'Sold 12.332 Items');
-        Container.addHalfBlock($('.container__double-block'), 'light-green-bg', 'img/box.png', 'Box', 'text_green', '53.345', 'Order');
+        Container.addHalfBlock($('.container__double-block'), 'light-green-bg', 'img/box.png', 'Box', 'text_light-green', '53.345', 'Order');
     },
 
     addHalfBlock: function(list, block_color, img_src, img_alt, text_color, span_text, text) {
