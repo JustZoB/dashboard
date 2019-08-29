@@ -1,44 +1,58 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
-    browserSync = require("browser-sync"),
+    connect = require('gulp-connect'),
     del = require('del'),
-    watch = require('gulp-watch'),
-    reload = browserSync.reload;
+    gulpsync = require('gulp-sync')(gulp);
 
-var config = {
-  server: {
-      baseDir: "./build"
-  },
-  tunnel: true,
-  host: 'localhost',
-  port: 8000
-};
-
-function clean() {
+gulp.task('clean', function() {
   return del([ './build' ]);
-}
+})
 
-function build() {
-  gulp.src('./src/**/*.*')
-    .pipe(gulp.dest('./build/'));
+gulp.task('html', function() {
+  return gulp.src('./src/index.html')
+    .pipe(gulp.dest('./build/'))
+    .pipe(connect.reload());
+})
+
+gulp.task('js', function() {
+  return gulp.src('src/js/*.js')
+    .pipe(gulp.dest('build/js'))
+    .pipe(connect.reload());
+})
+
+gulp.task('scss', function() {
   return gulp.src('src/style/style.scss')
     .pipe(sass())
-    .pipe(gulp.dest('build/css/'))
-    .pipe(reload({stream: true}));
-}
+    .pipe(gulp.dest('build/style'))
+    .pipe(connect.reload());
+})
 
-function watcher() {
-  return watch(['src/style/**/*.scss'], function(event, cb) {
-    gulp.start('build');
+gulp.task('build', function() {
+  gulp.src('./src/fonts/**/*.*')
+    .pipe(gulp.dest('./build/fonts/'));
+  gulp.src('./src/img/*.*')
+    .pipe(gulp.dest('./build/img/'));
+  gulp.src('./src/**/normalize.css')
+    .pipe(gulp.dest('./build/'));
+})
+
+gulp.task('connected', function() {
+  connect.server({
+    name: 'dashboard',
+    root: 'build',
+    port: 8080,
+    livereload: true
   });
-}
+})
 
-function server() {
-  return browserSync(config);
-}
+gulp.task('watcher', function() {
+  gulp.watch('src/**/*.html', ['html']);
+  gulp.watch('src/js/**/*.js', ['js']);
+  gulp.watch('src/style/**/*.scss', ['scss'])
+})
 
-let develop = gulp.series(clean, build, server, watcher);
-let production = gulp.series(clean, build);
+let develop = ['clean', 'build', 'html', 'js', 'scss', 'connected', 'watcher'];
+let production = ['clean', 'build'];
 
-gulp.task('dev', develop);
-gulp.task('prod', production); 
+gulp.task('dev', gulpsync.sync(develop));
+gulp.task('prod', gulpsync.sync(production)); 

@@ -1,5 +1,7 @@
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(initRevenue);
+google.charts.setOnLoadCallback(initRevenue).then(function() {
+
+});
 
 function initRevenue() {
   var data = google.visualization.arrayToDataTable([
@@ -328,7 +330,7 @@ $(window).on("resize", function (event) {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(function() {
     reInitCharts();
-  }, 50);  
+  }, 25);  
 });
 
 function reInitCharts() {
@@ -338,4 +340,4 @@ function reInitCharts() {
   initDailySales();
   initMonthlySales();
   initDepartmentSales();
-}
+};

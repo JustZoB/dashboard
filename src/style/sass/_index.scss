@@ -90,10 +90,9 @@ p {
 
         &__icon {
             display: flex;
+            justify-content: center;
+            align-items: center;
             width: 30px;
-            i {
-                margin: auto;
-            }
         }
         &:hover {
             background-color: #dddddd;
