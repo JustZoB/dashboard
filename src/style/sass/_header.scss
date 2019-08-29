@@ -1,0 +1,369 @@
+.header {
+    @extend .box_shadow_bottom;
+    @extend .white-bg;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 5;
+
+    &__left {
+        height: 100%;
+        display: flex;
+    }
+    &__menu {
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        width: 90px;
+        height: 100%;
+
+        i {
+            @extend .text_blue;
+        }
+        &:hover {
+            background-color: $lighter-blue;
+        }
+    }
+    &__logo {
+        display: flex;
+        cursor: pointer;
+        height: 100%;
+
+        &__letter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 100%;
+
+            p {
+                @extend .dark-blue-bg;
+                @extend .text_white;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                font-size: 18px;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+        &__text {
+            @extend .text_gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100%;
+            
+            p {
+                font-family: 'Exo', 'Montserrat', Sans-Serif;
+                font-size: 22px;
+                line-height: 30px;
+                font-weight: bold;
+            }
+            
+            @media screen and (max-width: 580px) {
+                display: none;
+            }
+        }
+    }
+    
+
+
+    &__center {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        hr {
+            margin: 0;
+        }
+        &__mini {
+            cursor: pointer;
+            display: none;
+            width: 60px;
+            height: 80px;
+            i {
+                @extend .text_ligth-gray;
+            }
+            @media screen and (max-width: 1024px) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        &__normal {
+            &.active {
+                display: block;
+                position: absolute;
+                top: 90px;
+                padding: 20px;
+
+                @media screen and (max-width: 580px) {
+                    margin-left: 40px;
+                }
+            }
+            @media screen and (max-width: 1024px) {
+                display: none;
+                position: absolute;
+            }
+        }
+    }
+    &__search {
+        display: flex;
+
+        &__input {
+            border: 0;
+            margin: 10px 15px;
+            width: 300px;
+
+            &::placeholder {
+                color: #b2b2b2;
+            }
+        }
+        &__button {
+            @extend .text_gray;
+            cursor: pointer;
+            margin: auto;
+        }
+        hr {
+            @extend .text_gray;
+        }
+    }
+
+
+    &__right {
+        height: 100%;
+        display: flex;
+    }
+    &__notifications,
+    &__messages {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        height: 100%;
+        width: 60px;
+        padding-top: 2px;
+
+        i {
+            @extend .text_ligth-gray;
+        }
+        &__icon {
+            position: relative;
+            display: flex;
+        }
+    }
+    .messages_not-read {
+        position: absolute;
+        top: -7px;
+        right: -5px;
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;
+        background-color: $yellow; 
+    }
+    .notifications_light-red-circle {
+        position: absolute;
+        top: -18px;
+        right: -18px;
+        width: 29px;
+        height: 29px;
+        border-radius: 100%;
+        opacity: 0.4;
+        background-color: $red;
+        z-index: 1;
+    }
+    .notifications_red-circle {
+        position: absolute;
+        top: -13px;
+        right: -13px;
+        width: 19px;
+        height: 19px;
+        border-radius: 100%; 
+        background-color: $red;
+        z-index: 2;
+    }
+    .notifications_number {
+        @extend .text_white;
+        position: absolute;
+        top: -11px;
+        right: -7px;
+        z-index: 3;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    &__profile__wrap {
+        @extend .sky-blue-bg;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 130px;
+        height: 100%;
+        margin-left: 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $light-blue;
+        }
+    }
+    &__profile {
+        display: flex;
+
+        &__img {
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            margin: auto 7px;
+        }
+        i {
+            @extend .text_ligth-gray;
+            margin: auto 7px;
+        }
+    }
+
+    &__pop__wrap {
+        @extend .white-bg;
+        @extend .box_shadow;
+        position: absolute;
+        top: 90px;
+        z-index: 3;
+        cursor: default;
+        border-radius: 2px;
+    }
+    &__pop {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .search_select {
+        top: 60px;
+        right: 3px;
+
+        &__content {
+            width: 370px;
+        }
+        &__item {
+            display: flex;
+            height: 55px;
+            margin: 2px;
+
+            img{
+                margin: auto 20px;
+            }
+            p {
+                line-height: 50px;
+                margin: 0;
+            }
+        }
+    }
+    
+    .notifications {
+        right: -120px;
+
+        &__item {
+            display: flex;
+
+            &__icon {
+                margin: auto 20px;
+            }
+            &__text, 
+            &__head {
+                margin: 10px 0;
+            }
+        }
+        &__content {
+            padding-top: 50px;
+            width: 350px;
+        }
+    }
+    
+    .messages {
+        right: -170px;
+
+        p {
+            margin: 10px;
+            padding: 5px;
+        }
+        &__content{
+            padding-top: 50px;
+            width: 350px;
+
+            .message {
+                @extend .sky-blue-bg;
+                @extend .text_ligth-gray;
+                margin: 10px;
+                border-radius: 7px;
+            }
+        }
+    }
+    
+    .profile {
+        right: 10px;
+
+        &__content {
+            width: 300px;
+        }
+        &__avatar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 130px;
+
+            &__img {
+                width: 100px;
+                height: 100px;
+                border-radius: 100px;
+            }
+        }
+        &__name {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        &__online {
+            width: 100%;
+            display: flex;
+            padding: 5px 0;
+            display: flex;
+            justify-content: center;
+
+            span, p {
+                margin: 0;
+            }
+            .online__circle {
+                margin: auto 5px;
+                width: 10px;
+                height: 10px;
+                border-radius: 100%; 
+                background-color: $green;
+            }
+        }
+        &__menu {
+            display: flex;
+            margin: 10px;
+            flex-direction: column;
+
+            i {
+                margin: auto 10px;
+            }
+            & > div {
+                display: flex;
+                margin: 3px 0;
+                cursor: pointer;
+            }
+        }
+    }
+}

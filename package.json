@@ -1,0 +1,21 @@
+{
+  "name": "dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.codedrop.cc:2224/d.krasnoperov/dashboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^5.1.0",
+    "gulp": "^3.9.0",
+    "gulp-connect": "^5.7.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sync": "^0.1.4"
+  }
+}

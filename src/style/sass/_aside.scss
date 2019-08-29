@@ -1,0 +1,69 @@
+$aside__icon_width: 90px;
+$aside__icon_height: $aside__icon_width;
+$aside__name_width: 150px;
+
+.aside {
+    @extend .white-bg;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: $aside__icon_width;
+    height: 100%;
+    z-index: 5;
+    overflow-y: auto;
+    transition: 0.3s ease-in-out;
+
+    &.active {
+        left: 0;
+        width: $aside__icon_width + $aside__name_width;
+    }
+
+    &__menu {
+        margin: 0;
+        padding: 0;
+
+        &__item {
+            @extend .text_blue;
+            position: relative;
+            display: flex;
+            height: $aside__icon_height;
+            cursor: pointer;
+
+            &__icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: $aside__icon_width;
+                min-width: $aside__icon_width;
+            }
+
+            &__name {
+                display: flex;
+                align-items: center;
+                font-weight: bold;
+                white-space: nowrap;
+            }
+
+            &:hover {
+                background-color: $lighter-blue;
+            }
+            &.active {
+                @extend .text_white;
+                background-color: $sky-blue;
+                cursor: default;
+            }
+            &.active:hover {
+                background-color: $sky-blue;
+            }
+        }
+    }
+    @media screen and (max-width: 768px) {
+        left: -$aside__icon_width;
+    }
+    
+    @media screen and (max-width: 580px) {
+        &.active {
+            width: 100%;
+        }
+    }
+}

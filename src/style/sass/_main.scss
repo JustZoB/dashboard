@@ -1,0 +1,204 @@
+.main-wrap {
+    margin-top: 80px;
+    margin-left: $aside__icon_width;
+    transition: 0.3s ease-in-out;
+
+    &.active {
+        margin-left: $aside__icon_width + $aside__name_width;
+    }
+    @media screen and (max-width: 768px) {
+        margin-left: 0px;
+
+        &.active {
+            margin-left: 0px;
+        }
+    }
+}
+
+.main {
+    position: relative;
+    padding: 50px;
+
+    &__header-wrap {
+        width: 100%;
+        max-width: $lg;
+        margin: auto;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        margin: 15px;
+
+        p {
+            line-height: 30px;
+        }
+        &__headline {
+            display: flex;
+
+            i {
+                @extend .text_blue;
+            }
+            h2 {
+                margin: 0 15px;
+            } 
+            .sales__select__wrap {
+                margin: auto 0;
+            }
+            .sales__select {
+                i {
+                    @extend .text_blue;
+                    cursor: pointer;
+                    margin: auto 0;
+                }
+            }
+        }
+        &__text {
+            @extend .text_dark_gray;
+            font-weight: bold;
+        }
+        button {
+            display: flex;
+
+            i, span {
+                display: inline-block;
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+        }
+        @media screen and (max-width: 580px) {
+            flex-direction: column;
+
+            & > div {
+                margin: 10px auto;
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 30px;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: $lg;
+    margin: auto;
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    }
+    &__item {
+        @extend .white-bg;
+        @extend .box_shadow;
+        position: relative;
+        margin: 15px;
+        float: left;
+
+        &__head {
+            position: absolute;
+            display: flex;
+            margin-top: 25px;
+            margin-left: 65px;
+            font-size: 16px;
+            font-weight: bold;
+            z-index: 1;
+        }
+        &__title {
+            margin: 2px;
+        }
+        &__subtitle {
+            margin: 2px 2px 2px 6px;
+        }
+        &__text {
+            position: absolute;
+            z-index: 1;
+        }
+        &__text_left {
+            top: 20%;
+            left: 10%;
+        }
+        &__text_center {
+            top: 10%;
+            width: 100%;
+            font-family: 'MontserratSemiBold', serif;
+            text-align: center;
+        }
+        &__text_bottom {
+            display: flex;
+            justify-content: space-between;
+            width: 88%;
+            bottom: 6%;
+            margin: 0 6%;
+            font-size: 14px;
+        }
+        .chart__wrap {
+            position: relative;
+            height: 0;
+            padding-bottom: 100%;
+
+            .chart {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &.container__item__minimize {
+            height: 70px;
+        }
+    }
+    &__double-block {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        float: left;
+        min-height: 330px;
+        margin: 0 15px;
+
+        .container__half-block-wrap {
+            @extend .box_shadow;
+            position: relative;
+            display: flex;
+            height: 45%;
+            min-height: 150px;
+            margin: 15px 0;
+
+            .container__half-block {
+                display: flex;
+                margin-top: 20px;
+                
+                &__text {
+                    margin: auto;
+                }
+                &__img {
+                    padding: 0 23px 0 36px;
+                    display: flex;
+
+                    img {
+                        margin: auto;
+                    }
+                }
+            }
+            &.container__half-block__minimize {
+                height: 70px;
+                min-height: 70px;
+            }
+            .container__text__minimize {
+                position: absolute;
+                top: 22px;
+                left: 65px;
+                font-size: 16px;
+                font-weight: bold;
+
+                p {
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+$lg: 1440px;
+$md: 1200px;
+$sm: 990px;
+$xs: 768px;
+
+.row {
+    $max-width: $lg;
+    $max-col: 12;
+    $margin: 30px;
+    @for $col from 1 through $max-col {
+        .col-lg-#{$col} {
+            width: calc(100% / #{$max-col} * #{$col} - 30px);
+            max-width: ($max-width - $max-col * $margin / $col) / $max-col * $col;
+        }
+    }
+    
+    @media screen and (max-width: 1366px) {
+        $max-width: $md;
+        @for $col from 1 through $max-col {
+            .col-md-#{$col} {
+                width: calc(100% / #{$max-col} * #{$col} - 30px);
+                max-width: ($max-width - $max-col * $margin / $col) / $max-col * $col;
+            }
+        }
+    }
+    
+    @media screen and (max-width: 1024px) {
+        $max-width: $sm;
+        @for $col from 1 through $max-col {
+            .col-md-#{$col} {
+                width: calc(100% / #{$max-col} * #{$col} - 30px);
+                max-width: ($max-width - $max-col * $margin / $col) / $max-col * $col;
+            }
+        }
+    }
+    
+    @media screen and (max-width: 768px) {
+        $max-width: $xs;
+        @for $col from 1 through $max-col {
+            .col-xs-#{$col} {
+                width: calc(100% / #{$max-col} * #{$col} - 30px);
+                max-width: ($max-width - $max-col * $margin / $col) / $max-col * $col;
+            }
+        }
+    }
+}

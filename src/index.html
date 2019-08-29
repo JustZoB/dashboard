@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link href="style/style.css" rel="stylesheet">
+    <title>Dashboard</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__left">
+            <div class="header__menu active">
+                <i class="fas fa-bars fa-2x"></i>
+            </div>
+            <div class="header__logo">
+                <div class="header__logo__letter">
+                    <p>k</p>
+                </div>
+                <div class="header__logo__text">
+                    <p>kavina</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="header__center">
+            <div class="header__center__mini">
+                <i class="fas fa-search fa-lg"></i>
+            </div>
+            <div class="header__center__normal">
+                <div class="header__search">
+                    <i class="header__search__button fas fa-search"></i>
+                    <input class="header__search__input" type="text" placeholder="Type text to search......">
+                </div>
+                <hr />
+                <div class="header__pop__wrap search_select hidden">
+                    <div class="search_select__content header__pop">
+                        <div class="search_select__item light-sky-blue-bg text_light-blue">
+                            <img src="img/basket.png" alt="Shoping basket">
+                            <p class="search_select__item">Solid items</p>
+                        </div>
+                        <div class="search_select__item light-green-bg text_light-green">
+                            <img src="img/box.png" alt="Box">
+                            <p class="search_select__item">Order</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header__right">
+            <div class="wrap">
+                <div class="header__messages">
+                    <div class="header__messages__icon">
+                        <i class="fas fa-envelope fa-lg"></i>
+                        <span class="messages_not-read"></span>
+                    </div>
+                </div>
+                <div class="header__pop__wrap messages hidden">
+                    <div class="header__pop">
+                        <div class="window-control">
+                            <div class="window-control__button close">
+                                <i class="fas fa-times fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="messages__content">
+                            <div class="message">
+                                <p>Henlou human, it's your dog Steave. Can you buy food for me, please? Bye.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wrap">
+                <div class="header__notifications">
+                    <div class="header__notifications__icon">
+                        <i class="fas fa-bell fa-lg"></i>
+                        <div class="notifications__counts">
+                            <span class="notifications_light-red-circle"></span>
+                            <span class="notifications_red-circle"></span>
+                            <span class="notifications_number">3</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__pop__wrap notifications hidden">
+                    <div class="header__pop notifications__content">
+                        <div class="window-control">
+                            <div class="window-control__button close">
+                                <i class="fas fa-times fa-lg"></i>
+                            </div>
+                        </div>
+    
+                        <div class="notifications__item">
+                            <div class="notifications__item__icon">
+                                <i class="fas fa-info-circle fa-lg"></i>
+                            </div>
+                            <div class="notifications__item__text-block">
+                                <h3 class="notifications__item__head">News</h3>
+                                <p class="notifications__item__text">Vladimir Putin molodec</p>
+                            </div>
+                        </div>
+    
+                        <div class="notifications__item">
+                            <div class="notifications__item__icon">
+                                <i class="fas fa-address-card fa-lg"></i>
+                            </div>
+                            <div class="notifications__item__text-block">
+                                <h3 class="notifications__item__head">Your address window-controld</h3>
+                                <p class="notifications__item__text">If you didn't do this, please...</p>
+                            </div>
+                        </div>
+    
+                        <div class="notifications__item">
+                            <div class="notifications__item__icon">
+                                <i class="fas fa-exclamation-triangle fa-lg"></i>
+                            </div>
+                            <div class="notifications__item__text-block">
+                                <h3 class="notifications__item__head">Warning</h3>
+                                <p class="notifications__item__text">Don't show your password to...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wrap">
+                
+                <div class="header__profile__wrap">
+                    <div class="header__profile">
+                        <img class="header__profile__img" src="img/avatar.jpg" alt="Avatar">
+                        <i class="fas fa-chevron-down fa-sm"></i>
+                    </div>
+                </div>
+                <div class="header__pop__wrap profile hidden">
+                    <div class="header__pop profile__content">
+                        <div class="window-control">
+                            <div class="window-control__button close">
+                                <i class="fas fa-times fa-lg"></i>
+                            </div>
+                        </div>
+                        <div class="profile__avatar">
+                            <img class="profile__avatar__img" src="img/avatar.jpg" alt="Avatar">
+                        </div>
+                        <div class="profile__name">
+                            <h2>Laura Black</h2>
+                        </div>
+                        <div class="profile__online">
+                            <span class="online__circle"></span><p>Online</p>
+                        </div>
+                        <div class="profile__menu">
+                            <div class="profile__menu__profile">
+                                <i class="fas fa-user-cog"></i>
+                                <p>Profile</p>
+                            </div>
+                            <div class="profile__menu__settings">
+                                <i class="fas fa-cog"></i>
+                                <p>Settings</p>
+                            </div>
+                            <div class="profile__menu__sign-out text_red">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <p>Sign out</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+
+
+    <aside class="aside">
+        <ul class="aside__menu"></ul>
+    </aside>
+
+    <main class="main-wrap">
+        <div class="main">
+            <section class="main__header-wrap">
+                <div class="main__header">
+                    <div>
+                        <div class="main__header__headline">
+                            <i class="fas fa-chart-bar fa-2x"></i>
+                            <h2>Sales</h2>
+                            <div class="sales__select__wrap">
+                                <div class="sales__select">
+                                    <i class="fas fa-chevron-down fa-sm"></i>
+                                    <div class="options__popup hidden">
+                                        <div class="options__item">
+                                            <div class="options__item__icon"><i class="fas fa-share-alt"></i></div>
+                                            <p>Option 1</p>
+                                        </div>
+                                        <div class="options__item">
+                                            <div class="options__item__icon"><i class="fas fa-copy"></i></div>
+                                            <p>Option 2</p>
+                                        </div>
+                                        <div class="options__item">
+                                            <div class="options__item__icon"><i class="fas fa-comments"></i></div>
+                                            <p>Option 3</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="main__header__text">Welcome to kavina CRM Sales Dashboard</p>
+                    </div>
+                    <div>
+                        <button class="button">
+                            <i class="button-icon fas fa-plus"></i><span>Add Dashiet</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <section class="container">
+                <div class="row"></div>
+            </section>
+        </div>
+    </main>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type=text/javascript src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/charts.js"></script>
+    <script type="text/javascript" src="js/container.js"></script>
+    <script type="text/javascript" src="js/aside.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/events.js"></script>
+</body>
+</html>

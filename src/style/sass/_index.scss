@@ -1,0 +1,114 @@
+* {
+    font-family: 'Montserrat', serif;
+}
+body {
+    @extend .gray-bg;
+}
+p {
+    margin: 0;
+}
+.button {
+    @extend .sky-blue-bg;
+    @extend .text_white;
+    border: 0;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+
+    .button-icon {
+        margin-right: 0.5em;
+    }
+}
+.button.sky-blue-bg:hover {
+    background-color: $lighter-blue;
+}
+.box_shadow {
+    box-shadow: 0 0 27px rgba(139, 139, 139, 0.13);
+}
+.box_shadow_bottom {
+    box-shadow: 0 10px 30px -15px rgba(0,0,0,0.2);
+}
+.text_big {
+    font-size: 30px;
+    line-height: 50px;
+    font-weight: bold;
+}
+.wrap {
+    position: relative;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.window-control {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    z-index: 1;
+    display: flex;
+
+    &__button {
+        @extend .text_light-blue-gray;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+}
+
+.options {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    z-index: 2;
+
+    &__button {
+        @extend .text_light-blue-gray;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        cursor: pointer;
+        i {
+            margin: auto;
+        }
+    }
+    &__popup {
+        position: absolute;
+        width: 150px;
+        z-index: 3;
+        background-color: #eeeeee;
+        border-radius: 4px;
+    }
+    &__item {
+        display: flex;
+        background-color: #eeeeee;
+        cursor: pointer;
+
+        &__icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+        }
+        &:hover {
+            background-color: #dddddd;
+        }
+    }
+}
+
+.container__double-block {
+    .window-control {
+        &__button {
+            @extend .text_ligth-gray;
+        }
+    }
+    .options {
+        &__button {
+            @extend .text_ligth-gray;
+        }
+    }
+}
