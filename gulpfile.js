@@ -1,4 +1,7 @@
 var gulp = require('gulp'),
+    cssmin = require('gulp-cssmin'),
+    rename = require('gulp-rename'),
+    autoprefixer = require('gulp-autoprefixer'),
     sass = require('gulp-sass'),
     connect = require('gulp-connect'),
     del = require('del'),
@@ -23,6 +26,11 @@ gulp.task('js', function() {
 gulp.task('scss', function() {
   return gulp.src('src/style/style.scss')
     .pipe(sass())
+    .pipe(autoprefixer({
+        cascade: false
+    }))
+    .pipe(cssmin())
+    .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest('build/style'))
     .pipe(connect.reload());
 })
@@ -40,7 +48,7 @@ gulp.task('connected', function() {
   connect.server({
     name: 'dashboard',
     root: 'build',
-    port: 8080,
+    port: 8040,
     livereload: true
   });
 })
