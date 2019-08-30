@@ -1,5 +1,5 @@
 let Aside = {
-    add: function() {
+    add: () => {
         let aside = $(".aside"),
             list = aside.find(".aside__menu");
 
@@ -13,10 +13,7 @@ let Aside = {
         Aside.addHtml(list, 'Option 8', 'fas fa-power-off');
     },
 
-    addHtml: function(list, menu_name, icon, active) {
-        if (active === undefined) {
-            active = "";
-        }
+    addHtml: (list, menu_name = "", icon = "", active = "") => {
         list.append(`
         <li class="aside__menu__item ${ active }">
             <div class="aside__menu__item__icon">

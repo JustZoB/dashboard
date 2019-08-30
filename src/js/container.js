@@ -1,5 +1,5 @@
 let Container = {
-    add: function() {
+    add: () => {
         let container = $(".container"),
             row = container.find(".row");
 
@@ -15,15 +15,12 @@ let Container = {
             Container.addBlockGraph(row, 'big', 'chart__department-sales', 'Department Sales');
     },
     
-    addBlockGraph: function(list, size, graph_id, title, subtitle) {
-        let block_size = 'col-lg-4 col-md-6 col-xs-12';
+    addBlockGraph: (list, size = "", graph_id = "", title = "", subtitle = "") => {
+        let block_size = '';
         if (size === 'medium') {
             block_size = 'col-lg-4 col-md-6 col-xs-12';
         } else if (size === 'big') {
             block_size = 'col-lg-6 col-md-12 col-xs-12';
-        }
-        if (subtitle === undefined) {
-            subtitle = "";
         }
         $(list).append(`<div class="container__item container_${ size } ${ block_size }">
             <div class="options">
@@ -63,8 +60,8 @@ let Container = {
         </div>`);
     },
 
-    addDoubleBlock: function(list, size) {
-        let block_size = 'col-lg-4 col-md-6 col-xs-12';
+    addDoubleBlock: (list, size = "") => {
+        let block_size = '';
         if (size === 'medium') {
             block_size = 'col-lg-4 col-md-12 col-xs-12';
         } else if (size === 'big') {
@@ -75,7 +72,7 @@ let Container = {
         Container.addHalfBlock($('.container__double-block'), 'light-green-bg', 'img/box.png', 'Box', 'text_light-green', '53.345', 'Order');
     },
 
-    addHalfBlock: function(list, block_color, img_src, img_alt, text_color, span_text, text) {
+    addHalfBlock: (list, block_color = "", img_src = "", img_alt = "", text_color = "", span_text = "", text = "") => {
         $(list).append(`<div class="container__half-block-wrap ${ block_color }">
             <div class="container__half-block">
                 <div class="options">
@@ -115,17 +112,14 @@ let Container = {
         </div>`);
     },
 
-    addTextInGraphTop: function(list, position, title, subtitle) {
-        if (subtitle === undefined) {
-            subtitle = "";
-        }
+    addTextInGraphTop: (list, position = "", title = "", subtitle = "") => {
         $(list).append(`<div class="${ position }">
             <p class="text_dark-blue text_big">${ title }</p>
             <p class="text_gray">${ subtitle }</p>
         </div>`);
     },
 
-    addTextInGraphBottom: function(list, position, text_1, text_2) { 
+    addTextInGraphBottom: (list, position = "", text_1 = "", text_2 = "") => { 
         $(list).append(`<div class="${ position } text_gray">
             <p>${ text_1 }</p>
             <p>${ text_2 }</p>

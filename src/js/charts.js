@@ -1,7 +1,5 @@
 google.charts.load('current', {'packages':['corechart']});
-google.charts.setOnLoadCallback(initRevenue).then(function() {
-
-});
+google.charts.setOnLoadCallback(initRevenue);
 
 function initRevenue() {
   var data = google.visualization.arrayToDataTable([
@@ -40,21 +38,18 @@ function initRevenue() {
 
   drawRevenue(data, options);
 }
-
-function drawRevenue(data, options) {
+var drawRevenue = (data, options) => {
   var chart = new google.visualization.AreaChart(document.getElementById('chart__revenue'));
   chart.draw(data, options); 
 
   google.visualization.events.addListener(chart, 'ready', readyHandler);
-  function readyHandler(e) {
+  var readyHandler = (e) => {
     chart.setSelection([{"row":5,"column":1}]);
   }
 }
 
-
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(initProductOrder);
-
 function initProductOrder() {
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Product Order');
@@ -101,16 +96,13 @@ function initProductOrder() {
 
   drawProductOrder(data, options);
 }
-
-function drawProductOrder(data, options) {
+var drawProductOrder = (data, options) => {
   var chart = new google.visualization.PieChart(document.getElementById('chart__product-order'));
   chart.draw(data, options);
 }
 
-
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(initCustomers);
-
 function initCustomers() {
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'TIME');
@@ -153,17 +145,13 @@ function initCustomers() {
   };
   drawCustomers(data, options);
 }
-
-function drawCustomers(data, options) {
+var drawCustomers = (data, options) => {
   var chart = new google.visualization.LineChart(document.getElementById('chart__customers'));
   chart.draw(data, options);
 }
 
-
-
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(initDailySales);
-
 function initDailySales() {
   var data = google.visualization.arrayToDataTable([
     ['Daily Sales', 'USA', 'Canada', 'Mexico'],
@@ -199,16 +187,13 @@ function initDailySales() {
   };
   drawDailySales(data, options);
 }
-
-function drawDailySales(data, options) {
+var drawDailySales = (data, options) => {
   var chart = new google.visualization.AreaChart(document.getElementById('chart__daily-sales'));
   chart.draw(data, options); 
 }
 
-
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(initMonthlySales);
-
 function initMonthlySales() {
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Month');
@@ -259,16 +244,13 @@ function initMonthlySales() {
 
   drawMonthlySales(data, options);
 }
-
-function drawMonthlySales(data, options) {
+var drawMonthlySales = (data, options) => {
   var chart = new google.visualization.ColumnChart(document.getElementById('chart__monthly-sales'));
   chart.draw(data, options);
 }
 
-
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(initDepartmentSales);
-
 function initDepartmentSales() {
   var data = new google.visualization.DataTable();
   data.addColumn('string', 'Department Sales');
@@ -319,21 +301,16 @@ function initDepartmentSales() {
   };
   drawDepartmentSales(data, options);
 }
-
-function drawDepartmentSales(data, options) {
+var drawDepartmentSales = (data, options) => {
   var chart = new google.visualization.PieChart(document.getElementById('chart__department-sales'));
   chart.draw(data, options);
 }
 
-var resizeTimer;
-$(window).on("resize", function (event) {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(function() {
-    reInitCharts();
-  }, 25);  
+$(window).on("resize", (event) => {
+  setTimeout(reInitCharts(), 50);  
 });
 
-function reInitCharts() {
+reInitCharts = () => {
   initRevenue();
   initProductOrder();
   initCustomers();

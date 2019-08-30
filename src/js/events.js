@@ -1,36 +1,36 @@
-$(".header__center__mini").on('click', function() {
+$(".header__center__mini").on('click', () => {
     $(".header__center__normal").toggleClass("active white-bg box-shadow");
 });
 
-$('body').on('click', ".options__button", function() {
+$('body').on('click', ".options__button", () => {
     $(this).parents().eq(1).find(".options__popup").toggleClass("hidden");
 });
 
-$('.sales__select i').on('click', function() {
+$('.sales__select i').on('click', () => {
     $(this).parent().find(".options__popup").toggleClass("hidden");
 });
 
-$('.header__profile__wrap').on('click', function() {
+$('.header__profile__wrap').on('click', () => {
     $(".profile").toggleClass("hidden");
 });
-$('.header__pop .close').on('click', function() {
+$('.header__pop .close').on('click', () => {
     $(this).parents().eq(2).toggleClass("hidden");
 });
 
 
-$('.header__messages').on('click', function() {
+$('.header__messages').on('click', () => {
     $(".messages").toggleClass("hidden");
     $(".messages_not-read").addClass("hidden");
 });
-$('.header__notifications').on('click', function() {
+$('.header__notifications').on('click', () => {
     $(".notifications").toggleClass("hidden");
     $(".notifications__counts").addClass("hidden");
 });
-$('.header__search__input').on('click', function() {
+$('.header__search__input').on('click', () => {
     $(".search_select").toggleClass("hidden");
 });
 
-$('body').on('click', ".container__half-block-wrap .close", function() {
+$('body').on('click', ".container__half-block-wrap .close", () => {
     let half_block = $(this).parents().eq(2),
         block = $(this).parents().eq(3);
     if (half_block.hasClass("container__half-block__minimize")) {
@@ -44,7 +44,7 @@ $('body').on('click', ".container__half-block-wrap .close", function() {
         block.detach();
     }
 });
-$('body').on('click', ".container__half-block-wrap .minimize", function() {
+$('body').on('click', ".container__half-block-wrap .minimize", () => {
     let half_block = $(this).parents().eq(2),
         block = $(this).parents().eq(3);
         console.log(block.css('min-height'));
@@ -59,17 +59,17 @@ $('body').on('click', ".container__half-block-wrap .minimize", function() {
     half_block.find(".container__half-block__text").toggleClass("container__text__minimize");
 });
 
-$('body').on('click', ".container__item .close", function() {
+$('body').on('click', ".container__item .close", () => {
     $(this).parents().eq(1).detach();
 });
-$('body').on('click', ".container__item .minimize", function() {
+$('body').on('click', ".container__item .minimize", () => {
     let block = $(this).parents().eq(1);
     block.toggleClass('container__item__minimize');
     block.find(".container__item__text").toggleClass("hidden");
     block.find(".chart").toggleClass("hidden");
 });
 
-$('.header__menu').on('click', function() {
+$('.header__menu').on('click', () => {
     $(".aside__menu__item__name").toggleClass("hidden");
     $(".aside").toggleClass("active");
     $(this).toggleClass("active");
@@ -79,13 +79,10 @@ $('.header__menu').on('click', function() {
     }
 });
 
-eventsClose(".options__popup");
-eventsClose(".header__pop__wrap");
-
-function eventsClose (classes) {
-    $(document).mouseup(function (e){
+var eventsClose = (classes) => {
+    $(document).mouseup((e) => {
         let div = $(classes);
-        div.each(function(key, elem) {
+        div.each((key, elem) => {
             if ((!$(elem).is(e.target)) && ($(elem).has(e.target).length === 0) 
             && (!$(elem).prev().is(e.target)) && ($(elem).prev().has(e.target).length === 0)) {
                 $(elem).addClass("hidden");
@@ -93,3 +90,6 @@ function eventsClose (classes) {
         });
     });
 }
+
+eventsClose(".options__popup");
+eventsClose(".header__pop__wrap");

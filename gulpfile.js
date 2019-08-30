@@ -7,23 +7,23 @@ var gulp = require('gulp'),
     del = require('del'),
     gulpsync = require('gulp-sync')(gulp);
 
-gulp.task('clean', function() {
+gulp.task('clean', () => {
   return del([ './build' ]);
 })
 
-gulp.task('html', function() {
+gulp.task('html', () => {
   return gulp.src('./src/index.html')
     .pipe(gulp.dest('./build/'))
     .pipe(connect.reload());
 })
 
-gulp.task('js', function() {
+gulp.task('js', () => {
   return gulp.src('src/js/*.js')
     .pipe(gulp.dest('build/js'))
     .pipe(connect.reload());
 })
 
-gulp.task('scss', function() {
+gulp.task('scss', () => {
   return gulp.src('src/style/style.scss')
     .pipe(sass())
     .pipe(autoprefixer({
@@ -35,7 +35,7 @@ gulp.task('scss', function() {
     .pipe(connect.reload());
 })
 
-gulp.task('build', function() {
+gulp.task('build', () => {
   gulp.src('./src/fonts/**/*.*')
     .pipe(gulp.dest('./build/fonts/'));
   gulp.src('./src/img/*.*')
@@ -44,7 +44,7 @@ gulp.task('build', function() {
     .pipe(gulp.dest('./build/'));
 })
 
-gulp.task('connected', function() {
+gulp.task('connected', () => {
   connect.server({
     name: 'dashboard',
     root: 'build',
@@ -53,7 +53,7 @@ gulp.task('connected', function() {
   });
 })
 
-gulp.task('watcher', function() {
+gulp.task('watcher', () => {
   gulp.watch('src/**/*.html', ['html']);
   gulp.watch('src/js/**/*.js', ['js']);
   gulp.watch('src/style/**/*.scss', ['scss'])
