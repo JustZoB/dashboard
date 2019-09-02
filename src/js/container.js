@@ -1,4 +1,4 @@
-let Container = {
+export let Container = {
     add: () => {
         let container = $(".container"),
             row = container.find(".row");

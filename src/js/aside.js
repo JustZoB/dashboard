@@ -1,4 +1,4 @@
-let Aside = {
+export let Aside = {
     add: () => {
         let aside = $(".aside"),
             list = aside.find(".aside__menu");

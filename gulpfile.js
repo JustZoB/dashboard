@@ -5,6 +5,8 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     connect = require('gulp-connect'),
     del = require('del'),
+    babel = require('gulp-babel'),
+    eslint = require('gulp-eslint'),
     gulpsync = require('gulp-sync')(gulp);
 
 gulp.task('clean', () => {
@@ -18,9 +20,14 @@ gulp.task('html', () => {
 })
 
 gulp.task('js', () => {
-  return gulp.src('src/js/*.js')
+  gulp.src('src/js/**/*.js')
+    .pipe(babel()) //{presets: ['@babel/env']}
     .pipe(gulp.dest('build/js'))
     .pipe(connect.reload());
+  return gulp.src(['src/*.js'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 })
 
 gulp.task('scss', () => {
