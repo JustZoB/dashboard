@@ -1,48 +1,66 @@
 var gulp = require('gulp'),
-    cssmin = require('gulp-cssmin'),
+    gulpsync = require('gulp-sync')(gulp),
     rename = require('gulp-rename'),
-    autoprefixer = require('gulp-autoprefixer'),
-    sass = require('gulp-sass'),
     connect = require('gulp-connect'),
     del = require('del'),
-    babel = require('gulp-babel'),
-    eslint = require('gulp-eslint'),
-    gulpsync = require('gulp-sync')(gulp);
+
+    cssmin = require('gulp-cssmin'),
+    autoprefixer = require('gulp-autoprefixer'),
+    sass = require('gulp-sass'),
+
+    source = require('vinyl-source-stream'),
+    browserify = require('browserify'),
+    babelify = require('babelify');
+    
+var htmlMainFile = './src/index.html',
+    scssMainFile = 'src/style/style.scss',
+    jsMainFile = './src/js/main.js',
+
+    htmlAllFiles = 'src/**/*.html',
+    scssAllFiles = 'src/style/**/*.scss',
+    jsAllFiles = 'src/js/**/*.js',
+    
+    scssDstDir = 'build/style',
+    jsDstDir = './build/js/',
+    jsBundleFile = 'bundle.js';
 
 gulp.task('clean', () => {
   return del([ './build' ]);
 })
 
 gulp.task('html', () => {
-  return gulp.src('./src/index.html')
+  return gulp.src(htmlMainFile)
     .pipe(gulp.dest('./build/'))
     .pipe(connect.reload());
 })
 
-gulp.task('js', () => {
-  gulp.src('src/js/**/*.js')
-    .pipe(babel()) //{presets: ['@babel/env']}
-    .pipe(gulp.dest('build/js'))
-    .pipe(connect.reload());
-  return gulp.src(['src/*.js'])
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
-})
-
 gulp.task('scss', () => {
-  return gulp.src('src/style/style.scss')
+  return gulp.src(scssMainFile)
     .pipe(sass())
     .pipe(autoprefixer({
         cascade: false
     }))
     .pipe(cssmin())
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('build/style'))
+    .pipe(gulp.dest(scssDstDir))
     .pipe(connect.reload());
 })
 
-gulp.task('build', () => {
+gulp.task('js', function() {
+  return browserify({ entries: jsMainFile })
+    .transform(babelify)
+    .bundle()
+    .on('error', function(err) {
+      console.log(err.message);
+      this.emit('end');
+    })
+    .pipe(source(jsBundleFile))
+    .pipe(gulp.dest(jsDstDir))
+    .pipe(connect.reload());
+
+});
+
+gulp.task('build', ['html', 'scss', 'js'], () => {
   gulp.src('./src/fonts/**/*.*')
     .pipe(gulp.dest('./build/fonts/'));
   gulp.src('./src/img/*.*')
@@ -61,13 +79,13 @@ gulp.task('connected', () => {
 })
 
 gulp.task('watcher', () => {
-  gulp.watch('src/**/*.html', ['html']);
-  gulp.watch('src/js/**/*.js', ['js']);
-  gulp.watch('src/style/**/*.scss', ['scss'])
+  gulp.watch(htmlAllFiles, ['html']);
+  gulp.watch(jsAllFiles, ['js']);
+  gulp.watch(scssAllFiles, ['scss'])
 })
 
-let develop = ['clean', 'build', 'html', 'js', 'scss', 'connected', 'watcher'];
+let develop = ['clean', 'build', 'connected', 'watcher'];
 let production = ['clean', 'build'];
 
 gulp.task('dev', gulpsync.sync(develop));
-gulp.task('prod', gulpsync.sync(production)); 
+gulp.task('prod', gulpsync.sync(production));
