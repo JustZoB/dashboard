@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+const gulp = require('gulp'),
     gulpsync = require('gulp-sync')(gulp),
     rename = require('gulp-rename'),
     connect = require('gulp-connect'),
@@ -8,11 +8,13 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     sass = require('gulp-sass'),
 
+    uglify = require('gulp-uglify'),
+    pipeline = require('readable-stream').pipeline,
     source = require('vinyl-source-stream'),
     browserify = require('browserify'),
     babelify = require('babelify');
     
-var htmlMainFile = './src/index.html',
+const htmlMainFile = './src/index.html',
     scssMainFile = 'src/style/style.scss',
     jsMainFile = './src/js/main.js',
 
@@ -22,7 +24,7 @@ var htmlMainFile = './src/index.html',
     
     scssDstDir = 'build/style',
     jsDstDir = './build/js/',
-    jsBundleFile = 'bundle.js';
+    jsBundleFile = 'bundle.min.js';
 
 gulp.task('clean', () => {
   return del([ './build' ]);
@@ -57,10 +59,17 @@ gulp.task('js', function() {
     .pipe(source(jsBundleFile))
     .pipe(gulp.dest(jsDstDir))
     .pipe(connect.reload());
-
 });
 
-gulp.task('build', ['html', 'scss', 'js'], () => {
+gulp.task('jsmin', ['js'], function () {
+  return pipeline(
+    gulp.src(jsDstDir + jsBundleFile),
+    uglify(),
+    gulp.dest(jsDstDir),
+  );
+});
+
+gulp.task('build', ['html', 'scss', 'jsmin'], () => {
   gulp.src('./src/fonts/**/*.*')
     .pipe(gulp.dest('./build/fonts/'));
   gulp.src('./src/img/*.*')
@@ -74,13 +83,13 @@ gulp.task('connected', () => {
     name: 'dashboard',
     root: 'build',
     port: 8040,
-    livereload: true
+    livereload: true,
   });
 })
 
 gulp.task('watcher', () => {
   gulp.watch(htmlAllFiles, ['html']);
-  gulp.watch(jsAllFiles, ['js']);
+  gulp.watch(jsAllFiles, ['jsmin']);
   gulp.watch(scssAllFiles, ['scss'])
 })
 

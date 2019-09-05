@@ -19,12 +19,17 @@
     "browser-sync": "^2.26.7",
     "browserify": "^16.5.0",
     "del": "^5.1.0",
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^6.1.0",
     "gulp-connect": "^5.7.0",
     "gulp-cssmin": "^0.2.0",
     "gulp-sass": "^4.0.2",
     "gulp-sync": "^0.1.4",
+    "gulp-uglify": "^3.0.2",
+    "readable-stream": "^3.4.0",
     "rename": "^1.0.4",
     "vinyl-source-stream": "^2.0.0"
   }
