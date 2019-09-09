@@ -1,3 +1,5 @@
+const google = window.google;
+
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(init);
 
@@ -67,7 +69,7 @@ const draw = (data, options) => {
   chart.draw(data, options); 
 
   google.visualization.events.addListener(chart, 'ready', readyHandler);
-  const readyHandler = (e) => {
+  const readyHandler = () => {
     chart.setSelection([{ 'row': 5,'column': 1 }]);
   }
 }

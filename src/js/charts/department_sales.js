@@ -1,3 +1,5 @@
+const google = window.google;
+
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(init);
 

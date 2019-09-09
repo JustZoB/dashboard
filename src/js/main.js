@@ -10,8 +10,8 @@ import departmentSales from './charts/department_sales.js';
 Container.add();
 Aside.add();
 
-$(window).on('resize', (event) => {
-  setTimeout(reInitCharts(), 50);  
+$(window).on('resize', () => {
+  setTimeout(reInitCharts(), 50);
 });
 
 const reInitCharts = () => {

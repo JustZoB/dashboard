@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const gulp = require('gulp'),
     gulpsync = require('gulp-sync')(gulp),
     rename = require('gulp-rename'),
