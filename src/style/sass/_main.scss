@@ -1,5 +1,5 @@
 .main-wrap {
-    margin-top: 80px;
+    margin-top: 130px;
     margin-left: $aside__icon_width;
     transition: 0.3s ease-in-out;
 
@@ -17,12 +17,11 @@
 
 .main {
     position: relative;
-    padding: 50px;
+    margin: 50px;
 
     &__header-wrap {
         width: 100%;
         max-width: $lg;
-        margin: auto;
     }
 
     &__header {
@@ -46,10 +45,12 @@
                 margin: auto 0;
             }
             .sales__select {
+                display: flex;
+                align-items: center;
+
                 i {
                     @extend .text_blue;
                     cursor: pointer;
-                    margin: auto 0;
                 }
             }
         }
@@ -59,11 +60,10 @@
         }
         button {
             display: flex;
+                align-items: center;
 
             i, span {
                 display: inline-block;
-                margin-top: auto;
-                margin-bottom: auto;
             }
         }
         @media screen and (max-width: 580px) {
@@ -170,17 +170,19 @@
 
             .container__half-block {
                 display: flex;
+                justify-content: center;
+                align-items: center;
                 margin-top: 20px;
                 
-                &__text {
-                    margin: auto;
-                }
                 &__img {
                     padding: 0 23px 0 36px;
                     display: flex;
+                    justify-content: center;
+                    align-items: center;
 
                     img {
-                        margin: auto;
+                        max-width: 47px;
+                        max-height: 47px;
                     }
                 }
             }
