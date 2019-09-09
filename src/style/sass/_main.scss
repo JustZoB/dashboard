@@ -2,12 +2,12 @@
     position: relative;
     top: 80px;
     left: $aside__icon_width;
-    width: calc(100% - #{$aside__icon_width});
+    width: 100%;
     transition: 0.3s ease-in-out;
 
     &.active {
         left: $aside__icon_width + $aside__name_width;
-        width: calc(100% - #{$aside__icon_width} - #{$aside__name_width});
+        width: 100%;
     }
     @media screen and (max-width: 768px) {
         left: 0px;

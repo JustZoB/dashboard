@@ -10,17 +10,30 @@ import departmentSales from './charts/department_sales.js';
 Container.add();
 Aside.add();
 
+const mainWidth = () => {
+    if ($(window).width() >= '768') {
+        if ($('.aside').hasClass('active')) {
+            $('.main-wrap').width($(window).width() - 240);
+        } else {
+            $('.main-wrap').width($(window).width() - 90);
+        }
+    } else {
+        $('.main-wrap').width($(window).width());
+    }
+}
+
 $(window).on('resize', () => {
-  setTimeout(reInitCharts(), 50);
+    mainWidth();
+    setTimeout(reInitCharts(), 50);
 });
 
 const reInitCharts = () => {
-  revenue();
-  productOrder();
-  customers();
-  dailySales();
-  monthSales();
-  departmentSales();
+    revenue();
+    productOrder();
+    customers();
+    dailySales();
+    monthSales();
+    departmentSales();
 };
 
 $('.header__center__mini').on('click', function () {
@@ -99,6 +112,7 @@ $('.header__menu').on('click', function () {
     $(this).toggleClass('active');
     if ($(window).width() >= '768') {
         $('.main-wrap').toggleClass('active');
+        mainWidth();
         setTimeout(reInitCharts, 300);
     }
 });
@@ -117,3 +131,5 @@ const eventsClose = (classes) => {
 
 eventsClose('.options__popup');
 eventsClose('.header__pop__wrap');
+
+$(window).trigger('resize');
