@@ -83,8 +83,11 @@ p {
         border-radius: 4px;
     }
     &__item {
+        @extend .white-bg;
+        @extend .box_shadow;
         display: flex;
-        background-color: #eeeeee;
+        align-items: center;
+        min-height: 35px;
         cursor: pointer;
 
         &__icon {
