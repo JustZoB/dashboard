@@ -9,6 +9,7 @@ const gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     sass = require('gulp-sass'),
 
+    eslint = require('gulp-eslint');
     uglify = require('gulp-uglify'),
     pipeline = require('readable-stream').pipeline,
     source = require('vinyl-source-stream'),
@@ -29,13 +30,20 @@ const htmlMainFile = './src/index.html',
 
 gulp.task('clean', () => {
   return del([ './build' ]);
-})
+});
+
+gulp.task('eslint', function () {
+  return gulp.src([jsAllFiles])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
 
 gulp.task('html', () => {
   return gulp.src(htmlMainFile)
     .pipe(gulp.dest('./build/'))
     .pipe(connect.reload());
-})
+});
 
 gulp.task('scss', () => {
   return gulp.src(scssMainFile)
@@ -47,7 +55,7 @@ gulp.task('scss', () => {
     .pipe(rename({suffix: '.min'}))
     .pipe(gulp.dest(scssDstDir))
     .pipe(connect.reload());
-})
+});
 
 gulp.task('js', function() {
   return browserify({ entries: jsMainFile })
@@ -77,7 +85,7 @@ gulp.task('build', ['html', 'scss', 'jsmin'], () => {
     .pipe(gulp.dest('./build/img/'));
   gulp.src('./src/**/normalize.css')
     .pipe(gulp.dest('./build/'));
-})
+});
 
 gulp.task('connected', () => {
   connect.server({
@@ -86,15 +94,15 @@ gulp.task('connected', () => {
     port: 8040,
     livereload: true,
   });
-})
+});
 
 gulp.task('watcher', () => {
   gulp.watch(htmlAllFiles, ['html']);
   gulp.watch(jsAllFiles, ['jsmin']);
   gulp.watch(scssAllFiles, ['scss'])
-})
+});
 
-let develop = ['clean', 'build', 'connected', 'watcher'];
+let develop = ['clean', 'eslint', 'build', 'connected', 'watcher'];
 let production = ['clean', 'build'];
 
 gulp.task('dev', gulpsync.sync(develop));

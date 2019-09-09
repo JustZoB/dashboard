@@ -15,8 +15,6 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
-    "@typescript-eslint/eslint-plugin": "^2.1.0",
-    "@typescript-eslint/parser": "^2.1.0",
     "babelify": "^10.0.0",
     "browser-sync": "^2.26.7",
     "browserify": "^16.5.0",
@@ -28,6 +26,7 @@
     "gulp-autoprefixer": "^6.1.0",
     "gulp-connect": "^5.7.0",
     "gulp-cssmin": "^0.2.0",
+    "gulp-eslint": "^6.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sync": "^0.1.4",
     "gulp-uglify": "^3.0.2",
