@@ -1,16 +1,21 @@
 .main-wrap {
-    margin-top: 80px;
-    margin-left: $aside__icon_width;
+    position: relative;
+    top: 80px;
+    left: $aside__icon_width;
+    width: calc(100% - #{$aside__icon_width});
     transition: 0.3s ease-in-out;
 
     &.active {
-        margin-left: $aside__icon_width + $aside__name_width;
+        left: $aside__icon_width + $aside__name_width;
+        width: calc(100% - #{$aside__icon_width} - #{$aside__name_width});
     }
     @media screen and (max-width: 768px) {
-        margin-left: 0px;
+        left: 0px;
+        width: 100%;
 
         &.active {
-            margin-left: 0px;
+            left: 0px;
+            width: 100%;
         }
     }
 }
