@@ -1,6 +1,6 @@
 const google = window.google;
 
-google.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', {'packages':['corechart', 'bar']});
 google.charts.setOnLoadCallback(init);
 
 export default function init() {

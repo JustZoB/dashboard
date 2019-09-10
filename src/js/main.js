@@ -22,18 +22,15 @@ const mainWidth = () => {
     }
 }
 
-$(window).on('resize', () => {
-    mainWidth();
-    setTimeout(reInitCharts(), 50);
-});
-
 const reInitCharts = () => {
-    revenue();
-    productOrder();
-    customers();
-    dailySales();
-    monthSales();
-    departmentSales();
+    const google = window.google;
+    google.charts.load('current', {'packages':['corechart', 'bar']});
+    google.charts.setOnLoadCallback(revenue());
+    google.charts.setOnLoadCallback(productOrder());
+    google.charts.setOnLoadCallback(customers());
+    google.charts.setOnLoadCallback(dailySales());
+    google.charts.setOnLoadCallback(monthSales());
+    google.charts.setOnLoadCallback(departmentSales());
 };
 
 $('.header__center__mini').on('click', function () {
@@ -97,7 +94,7 @@ $('body').on('click', '.container__half-block-wrap .minimize', function () {
 });
 
 $('body').on('click', '.container__item .close', function () {
-    $(this).parents().eq(1).detach();
+    $(this).parents().eq(1).addClass('hidden');
 });
 $('body').on('click', '.container__item .minimize', function () {
     const $block = $(this).parents().eq(1);
@@ -132,4 +129,16 @@ const eventsClose = (classes) => {
 eventsClose('.options__popup');
 eventsClose('.header__pop__wrap');
 
-$(window).trigger('resize');
+const resizeing = () => { 
+    mainWidth();
+    setTimeout(reInitCharts, 300);
+}
+
+$(window).on('resize', () => {
+    resizeing();
+});
+
+setTimeout(window.onload = () => {
+    resizeing();
+}, 300);
+ 

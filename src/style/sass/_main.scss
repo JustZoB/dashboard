@@ -1,23 +1,13 @@
+.content {
+    position: relative;
+    display: flex;
+    top: 80px;
+}
+
 .main-wrap {
     position: relative;
-    top: 80px;
-    left: $aside__icon_width;
-    width: 100%;
+    width: 95%;
     transition: 0.3s ease-in-out;
-
-    &.active {
-        left: $aside__icon_width + $aside__name_width;
-        width: 100%;
-    }
-    @media screen and (max-width: 768px) {
-        left: 0px;
-        width: 100%;
-
-        &.active {
-            left: 0px;
-            width: 100%;
-        }
-    }
 }
 
 .main {
@@ -42,6 +32,7 @@
         }
         &__headline {
             display: flex;
+            align-items: center;
 
             i {
                 @extend .text_blue;
@@ -50,7 +41,7 @@
                 margin: 0 15px;
             } 
             .sales__select__wrap {
-                margin: auto 0;
+                margin: 0;
             }
             .sales__select {
                 display: flex;

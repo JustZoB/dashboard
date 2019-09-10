@@ -3,7 +3,7 @@ export let Container = {
         let $container = $('.container'),
             $row = $container.find('.row');
 
-            Container.addBlockGraph($row, 'medium', 'chart__revenue', 'Revenue', 'This year');
+            Container.addBlockGraph($row, 'medium', 'chart__revenue', 'Revenue'); /*, 'This year' */
             Container.addTextInGraphTop($('.container__item').last(), 'container__item__text container__item__text_left', '$433,534,300', 'Sold 12.332 Items');
             Container.addBlockGraph($row, 'medium', 'chart__product-order', 'Product Order'); /* , 'This month' */
             Container.addDoubleBlock($row, 'medium');

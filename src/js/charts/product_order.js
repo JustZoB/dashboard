@@ -1,6 +1,6 @@
 const google = window.google;
 
-google.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', {'packages':['corechart', 'bar']});
 google.charts.setOnLoadCallback(init);
 
 export default function init() {
@@ -12,18 +12,6 @@ export default function init() {
     ['Pending', 12435],
     ['Reject', 4503],
   ]);
-
-  /*
-  var total = 0;
-  for (let i = 0; i < data.getNumberOfRows(); i++) {
-    total = total + data.getValue(i, 1);
-  }
-
-  for (let i = 0; i < data.getNumberOfRows(); i++) {
-    const label = data.getValue(i, 0);
-    const val = data.getValue(i, 1);
-    data.setFormattedValue(i, 0, val + '\n' + label);
-  }*/
 
   const options = {
     width: '100%',

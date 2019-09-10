@@ -1,6 +1,6 @@
 const google = window.google;
 
-google.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', {'packages':['corechart', 'bar']});
 google.charts.setOnLoadCallback(init);
 
 export default function init() {
@@ -67,9 +67,4 @@ export default function init() {
 const draw = (data, options) => {
   const chart = new google.visualization.AreaChart(document.getElementById('chart__revenue'));
   chart.draw(data, options); 
-
-  google.visualization.events.addListener(chart, 'ready', readyHandler);
-  const readyHandler = () => {
-    chart.setSelection([{ 'row': 5,'column': 1 }]);
-  }
 }
