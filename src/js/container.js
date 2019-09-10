@@ -11,7 +11,7 @@ export let Container = {
             Container.addTextInGraphTop($('.container__item').last(), 'container__item__text container__item__text_center', '284,123');
             Container.addTextInGraphBottom($('.container__item').last(), 'container__item__text container__item__text_bottom', 'Yesterday - 22 October 2016', '06:00 AM > 11:00 PM');
             Container.addBlockGraph($row, 'big', 'chart__daily-sales', 'Daily Sales');
-            Container.addBlockGraph($row, 'big', 'chart__monthly-sales', 'Monthly Sales', '(In Millions)');
+            Container.addBlockGraph($row, 'big', 'chart__monthly-sales', 'Monthly Sales'); /* , '(In Millions)' */
             Container.addBlockGraph($row, 'big', 'chart__department-sales', 'Department Sales');
     },
     

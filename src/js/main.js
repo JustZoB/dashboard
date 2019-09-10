@@ -11,7 +11,7 @@ Container.add();
 Aside.add();
 
 const mainWidth = () => {
-    if ($(window).width() >= '768') {
+    if ($(window).width() > '768') {
         if ($('.aside').hasClass('active')) {
             $('.main-wrap').width($(window).width() - 240);
         } else {
@@ -107,7 +107,7 @@ $('.header__menu').on('click', function () {
     $('.aside__menu__item__name').toggleClass('hidden');
     $('.aside').toggleClass('active');
     $(this).toggleClass('active');
-    if ($(window).width() >= '768') {
+    if ($(window).width() > '768') {
         $('.main-wrap').toggleClass('active');
         mainWidth();
         setTimeout(reInitCharts, 300);
