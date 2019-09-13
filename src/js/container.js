@@ -132,8 +132,8 @@ export let Container = {
         <div class="options__exchange-rates hidden">
             <select class="exchange_basedOn"></select>
             <select class="exchange_basedFor"></select>
-            <input type="date" class="exchange_start" value="2017-08-17" min="2000-01-01" max="2019-09-01">
-            <input type="date" class="exchange_end" value="2018-08-15" min="2000-01-01" max="2012-09-01">
+            <input type="date" class="exchange_start" value="2015-01-01" min="2000-01-01" max="2019-09-01">
+            <input type="date" class="exchange_end" value="2018-01-01" min="2000-01-01" max="2019-09-01">
             <button class="exchange__input">Input</button>
         </div>`);
     }

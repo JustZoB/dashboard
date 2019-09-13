@@ -97,6 +97,7 @@ $('.header__menu').on('click', function () {
     $('.aside__menu__item__name').toggleClass('hidden');
     $('.aside').toggleClass('active');
     $(this).toggleClass('active');
+    $('body').toggleClass('menu_active');
     if ($(window).width() > '768') {
         $('.main-wrap').toggleClass('active');
         mainWidth();
@@ -466,9 +467,9 @@ const exchange_base = (start = '', end = '', basedOn = '', basedFor = '') => {
     const getRateOnBase = (rates, basedFor) => {
         let objRates = [],
             basedForData = [],
-            r = getRandomInt(0, 255),
-            g = getRandomInt(0, 255),
-            b = getRandomInt(0, 255);
+            r = getRandomInt(60, 180),
+            g = getRandomInt(60, 180),
+            b = getRandomInt(60, 180);
 
         Object.keys(rates).sort().forEach(date => {
             $.each( rates[date], function( rate, value ) {
@@ -509,9 +510,9 @@ const exchange_base = (start = '', end = '', basedOn = '', basedFor = '') => {
         });
 
         allNameRates.forEach(item => {
-            let r = getRandomInt(0, 255),
-                g = getRandomInt(0, 255),
-                b = getRandomInt(0, 255);
+            let r = getRandomInt(60, 180),
+                g = getRandomInt(60, 180),
+                b = getRandomInt(60, 180);
 
             objRates.push({
                 pointRadius: 0,
@@ -578,23 +579,37 @@ const drawExchangeChartBase = (head, allRates, basedOn) => {
         });
 }
 
-let $options = $(".options__exchange-rates"),
-    $basedOn = $options.find(".exchange_basedOn"),
-    $basedFor = $options.find(".exchange_basedFor"),
-    $start = $options.find(".exchange_start"),
-    $end = $options.find(".exchange_end");
+const showError = (text) => {
+    $(".error-message")
+        .empty()
+        .append(`<p>${text}</p>`)
+        .css(({ opacity: 0 }))
+        .animate({ opacity: 1 }, 500)
+        .animate({ opacity: 0 }, 3000);
+}
 
 setTypes();
 
 $('.exchange__input').on('click', function () {
-    let basedOn = $basedOn.val(),
-        block = $(this).parents().eq(3);
+    let $block = $(this).parents().eq(3),
+        $options = $(".options__exchange-rates"),
+        start = $options.find(".exchange_start").val(),
+        end = $options.find(".exchange_end").val(),
+        basedOn = $options.find(".exchange_basedOn").val(),
+        basedFor = $options.find(".exchange_basedFor").val();
+
     if (basedOn === 'Base(EUR default)') {
         basedOn = 'EUR';
     }
-    if ($start.val() < $end.val()) {
-        block.find(".chart__wrap").empty().append(`<canvas height="80%" width="80%" id="chart_exchange"></canvas>`);
-        let exchange = exchange_base($start.val(), $end.val(), basedOn, $basedFor.val());
+    if (start === '') {
+        showError("Fill in all the fields of 'start date'");
+    } else if (end === '') {
+        showError("Fill in all the fields of 'end date'");
+    } else if (start > end) {
+        showError("'Start date' should be bigger then 'end date'"); 
+    } else {
+        $block.find(".chart__wrap").empty().append(`<canvas height="80%" width="80%" id="chart_exchange"></canvas>`);
+        let exchange = exchange_base(start, end, basedOn, basedFor);
         drawExchangeChartBase(exchange.head, exchange.allRates, exchange.basedOn);
     }
 });

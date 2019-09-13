@@ -4,6 +4,9 @@
 body {
     @extend .gray-bg;
     margin: 0;
+    &.menu_active {
+        overflow-y: hidden;
+    }
 }
 p {
     margin: 0;

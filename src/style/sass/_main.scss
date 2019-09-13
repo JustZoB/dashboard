@@ -157,8 +157,8 @@
             @extend .box_shadow;
             position: absolute;
             padding: 5px;
-            left: 150px;
-            top: 0px;
+            left: 0;
+            top: 110px;
         }
         .exchange_basedFor,
         .exchange_basedOn,
@@ -231,4 +231,20 @@
             }
         }
     }
+}
+
+.error-message {
+    @extend .white-bg;
+    @extend .box_shadow;
+    @extend .text_red;
+    position: fixed;
+    top: 85px;
+    right: 5px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 7px;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 0;
+    z-index: 10;
 }
