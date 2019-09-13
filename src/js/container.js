@@ -14,7 +14,7 @@ export let Container = {
             Container.addOptionsExchange($('.container__item').last().find(".options").find(".options__popup"));
             //Container.addBlockGraph($row, 'big', 'chart__daily-sales', 'Daily Sales');
             //Container.addChart($row, 'big', 'chart_daily-sales', 'Daily Sales');
-            Container.addChart($row, 'big', 'chart_monthly-sales', 'Monthly Sales');
+            Container.addChart($row, 'big', 'chart_month-sales', 'Monthly Sales');
             Container.addChart($row, 'big', 'chart_department-sales', 'Department Sales');
             
     },

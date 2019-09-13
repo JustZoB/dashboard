@@ -1,0 +1,5 @@
+{
+    "xAxis" : ["Clothing", "Electronics", "Kitchen Utility", "Cardening", "Food"],
+    "data" : [20, 48, 70, 34, 28],
+    "colors" : ["#f8e367", "#e18197", "#8abe6e", "#93ccce", "#7ababc"]
+}

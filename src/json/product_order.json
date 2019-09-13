@@ -1,0 +1,5 @@
+{
+    "xAxis" : ["Finished", "Pending", "Reject"],
+    "data" : [23043, 12435, 4503],
+    "colors" : ["#486afa", "#f8e367", "#f05757"]
+}

@@ -81,8 +81,10 @@ gulp.task('jsmin', ['js'], function () {
 gulp.task('build', ['html', 'scss', 'jsmin'], () => {
   gulp.src('./src/fonts/**/*.*')
     .pipe(gulp.dest('./build/fonts/'));
-  gulp.src('./src/img/*.*')
+  gulp.src('./src/img/**/*.*')
     .pipe(gulp.dest('./build/img/'));
+  gulp.src('./src/json/**/*.*')
+    .pipe(gulp.dest('./build/json/'));
   gulp.src('./src/**/normalize.css')
     .pipe(gulp.dest('./build/'));
 });
