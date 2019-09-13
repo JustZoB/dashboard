@@ -117,19 +117,13 @@
         &__text {
             position: absolute;
             z-index: 1;
-
-            @media screen and (max-width: 580px) {
-                .text_big {
-                    display: none;
-                }
-            }
         }
         &__text_left {
             top: 20%;
             left: 10%;
         }
         &__text_center {
-            top: 10%;
+            top: 50px;
             width: 100%;
             font-family: 'MontserratSemiBold', serif;
             text-align: center;
@@ -138,7 +132,7 @@
             display: flex;
             justify-content: space-between;
             width: 88%;
-            bottom: 6%;
+            bottom: 30px;
             margin: 0 6%;
             font-size: 14px;
         }
@@ -157,6 +151,21 @@
         }
         &.container__item__minimize {
             height: 70px;
+        }
+        .options__exchange-rates {
+            @extend .white-bg;
+            @extend .box_shadow;
+            position: absolute;
+            padding: 5px;
+            left: 150px;
+            top: 0px;
+        }
+        .exchange_basedFor,
+        .exchange_basedOn,
+        .exchange__input {
+            @extend .button;
+            padding: 7px;
+            margin: 3px;
         }
     }
     &__double-block {

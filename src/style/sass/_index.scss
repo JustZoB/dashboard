@@ -87,6 +87,7 @@ p {
         @extend .white-bg;
         @extend .box_shadow;
         display: flex;
+        position: relative;
         align-items: center;
         min-height: 35px;
         cursor: pointer;
