@@ -584,7 +584,7 @@ const showError = (text) => {
         .empty()
         .append(`<p>${text}</p>`)
         .css(({ opacity: 0 }))
-        .animate({ opacity: 1 }, 500)
+        .animate({ opacity: 1 }, 200)
         .animate({ opacity: 0 }, 3000);
 }
 
