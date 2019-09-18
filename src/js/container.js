@@ -32,6 +32,7 @@ export let Container = {
                 <canvas height="${height}" width="${width}" id="${graph_id}"></canvas>
             </div>
         </div>`);
+        Container.addError($list.find('.container__item').last());
         Container.addOptions($list.find('.container__item').last());
         Container.addWindowControl($list.find('.container__item').last());
     },
@@ -136,5 +137,12 @@ export let Container = {
             <input type="date" class="exchange_end" value="2018-01-01" min="2000-01-01" max="2019-09-01">
             <button class="exchange__input">Input</button>
         </div>`);
-    }
+    },
+
+    addError($list) {
+        ($list).append(`
+        <div class="chart_error hidden">
+            <p>Can't draw a chart. No data. Please check your internet connection</p>
+        </div>`);
+    },
 }

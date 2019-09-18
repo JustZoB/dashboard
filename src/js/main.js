@@ -138,7 +138,13 @@ $.ajax({
     async: false,
     success : function(data) {
         revenue_json = data;
-    }
+    },
+    error : function() {
+        let block = $("#chart_revenue").parents().eq(1);
+        $("#chart_revenue").addClass("hidden");
+        block.find(".container__item__text").addClass("hidden");
+        block.find(".chart_error").removeClass("hidden");
+    },
 });
 
 let revenue = document.getElementById('chart_revenue').getContext('2d'),
@@ -204,7 +210,13 @@ $.ajax({
     async: false,
     success : function(data) {
         product_order_json = data;
-    }
+    },
+    error : function() {
+        let block = $("#chart_product_order").parents().eq(1);
+        $("#chart_product_order").addClass("hidden");
+        block.find(".container__item__text").addClass("hidden");
+        block.find(".chart_error").removeClass("hidden");
+    },
 });
 
 let product_order = document.getElementById('chart_product-order').getContext('2d'),
@@ -243,7 +255,13 @@ $.ajax({
     async: false,
     success : function(data) {
         customers_json = data;
-    }
+    },
+    error : function() {
+        let block = $("#chart_customers").parents().eq(1);
+        $("#chart_customers").addClass("hidden");
+        block.find(".container__item__text").addClass("hidden");
+        block.find(".chart_error").removeClass("hidden");
+    },
 });
 
 let customers = document.getElementById('chart_customers').getContext('2d'),
@@ -319,7 +337,13 @@ $.ajax({
     async: false,
     success : function(data) {
         month_sales_json = data;
-    }
+    },
+    error : function() {
+        let block = $("#chart_month_sales").parents().eq(1);
+        $("#chart_month_sales").addClass("hidden");
+        block.find(".container__item__text").addClass("hidden");
+        block.find(".chart_error").removeClass("hidden");
+    },
 });
 
 let month_sales = document.getElementById('chart_month-sales').getContext('2d'),
@@ -390,7 +414,13 @@ $.ajax({
     async: false,
     success : function(data) {
         department_sales_json = data;
-    }
+    },
+    error : function() {
+        let block = $("#chart_department_sales").parents().eq(1);
+        $("#chart_department_sales").addClass("hidden");
+        block.find(".container__item__text").addClass("hidden");
+        block.find(".chart_error").removeClass("hidden");
+    },
 });
 
 let department_sales = document.getElementById('chart_department-sales').getContext('2d'),
@@ -442,10 +472,9 @@ const setTypes = () => {
     $.ajax({ type: "GET",   
         url: 'https://api.exchangeratesapi.io/latest',   
         async: false,
-        success : function(data)
-        {
+        success : function(data) {
             lastTypes = data;
-        }
+        }       
     });
 
     getTypesRates(lastTypes.rates);
@@ -529,7 +558,8 @@ const exchange_base = (start = '', end = '', basedOn = '', basedFor = '') => {
     }
 
     let response = {},
-        head = [];
+        head = [],
+        allRates = [];
 
     $.ajax({ 
         type: "GET",   
@@ -537,14 +567,21 @@ const exchange_base = (start = '', end = '', basedOn = '', basedFor = '') => {
         async: false,
         success : function(data) {
             response = data;
-        }
+        },
+        error : function() {
+            let block = $("#chart_exchange").parents().eq(1);
+            $("#chart_exchange").addClass("hidden");
+            block.find(".container__item__text").addClass("hidden");
+            block.find(".chart_error").removeClass("hidden");
+        }, 
     });
+    if (!$.isEmptyObject(response)) {
+        $.each( response.rates, function( date ) {
+            head.push(date);
+        });
 
-    $.each( response.rates, function( date ) {
-        head.push(date);
-    });
-
-    let allRates = basedFor === 'Based for(All default)' ? getAllRatesOnBase(response.rates) : getRateOnBase(response.rates, basedFor);
+        allRates = basedFor === 'Based for(All default)' ? getAllRatesOnBase(response.rates) : getRateOnBase(response.rates, basedFor);
+    }
 
     return {'head': head.sort(), 'allRates': allRates, 'basedOn': basedOn};
 }
