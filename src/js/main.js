@@ -34,7 +34,7 @@ const reInitCharts = () => {
 };
 
 $('.header__center__mini').on('click', function () {
-    $('.header__center__normal').toggleClass('active white-bg box-shadow');
+    $('.header__center__normal').toggleClass('active');
 });
 
 $('body').on('click', '.options__button', function () {
@@ -42,7 +42,7 @@ $('body').on('click', '.options__button', function () {
 });
 
 $('.sales__select i').on('click', function () {
-    $(this).parent().find('.options__popup').toggleClass('hidden');
+    $(this).siblings().toggleClass('hidden');
 });
 
 $('.header__profile__wrap').on('click', function () {
@@ -116,8 +116,8 @@ $('.header__menu').on('click', function () {
 
 const eventsClose = (classes) => {
     $(document).mouseup((e) => {
-        let div = $(classes);
-        div.each((key, elem) => {
+        let $div = $(classes);
+        $div.each((key, elem) => {
             if ((!$(elem).is(e.target)) && ($(elem).has(e.target).length === 0) 
             && (!$(elem).prev().is(e.target)) && ($(elem).prev().has(e.target).length === 0)) {
                 $(elem).addClass('hidden');

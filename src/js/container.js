@@ -15,11 +15,11 @@ export let Container = {
             Container.addBlockGraph($row, 'big', 'chart__department-sales', 'Department Sales');
     },
     
-    addBlockGraph($list, size = '', graph_id = '', title = '', subtitle = '') {
-        let block_size = (size === 'medium') ? 'col-lg-4 col-md-6 col-xs-12' : 
+    addBlockGraph($list, size = '', graphId = '', title = '', subtitle = '') {
+        let blockSize = (size === 'medium') ? 'col-lg-4 col-md-6 col-xs-12' : 
             (size === 'big') ? 'col-lg-6 col-md-12 col-xs-12' : 
             'col-lg-4 col-md-6 col-xs-12';
-        $($list).append(`<div class="container__item container_${size} ${block_size}">
+        $($list).append(`<div class="container__item container_${size} ${blockSize}">
             <div class="options">
                 <div class="options__button">
                     <i class="fas fa-ellipsis-h fa-lg"></i>
@@ -52,22 +52,22 @@ export let Container = {
                 <div class="container__item__subtitle text_ligth-gray">${subtitle}</div>
             </div>
             <div class="chart__wrap">
-                <div class="chart" id="${graph_id}"></div>
+                <div class="chart" id="${graphId}"></div>
             </div>
         </div>`);
     },
 
     addDoubleBlock($list, size = '') {
-        let block_size = (size === 'medium') ? 'col-lg-4 col-md-12 col-xs-12' :
+        let blockSize = (size === 'medium') ? 'col-lg-4 col-md-12 col-xs-12' :
             (size === 'big') ? 'col-lg-6 col-md-12 col-xs-12' :
             'col-lg-6 col-md-12 col-xs-12';
-        $($list).append(`<div class="container_${size} container__double-block ${block_size}"></div>`);
+        $($list).append(`<div class="container_${size} container__double-block ${blockSize}"></div>`);
         Container.addHalfBlock($('.container__double-block'), 'light-sky-blue-bg', 'img/basket.png', 'Shopping basket', 'text_light-blue', '$433,534,300', 'Sold 12.332 Items');
         Container.addHalfBlock($('.container__double-block'), 'light-green-bg', 'img/box.png', 'Box', 'text_light-green', '53.345', 'Order');
     },
 
-    addHalfBlock($list, block_color = '', img_src = '', img_alt = '', text_color = '', span_text = '', text = '') {
-        $($list).append(`<div class="container__half-block-wrap ${block_color}">
+    addHalfBlock($list, blockColor = '', imgSrc = '', imgAlt = '', textColor = '', spanText = '', text = '') {
+        $($list).append(`<div class="container__half-block-wrap ${blockColor}">
             <div class="container__half-block">
                 <div class="options">
                     <div class="options__button">
@@ -97,10 +97,10 @@ export let Container = {
                     </div>
                 </div>
                 <div class="container__half-block__img">
-                    <img src="${img_src}" alt="${img_alt}">
+                    <img src="${imgSrc}" alt="${imgAlt}">
                 </div>
-                <div class="container__half-block__text ${text_color}">
-                    <span class="text_big">${span_text}</span><p class=''>${text}</p>
+                <div class="container__half-block__text ${textColor}">
+                    <span class="text_big">${spanText}</span><p class=''>${text}</p>
                 </div>
             </div>  
         </div>`);
