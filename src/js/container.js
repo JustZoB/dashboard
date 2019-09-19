@@ -12,7 +12,6 @@ export let Container = {
             Container.addTextInGraphBottom($('.container__item').last(), 'container__item__text container__item__text_bottom', 'Yesterday - 22 October 2016', '06:00 AM > 11:00 PM');
             Container.addChart($row, 'big', 'chart_exchange', 'Exchange rates');
             Container.addOptionsExchange($('.container__item').last().find(".options").find(".options__popup"));
-            //Container.addBlockGraph($row, 'big', 'chart__daily-sales', 'Daily Sales');
             //Container.addChart($row, 'big', 'chart_daily-sales', 'Daily Sales');
             Container.addChart($row, 'big', 'chart_month-sales', 'Monthly Sales');
             Container.addChart($row, 'big', 'chart_department-sales', 'Department Sales');
@@ -33,23 +32,6 @@ export let Container = {
             </div>
         </div>`);
         Container.addError($list.find('.container__item').last());
-        Container.addOptions($list.find('.container__item').last());
-        Container.addWindowControl($list.find('.container__item').last());
-    },
-
-    addBlockGraph($list, size = '', graphId = '', title = '', subtitle = '') {
-        let blockSize = (size === 'medium') ? 'col-lg-4 col-md-6 col-xs-12' : 
-            (size === 'big') ? 'col-lg-6 col-md-12 col-xs-12' : 
-            'col-lg-4 col-md-6 col-xs-12';
-        $($list).append(`<div class="container__item container_${size} ${blockSize}">
-            <div class="container__item__head">
-                <div class="container__item__title text_dark-blue">${title}</div>
-                <div class="container__item__subtitle text_ligth-gray">${subtitle}</div>
-            </div>
-            <div class="chart__wrap">
-                <div class="chart" id="${graphId}"></div>
-            </div>
-        </div>`);
         Container.addOptions($list.find('.container__item').last());
         Container.addWindowControl($list.find('.container__item').last());
     },
