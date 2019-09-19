@@ -51,31 +51,31 @@ $('.header__search__input').on('click', function () {
 });
 
 $('body').on('click', '.container__half-block-wrap .close', function () {
-    const $half_block = $(this).parents().eq(2),
+    const $halfBlock = $(this).parents().eq(2),
         $block = $(this).parents().eq(3);
-    if ($half_block.hasClass('container__half-block__minimize')) {
+    if ($halfBlock.hasClass('container__half-block__minimize')) {
         $block.height($block.height() - 100);
     } else {
         $block.height($block.height() - 200);
     }
     
-    $half_block.detach();
+    $halfBlock.detach();
     if ($block.is(':empty')) {
         $block.detach();
     }
 });
 $('body').on('click', '.container__half-block-wrap .minimize', function () {
-    const $half_block = $(this).parents().eq(2),
+    const $halfBlock = $(this).parents().eq(2),
         $block = $(this).parents().eq(3);
-    if ($half_block.hasClass('container__half-block__minimize')) {
+    if ($halfBlock.hasClass('container__half-block__minimize')) {
         $block.css('min-height', parseInt($block.css('min-height'),10) + 100);
     } else {
         $block.css('min-height', parseInt($block.css('min-height'),10) - 100);
     }
-    $half_block.toggleClass('container__half-block__minimize');
-    $half_block.find('.container__half-block__img').toggleClass('hidden');
-    $half_block.find('span').toggleClass('hidden');
-    $half_block.find('.container__half-block__text').toggleClass('container__text__minimize');
+    $halfBlock.toggleClass('container__half-block__minimize');
+    $halfBlock.find('.container__half-block__img').toggleClass('hidden');
+    $halfBlock.find('span').toggleClass('hidden');
+    $halfBlock.find('.container__half-block__text').toggleClass('container__text__minimize');
 });
 
 $('body').on('click', '.container__item .close', function () {
@@ -131,13 +131,13 @@ setTimeout(window.onload = () => {
     resizeing();
 }, 300);
 
-let revenue_json = {};
+let revenueJson = {};
 $.ajax({ 
     type: "GET",   
     url: 'json/revenue.json',   
     async: false,
     success : function(data) {
-        revenue_json = data;
+        revenueJson = data;
     },
     error : function() {
         let block = $("#chart_revenue").parents().eq(1);
@@ -148,16 +148,16 @@ $.ajax({
 });
 
 let revenue = document.getElementById('chart_revenue').getContext('2d'),
-    revenue_data = new Chart(revenue, {
+    revenueData = new Chart(revenue, {
     type: 'line',
     data: {
-        labels: revenue_json.xAxis,
+        labels: revenueJson.xAxis,
         datasets: [
         {
             pointRadius: 0,
             borderWidth: 4,
             pointHitRadius: 15,
-            data: revenue_json.data,
+            data: revenueJson.data,
             backgroundColor: "rgba(90, 152, 213, 0.5)",
             borderColor: "#5a98d5",
         }, 
@@ -203,13 +203,13 @@ let revenue = document.getElementById('chart_revenue').getContext('2d'),
     },
 });
 
-let product_order_json = {};
+let productOrderJson = {};
 $.ajax({ 
     type: "GET",   
     url: 'json/product_order.json',   
     async: false,
     success : function(data) {
-        product_order_json = data;
+        productOrderJson = data;
     },
     error : function() {
         let block = $("#chart_product_order").parents().eq(1);
@@ -219,14 +219,14 @@ $.ajax({
     },
 });
 
-let product_order = document.getElementById('chart_product-order').getContext('2d'),
-    product_order_data = new Chart(product_order, {
+let productOrder = document.getElementById('chart_product-order').getContext('2d'),
+    productOrderData = new Chart(productOrder, {
     type: 'polarArea',
     data: {
-        labels: product_order_json.xAxis,
+        labels: productOrderJson.xAxis,
         datasets: [{
-            data: product_order_json.data,
-            backgroundColor: product_order_json.colors,
+            data: productOrderJson.data,
+            backgroundColor: productOrderJson.colors,
         }]
     },
     options: {
@@ -248,13 +248,13 @@ let product_order = document.getElementById('chart_product-order').getContext('2
     },
 });
 
-let customers_json = {};
+let customersJson = {};
 $.ajax({ 
     type: "GET",   
     url: 'json/customers.json',   
     async: false,
     success : function(data) {
-        customers_json = data;
+        customersJson = data;
     },
     error : function() {
         let block = $("#chart_customers").parents().eq(1);
@@ -265,12 +265,12 @@ $.ajax({
 });
 
 let customers = document.getElementById('chart_customers').getContext('2d'),
-    customers_data = new Chart(customers, {
+    customersData = new Chart(customers, {
     type: 'line',
 
     data: {
         
-        labels: customers_json.xAxis,
+        labels: customersJson.xAxis,
         datasets: [{
             fill: false,
             borderWidth: 5,
@@ -279,7 +279,7 @@ let customers = document.getElementById('chart_customers').getContext('2d'),
             label: "Day time",
             backgroundColor: "#accbea",
             borderColor: "#accbea",
-            data: customers_json.data.day,
+            data: customersJson.data.day,
         }, {
             fill: false,
             borderWidth: 5,
@@ -288,7 +288,7 @@ let customers = document.getElementById('chart_customers').getContext('2d'),
             label: "Night time",
             backgroundColor: "#9ab6d3",
             borderColor: "#9ab6d3",
-            data: customers_json.data.night,
+            data: customersJson.data.night,
         },]
     },
     options: {
@@ -330,13 +330,13 @@ let customers = document.getElementById('chart_customers').getContext('2d'),
     },
 });
 
-let month_sales_json = {};
+let monthSalesJson = {};
 $.ajax({ 
     type: "GET",   
     url: 'json/month_sales.json',   
     async: false,
     success : function(data) {
-        month_sales_json = data;
+        monthSalesJson = data;
     },
     error : function() {
         let block = $("#chart_month_sales").parents().eq(1);
@@ -346,20 +346,20 @@ $.ajax({
     },
 });
 
-let month_sales = document.getElementById('chart_month-sales').getContext('2d'),
-    month_sales_data = new Chart(month_sales, {
+let monthSales = document.getElementById('chart_month-sales').getContext('2d'),
+    monthSalesData = new Chart(monthSales, {
     type: 'bar',
     data: {
-        labels: month_sales_json.xAxis,
+        labels: monthSalesJson.xAxis,
         datasets: [
             {
                 label: "Day time",
                 backgroundColor: "#accbea",
-                data: month_sales_json.data.day,
+                data: monthSalesJson.data.day,
             }, {
                 label: "Night time",
                 backgroundColor: "#9ab6d3",
-                data: month_sales_json.data.night,
+                data: monthSalesJson.data.night,
             },
         ]
     },
@@ -407,13 +407,13 @@ let month_sales = document.getElementById('chart_month-sales').getContext('2d'),
     },
 });
 
-let department_sales_json = {};
+let departmentSalesJson = {};
 $.ajax({ 
     type: "GET",   
     url: 'json/department_sales.json',   
     async: false,
     success : function(data) {
-        department_sales_json = data;
+        departmentSalesJson = data;
     },
     error : function() {
         let block = $("#chart_department_sales").parents().eq(1);
@@ -423,14 +423,14 @@ $.ajax({
     },
 });
 
-let department_sales = document.getElementById('chart_department-sales').getContext('2d'),
-    department_sales_data = new Chart(department_sales, {
+let departmentSales = document.getElementById('chart_department-sales').getContext('2d'),
+    departmentSalesData = new Chart(departmentSales, {
     type: 'doughnut',
     data: {
-        labels: department_sales_json.xAxis,
+        labels: departmentSalesJson.xAxis,
         datasets: [{
-            data: department_sales_json.data,
-            backgroundColor: department_sales_json.colors,
+            data: departmentSalesJson.data,
+            backgroundColor: departmentSalesJson.colors,
         }]
     },
     options: {
@@ -480,7 +480,7 @@ const setTypes = () => {
     getTypesRates(lastTypes.rates);
 }
 
-const exchange_base = (start = '', end = '', basedOn = '', basedFor = '') => {
+const exchangeBase = (start = '', end = '', basedOn = '', basedFor = '') => {
     const getLink = (start, end, basedOn) => {
         let link = 'https://api.exchangeratesapi.io/' + 'history?start_at=' + start + '&end_at=' + end;
         if (basedOn !== '') {
@@ -587,8 +587,8 @@ const exchange_base = (start = '', end = '', basedOn = '', basedFor = '') => {
 }
 
 const drawExchangeChartBase = (head, allRates, basedOn) => {
-    let exchange_chart = document.getElementById('chart_exchange').getContext('2d'),
-        exchange_rate = new Chart(exchange_chart, {
+    let exchangeChart = document.getElementById('chart_exchange').getContext('2d'),
+        exchangeRate = new Chart(exchangeChart, {
             type: 'line',
             data: {
                 labels: head,
@@ -646,10 +646,10 @@ $('.exchange__input').on('click', function () {
         showError("'Start date' should be bigger then 'end date'"); 
     } else {
         $block.find(".chart__wrap").empty().append(`<canvas height="80%" width="80%" id="chart_exchange"></canvas>`);
-        let exchange = exchange_base(start, end, basedOn, basedFor);
+        let exchange = exchangeBase(start, end, basedOn, basedFor);
         drawExchangeChartBase(exchange.head, exchange.allRates, exchange.basedOn);
     }
 });
 
-let exchange = exchange_base('2015-01-01', '2018-01-01', 'USD', 'RUB');
+let exchange = exchangeBase('2015-01-01', '2018-01-01', 'USD', 'RUB');
 drawExchangeChartBase(exchange.head, exchange.allRates, exchange.basedOn);

@@ -19,17 +19,17 @@ export let Container = {
             
     },
 
-    addChart($list, size = '', graph_id = '', title = '', height = '80%', width = '80%') {
-        let block_size = (size === 'medium') ? 'col-lg-4 col-md-6 col-xs-12' : 
+    addChart($list, size = '', graphId = '', title = '', height = '80%', width = '80%') {
+        let blockSize = (size === 'medium') ? 'col-lg-4 col-md-6 col-xs-12' : 
             (size === 'big') ? 'col-lg-6 col-md-12 col-xs-12' : 
             'col-lg-4 col-md-6 col-xs-12';
 
-        $($list).append(`<div class="container__item container_${size} ${block_size}">
+        $($list).append(`<div class="container__item container_${size} ${blockSize}">
             <div class="container__item__head">
                 <div class="container__item__title text_dark-blue">${title}</div>
             </div>
             <div class="chart__wrap">
-                <canvas height="${height}" width="${width}" id="${graph_id}"></canvas>
+                <canvas height="${height}" width="${width}" id="${graphId}"></canvas>
             </div>
         </div>`);
         Container.addError($list.find('.container__item').last());
@@ -37,17 +37,17 @@ export let Container = {
         Container.addWindowControl($list.find('.container__item').last());
     },
 
-    addBlockGraph($list, size = '', graph_id = '', title = '', subtitle = '') {
-        let block_size = (size === 'medium') ? 'col-lg-4 col-md-6 col-xs-12' : 
+    addBlockGraph($list, size = '', graphId = '', title = '', subtitle = '') {
+        let blockSize = (size === 'medium') ? 'col-lg-4 col-md-6 col-xs-12' : 
             (size === 'big') ? 'col-lg-6 col-md-12 col-xs-12' : 
             'col-lg-4 col-md-6 col-xs-12';
-        $($list).append(`<div class="container__item container_${size} ${block_size}">
+        $($list).append(`<div class="container__item container_${size} ${blockSize}">
             <div class="container__item__head">
                 <div class="container__item__title text_dark-blue">${title}</div>
                 <div class="container__item__subtitle text_ligth-gray">${subtitle}</div>
             </div>
             <div class="chart__wrap">
-                <div class="chart" id="${graph_id}"></div>
+                <div class="chart" id="${graphId}"></div>
             </div>
         </div>`);
         Container.addOptions($list.find('.container__item').last());
@@ -55,22 +55,22 @@ export let Container = {
     },
 
     addDoubleBlock($list, size = '') {
-        let block_size = (size === 'medium') ? 'col-lg-4 col-md-12 col-xs-12' :
+        let blockSize = (size === 'medium') ? 'col-lg-4 col-md-12 col-xs-12' :
             (size === 'big') ? 'col-lg-6 col-md-12 col-xs-12' :
             'col-lg-6 col-md-12 col-xs-12';
-        $($list).append(`<div class="container_${size} container__double-block ${block_size}"></div>`);
+        $($list).append(`<div class="container_${size} container__double-block ${blockSize}"></div>`);
         Container.addHalfBlock($('.container__double-block'), 'light-sky-blue-bg', 'img/basket.png', 'Shopping basket', 'text_light-blue', '$433,534,300', 'Sold 12.332 Items');
         Container.addHalfBlock($('.container__double-block'), 'light-green-bg', 'img/box.png', 'Box', 'text_light-green', '53.345', 'Order');
     },
 
-    addHalfBlock($list, block_color = '', img_src = '', img_alt = '', text_color = '', span_text = '', text = '') {
-        $($list).append(`<div class="container__half-block-wrap ${block_color}">
+    addHalfBlock($list, blockColor = '', imgSrc = '', imgAlt = '', textColor = '', spanText = '', text = '') {
+        $($list).append(`<div class="container__half-block-wrap ${blockColor}">
             <div class="container__half-block">
                 <div class="container__half-block__img">
-                    <img src="${img_src}" alt="${img_alt}">
+                    <img src="${imgSrc}" alt="${imgAlt}">
                 </div>
-                <div class="container__half-block__text ${text_color}">
-                    <span class="text_big">${span_text}</span><p class=''>${text}</p>
+                <div class="container__half-block__text ${textColor}">
+                    <span class="text_big">${spanText}</span><p class=''>${text}</p>
                 </div>
             </div>  
         </div>`);
