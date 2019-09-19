@@ -4,11 +4,10 @@ $aside__name_width: 150px;
 
 .aside {
     @extend .white-bg;
-    position: fixed;
-    top: 80px;
+    position: relative;
+    
     left: 0;
     width: $aside__icon_width;
-    height: 100%;
     z-index: 5;
     overflow-y: auto;
     transition: 0.3s ease-in-out;
@@ -58,6 +57,9 @@ $aside__name_width: 150px;
         }
     }
     @media screen and (max-width: 768px) {
+        position: fixed;
+        top: 80px;
+        height: 100%;
         left: -$aside__icon_width;
     }
     

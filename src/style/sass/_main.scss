@@ -1,28 +1,25 @@
+.content {
+    position: relative;
+    display: flex;
+    top: 80px;
+}
+
 .main-wrap {
-    margin-top: 80px;
-    margin-left: $aside__icon_width;
+    position: relative;
+    width: 95%;
     transition: 0.3s ease-in-out;
-
-    &.active {
-        margin-left: $aside__icon_width + $aside__name_width;
-    }
-    @media screen and (max-width: 768px) {
-        margin-left: 0px;
-
-        &.active {
-            margin-left: 0px;
-        }
-    }
 }
 
 .main {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 50px;
 
     &__header-wrap {
         width: 100%;
         max-width: $lg;
-        margin: auto;
     }
 
     &__header {
@@ -35,6 +32,7 @@
         }
         &__headline {
             display: flex;
+            align-items: center;
 
             i {
                 @extend .text_blue;
@@ -43,13 +41,20 @@
                 margin: 0 15px;
             } 
             .sales__select__wrap {
-                margin: auto 0;
+                margin: 0;
             }
             .sales__select {
+                position: relative;
+                display: flex;
+                align-items: center;
+
                 i {
                     @extend .text_blue;
                     cursor: pointer;
-                    margin: auto 0;
+                }
+                .options__popup {
+                    top: 0px;
+                    left: 20px;
                 }
             }
         }
@@ -59,11 +64,10 @@
         }
         button {
             display: flex;
+                align-items: center;
 
             i, span {
                 display: inline-block;
-                margin-top: auto;
-                margin-bottom: auto;
             }
         }
         @media screen and (max-width: 580px) {
@@ -78,12 +82,15 @@
     @media screen and (max-width: 768px) {
         padding: 30px;
     }
+
+    @media screen and (max-width: 580px) {
+        padding: 10px;
+    }
 }
 
 .container {
     width: 100%;
     max-width: $lg;
-    margin: auto;
 
     .row {
         display: flex;
@@ -115,6 +122,12 @@
         &__text {
             position: absolute;
             z-index: 1;
+
+            @media screen and (max-width: 580px) {
+                .text_big {
+                    display: none;
+                }
+            }
         }
         &__text_left {
             top: 20%;
@@ -170,17 +183,30 @@
 
             .container__half-block {
                 display: flex;
+                justify-content: center;
+                align-items: center;
                 margin-top: 20px;
                 
-                &__text {
-                    margin: auto;
-                }
                 &__img {
                     padding: 0 23px 0 36px;
                     display: flex;
+                    justify-content: center;
+                    align-items: center;
 
                     img {
-                        margin: auto;
+                        max-width: 47px;
+                        max-height: 47px;
+                    }
+                }
+
+                &__text {
+                    @media screen and (max-width: 580px) {
+                        .text_big {
+                            font-size: 20px;
+                        }
+                        p {
+                            font-size: 14px
+                        }
                     }
                 }
             }

@@ -8,7 +8,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    z-index: 5;
+    z-index: 7;
 
     &__left {
         height: 100%;
@@ -115,6 +115,10 @@
                 position: absolute;
             }
         }
+
+        @media screen and (max-width: 480px) {
+            display: none;
+        }
     }
     &__search {
         display: flex;
@@ -130,8 +134,12 @@
         }
         &__button {
             @extend .text_gray;
-            cursor: pointer;
-            margin: auto;
+            
+            display: flex;
+            align-items: center;
+            i {
+                cursor: pointer;
+            }
         }
         hr {
             @extend .text_gray;
@@ -159,6 +167,10 @@
         &__icon {
             position: relative;
             display: flex;
+        }
+
+        @media screen and (max-width: 480px) {
+            display: none;
         }
     }
     .messages_not-read {
@@ -218,16 +230,18 @@
     }
     &__profile {
         display: flex;
+        display: flex;
+        align-items: center;
 
         &__img {
             width: 50px;
             height: 50px;
             border-radius: 100px;
-            margin: auto 7px;
+            margin: 0 7px;
         }
         i {
             @extend .text_ligth-gray;
-            margin: auto 7px;
+            margin: 0 7px;
         }
     }
 
@@ -256,11 +270,12 @@
         }
         &__item {
             display: flex;
+            align-items: center;
             height: 55px;
             margin: 2px;
 
             img{
-                margin: auto 20px;
+                margin: 0 20px;
             }
             p {
                 line-height: 50px;
@@ -274,9 +289,10 @@
 
         &__item {
             display: flex;
+            align-items: center;
 
             &__icon {
-                margin: auto 20px;
+                margin: 0 20px;
             }
             &__text, 
             &__head {
@@ -337,14 +353,14 @@
             width: 100%;
             display: flex;
             padding: 5px 0;
-            display: flex;
+            align-items: center;
             justify-content: center;
 
             span, p {
                 margin: 0;
             }
             .online__circle {
-                margin: auto 5px;
+                margin: 0 5px;
                 width: 10px;
                 height: 10px;
                 border-radius: 100%; 
@@ -357,7 +373,7 @@
             flex-direction: column;
 
             i {
-                margin: auto 10px;
+                margin: 0 10px;
             }
             & > div {
                 display: flex;

@@ -3,6 +3,7 @@
 }
 body {
     @extend .gray-bg;
+    margin: 0;
 }
 p {
     margin: 0;
@@ -71,10 +72,9 @@ p {
         width: 30px;
         height: 30px;
         display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
-        i {
-            margin: auto;
-        }
     }
     &__popup {
         position: absolute;
@@ -84,8 +84,11 @@ p {
         border-radius: 4px;
     }
     &__item {
+        @extend .white-bg;
+        @extend .box_shadow;
         display: flex;
-        background-color: #eeeeee;
+        align-items: center;
+        min-height: 35px;
         cursor: pointer;
 
         &__icon {
