@@ -66,31 +66,31 @@ $('.header__search__input').on('click', function () {
 });
 
 $('body').on('click', '.container__half-block-wrap .close', function () {
-    let $half_block = $(this).parents().eq(2),
+    let $halfBlock = $(this).parents().eq(2),
         $block = $(this).parents().eq(3);
-    if ($half_block.hasClass('container__half-block__minimize')) {
+    if ($halfBlock.hasClass('container__half-block__minimize')) {
         $block.height($block.height() - 100);
     } else {
         $block.height($block.height() - 200);
     }
     
-    $half_block.detach();
+    $halfBlock.detach();
     if ($block.is(':empty')) {
         $block.detach();
     }
 });
 $('body').on('click', '.container__half-block-wrap .minimize', function () {
-    const $half_block = $(this).parents().eq(2),
+    const $halfBlock = $(this).parents().eq(2),
         $block = $(this).parents().eq(3);
-    if ($half_block.hasClass('container__half-block__minimize')) {
+    if ($halfBlock.hasClass('container__half-block__minimize')) {
         $block.css('min-height', parseInt($block.css('min-height'),10) + 100);
     } else {
         $block.css('min-height', parseInt($block.css('min-height'),10) - 100);
     }
-    $half_block.toggleClass('container__half-block__minimize');
-    $half_block.find('.container__half-block__img').toggleClass('hidden');
-    $half_block.find('span').toggleClass('hidden');
-    $half_block.find('.container__half-block__text').toggleClass('container__text__minimize');
+    $halfBlock.toggleClass('container__half-block__minimize');
+    $halfBlock.find('.container__half-block__img').toggleClass('hidden');
+    $halfBlock.find('span').toggleClass('hidden');
+    $halfBlock.find('.container__half-block__text').toggleClass('container__text__minimize');
 });
 
 $('body').on('click', '.container__item .close', function () {
