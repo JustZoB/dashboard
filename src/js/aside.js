@@ -13,14 +13,14 @@ export let Aside = {
         Aside.addHtml($list, 'Option 8', 'fas fa-power-off');
     },
 
-    addHtml($list, menu_name = '', icon = '', active = '') {
+    addHtml($list, menuName = '', icon = '', active = '') {
         $list.append(`
         <li class="aside__menu__item ${active}">
             <div class="aside__menu__item__icon">
                 <i class="${icon} fa-2x "></i>
             </div>
             <div class="aside__menu__item__name hidden">
-                <p>${menu_name}</p>
+                <p>${menuName}</p>
             </div>
         </li>`);
     },

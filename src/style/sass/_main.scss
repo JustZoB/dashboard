@@ -44,12 +44,17 @@
                 margin: 0;
             }
             .sales__select {
+                position: relative;
                 display: flex;
                 align-items: center;
 
                 i {
                     @extend .text_blue;
                     cursor: pointer;
+                }
+                .options__popup {
+                    top: 0px;
+                    left: 20px;
                 }
             }
         }
