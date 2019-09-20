@@ -6,7 +6,7 @@ export let Container = {
             Container.addChart($row, 'medium', 'chart_revenue', revenue.title);
             Container.addTextInGraphTop($('.container__item').last(), 'container__item__text container__item__text_left', revenue.money, revenue.sold);
             Container.addChart($row, 'medium', 'chart_product-order', productOrder.title);
-            Container.addDoubleBlock($row, 'medium');
+            Container.addDoubleBlock($row, 'medium', revenue);
             Container.addChart($row, 'big', 'chart_customers', customers.title);
             Container.addTextInGraphTop($('.container__item').last(), 'container__item__text container__item__text_center', customers.sold);
             Container.addTextInGraphBottom($('.container__item').last(), 'container__item__text container__item__text_bottom', customers.date, customers.time);
@@ -32,11 +32,11 @@ export let Container = {
         Container.addWindowControl($list.find('.container__item').last());
     },
 
-    addDoubleBlock($list, size = '') {
+    addDoubleBlock($list, size = '', revenue) {
         let blockSize = Container.getGrindDouble(size);
         $($list).append(`<div class="container_${size} container__double-block ${blockSize}"></div>`);
-        Container.addHalfBlock($('.container__double-block'), 'light-sky-blue-bg', 'img/basket.png', 'Shopping basket', 'text_light-blue', '$433,534,300', 'Sold 12.332 Items');
-        Container.addHalfBlock($('.container__double-block'), 'light-green-bg', 'img/box.png', 'Box', 'text_light-green', '53.345', 'Order');
+        Container.addHalfBlock($('.container__double-block'), 'light-sky-blue-bg', 'img/basket.png', 'Shopping basket', 'text_light-blue', revenue.money, revenue.sold);
+        Container.addHalfBlock($('.container__double-block'), 'light-green-bg', 'img/box.png', 'Box', 'text_light-green', revenue.amount, revenue.order);
     },
 
     addHalfBlock($list, blockColor = '', imgSrc = '', imgAlt = '', textColor = '', spanText = '', text = '') {

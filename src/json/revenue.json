@@ -3,6 +3,7 @@
     "xAxis" : ["JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "JAN"],
     "data" : [1000, 1250, 1050, 1250, 950, 1300, 1650],
     "money" : "$433,534,300",
-    "sold" : "Sold 12.332 Items"
-    
+    "sold" : "Sold 12.332 Items",
+    "amount" : "53.345",
+    "order" : "Order"
 }
