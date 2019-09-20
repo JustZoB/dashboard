@@ -1,5 +1,4 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
+/* global Chart */
 import { Container } from './container.js';
 import { Aside } from './aside.js';
 
@@ -206,6 +205,7 @@ setTimeout(window.onload = () => {
     resizeing();
 }, 300);
 
+// eslint-disable-next-line no-unused-vars
 const revenueData = new Chart(document.getElementById('chart_revenue').getContext('2d'), {
     type: 'line',
     data: {
@@ -260,6 +260,7 @@ const revenueData = new Chart(document.getElementById('chart_revenue').getContex
         },
     },
 }),
+// eslint-disable-next-line no-unused-vars
 productOrderData = new Chart(document.getElementById('chart_product-order').getContext('2d'), {
     type: 'polarArea',
     data: {
@@ -287,6 +288,7 @@ productOrderData = new Chart(document.getElementById('chart_product-order').getC
         },
     },
 }),
+// eslint-disable-next-line no-unused-vars
 customersData = new Chart(document.getElementById('chart_customers').getContext('2d'), {
     type: 'line',
 
@@ -351,6 +353,7 @@ customersData = new Chart(document.getElementById('chart_customers').getContext(
         },
     },
 }),
+// eslint-disable-next-line no-unused-vars
 monthSalesData = new Chart(document.getElementById('chart_month-sales').getContext('2d'), {
     type: 'bar',
     data: {
@@ -410,6 +413,7 @@ monthSalesData = new Chart(document.getElementById('chart_month-sales').getConte
         },
     },
 }),
+// eslint-disable-next-line no-unused-vars
 departmentSalesData = new Chart(document.getElementById('chart_department-sales').getContext('2d'), {
     type: 'doughnut',
     data: {
@@ -573,6 +577,7 @@ const exchangeBase = (start = '', end = '', basedOn = '', basedFor = '') => {
 }
 
 const drawExchangeChartBase = (head, allRates, basedOn) => {
+    // eslint-disable-next-line no-unused-vars
     const exchangeRate = new Chart(document.getElementById('chart_exchange').getContext('2d'), {
             type: 'line',
             data: {
