@@ -103,7 +103,7 @@ $('.header__menu').on('click', function () {
         mainWidth();
     }
 });
-//.parents(%className%)
+
 const eventsClose = (classes) => {
     $(document).mouseup((e) => {
         $(classes).each((key, elem) => {
@@ -145,9 +145,7 @@ $.ajax({
         block.find(".chart_error").removeClass("hidden");
     },
 });
-
-let revenue = document.getElementById('chart_revenue').getContext('2d'),
-    revenueData = new Chart(revenue, {
+let revenueData = new Chart(document.getElementById('chart_revenue').getContext('2d'), {
     type: 'line',
     data: {
         labels: revenueJson.xAxis,
@@ -217,9 +215,7 @@ $.ajax({
         block.find(".chart_error").removeClass("hidden");
     },
 });
-
-let productOrder = document.getElementById('chart_product-order').getContext('2d'),
-    productOrderData = new Chart(productOrder, {
+let productOrderData = new Chart(document.getElementById('chart_product-order').getContext('2d'), {
     type: 'polarArea',
     data: {
         labels: productOrderJson.xAxis,
@@ -262,9 +258,7 @@ $.ajax({
         block.find(".chart_error").removeClass("hidden");
     },
 });
-
-let customers = document.getElementById('chart_customers').getContext('2d'),
-    customersData = new Chart(customers, {
+let customersData = new Chart(document.getElementById('chart_customers').getContext('2d'), {
     type: 'line',
 
     data: {
@@ -344,9 +338,7 @@ $.ajax({
         block.find(".chart_error").removeClass("hidden");
     },
 });
-
-let monthSales = document.getElementById('chart_month-sales').getContext('2d'),
-    monthSalesData = new Chart(monthSales, {
+let monthSalesData = new Chart(document.getElementById('chart_month-sales').getContext('2d'), {
     type: 'bar',
     data: {
         labels: monthSalesJson.xAxis,
@@ -421,9 +413,7 @@ $.ajax({
         block.find(".chart_error").removeClass("hidden");
     },
 });
-
-let departmentSales = document.getElementById('chart_department-sales').getContext('2d'),
-    departmentSalesData = new Chart(departmentSales, {
+let departmentSalesData = new Chart(document.getElementById('chart_department-sales').getContext('2d'), {
     type: 'doughnut',
     data: {
         labels: departmentSalesJson.xAxis,
@@ -586,8 +576,8 @@ const exchangeBase = (start = '', end = '', basedOn = '', basedFor = '') => {
 }
 
 const drawExchangeChartBase = (head, allRates, basedOn) => {
-    let exchangeChart = document.getElementById('chart_exchange').getContext('2d'),
-        exchangeRate = new Chart(exchangeChart, {
+
+    let exchangeRate = new Chart(document.getElementById('chart_exchange').getContext('2d'), {
             type: 'line',
             data: {
                 labels: head,
@@ -627,12 +617,12 @@ const showError = (text) => {
 setTypes();
 
 $('.exchange__input').on('click', function () {
-    let $block = $(this).parents().eq(3),
+    const $block = $(this).parents(".container__item"),
         $options = $(".options__exchange-rates"),
         start = $options.find(".exchange_start").val(),
         end = $options.find(".exchange_end").val(),
-        basedOn = $options.find(".exchange_basedOn").val(),
         basedFor = $options.find(".exchange_basedFor").val();
+    let basedOn = $options.find(".exchange_basedOn").val();
 
     if (basedOn === 'Base(EUR default)') {
         basedOn = 'EUR';

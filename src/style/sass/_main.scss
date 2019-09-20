@@ -168,7 +168,6 @@
         .exchange_basedFor,
         .exchange_basedOn,
         .exchange__input {
-            @extend .button;
             padding: 7px;
             margin: 3px;
         }

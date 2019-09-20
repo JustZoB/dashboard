@@ -12,17 +12,13 @@ export let Container = {
             Container.addTextInGraphBottom($('.container__item').last(), 'container__item__text container__item__text_bottom', 'Yesterday - 22 October 2016', '06:00 AM > 11:00 PM');
             Container.addChart($row, 'big', 'chart_exchange', 'Exchange rates');
             Container.addOptionsExchange($('.container__item').last().find(".options").find(".options__popup"));
-            //Container.addChart($row, 'big', 'chart_daily-sales', 'Daily Sales');
             Container.addChart($row, 'big', 'chart_month-sales', 'Monthly Sales');
             Container.addChart($row, 'big', 'chart_department-sales', 'Department Sales');
             
     },
 
     addChart($list, size = '', graphId = '', title = '', height = '80%', width = '80%') {
-        let blockSize = (size === 'medium') ? 'col-lg-4 col-md-6 col-xs-12' : 
-            (size === 'big') ? 'col-lg-6 col-md-12 col-xs-12' : 
-            'col-lg-4 col-md-6 col-xs-12';
-
+        let blockSize = Container.getGrindClass(size);
         $($list).append(`<div class="container__item container_${size} ${blockSize}">
             <div class="container__item__head">
                 <div class="container__item__title text_dark-blue">${title}</div>
@@ -37,9 +33,7 @@ export let Container = {
     },
 
     addDoubleBlock($list, size = '') {
-        let blockSize = (size === 'medium') ? 'col-lg-4 col-md-12 col-xs-12' :
-            (size === 'big') ? 'col-lg-6 col-md-12 col-xs-12' :
-            'col-lg-6 col-md-12 col-xs-12';
+        let blockSize = Container.getGrindClass(size);
         $($list).append(`<div class="container_${size} container__double-block ${blockSize}"></div>`);
         Container.addHalfBlock($('.container__double-block'), 'light-sky-blue-bg', 'img/basket.png', 'Shopping basket', 'text_light-blue', '$433,534,300', 'Sold 12.332 Items');
         Container.addHalfBlock($('.container__double-block'), 'light-green-bg', 'img/box.png', 'Box', 'text_light-green', '53.345', 'Order');
@@ -113,11 +107,11 @@ export let Container = {
         $list.find(".options__item").last().addClass("exchange__options__button");
         ($list).append(`
         <div class="options__exchange-rates hidden">
-            <select class="exchange_basedOn"></select>
-            <select class="exchange_basedFor"></select>
+            <select class="exchange_basedOn button"></select>
+            <select class="exchange_basedFor button"></select>
             <input type="date" class="exchange_start" value="2015-01-01" min="2000-01-01" max="2019-09-01">
             <input type="date" class="exchange_end" value="2018-01-01" min="2000-01-01" max="2019-09-01">
-            <button class="exchange__input">Input</button>
+            <button class="exchange__input button">Input</button>
         </div>`);
     },
 
@@ -126,5 +120,15 @@ export let Container = {
         <div class="chart_error hidden">
             <p>Can't draw a chart. No data. Please check your internet connection</p>
         </div>`);
+    },
+
+    getGrindClass(size) {
+        if (size === 'medium') {
+            return 'col-lg-4 col-md-6 col-xs-12';
+        } else if (size === 'big') {
+            return 'col-lg-6 col-md-12 col-xs-12';
+        }
+
+        return 'col-lg-4 col-md-6 col-xs-12';
     },
 }
