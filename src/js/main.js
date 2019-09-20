@@ -503,8 +503,8 @@ const exchangeBase = (start = '', end = '', basedOn = '', basedFor = '') => {
             borderWidth: 4,
             pointHitRadius: 15,
             label: basedFor,
-            backgroundColor: "rgba(" + r + ", " + g + ", " + b + ", 0.5)",
-            borderColor: "rgb(" + r + ", " + g + ", " + b + ")",
+            backgroundColor: `rgba(${r}, ${g}, ${b}, 0.5)`,
+            borderColor: `rgb(${r}, ${g}, ${b})`,
             data: basedForData,
         });
 
@@ -538,8 +538,8 @@ const exchangeBase = (start = '', end = '', basedOn = '', basedFor = '') => {
                 borderWidth: 4,
                 pointHitRadius: 15,
                 label: item,
-                backgroundColor: "rgba(" + r + ", " + g + ", " + b + ", 0.5)",
-                borderColor: "rgb(" + r + ", " + g + ", " + b + ")",
+                backgroundColor: `rgba(${r}, ${g}, ${b}, 0.5)`,
+                borderColor: `rgb(${r}, ${g}, ${b})`,
                 data: mapOfDataRates[item],
             });
         });
