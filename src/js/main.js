@@ -472,9 +472,9 @@ const setTypes = () => {
 
 const exchangeBase = (start = '', end = '', basedOn = '', basedFor = '') => {
     const getLink = (start, end, basedOn) => {
-        let link = 'https://api.exchangeratesapi.io/' + 'history?start_at=' + start + '&end_at=' + end;
+        let link = `https://api.exchangeratesapi.io/history?start_at=${start}&end_at=${end}`;
         if (basedOn !== '') {
-            link += '&base=' + basedOn;
+            link += `&base=${basedOn}`;
         }
         return link;
     }
