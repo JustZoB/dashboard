@@ -3,7 +3,7 @@ export let Aside = {
         let $aside = $('.aside'),
             $list = $aside.find('.aside__menu');
             
-        Aside.addHtml($list, 'Option 1', 'fas fa-chart-bar', ' active');
+        Aside.addHtml($list, 'Option 1', 'fas fa-chart-bar', 'active');
         Aside.addHtml($list, 'Option 2', 'fas fa-user-friends');
         Aside.addHtml($list, 'Option 3', 'fas fa-address-card'); 
         Aside.addHtml($list, 'Option 4', 'fas fa-tablet-alt');

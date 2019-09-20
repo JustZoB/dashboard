@@ -3,7 +3,84 @@
 import { Container } from './container.js';
 import { Aside } from './aside.js';
 
-Container.add();
+let revenueJson = {},
+    productOrderJson = {},
+    customersJson = {},
+    monthSalesJson = {},
+    departmentSalesJson = {};
+    
+$.ajax({ 
+    type: "GET",   
+    url: 'json/revenue.json',   
+    async: false,
+    success : function(data) {
+        revenueJson = data;
+    },
+    error : function() {
+        let block = $("#chart_revenue").parents().eq(1);
+        $("#chart_revenue").addClass("hidden");
+        block.find(".container__item__text").addClass("hidden");
+        block.find(".chart_error").removeClass("hidden");
+    },
+});
+$.ajax({ 
+    type: "GET",   
+    url: 'json/product_order.json',   
+    async: false,
+    success : function(data) {
+        productOrderJson = data;
+    },
+    error : function() {
+        let block = $("#chart_product_order").parents().eq(1);
+        $("#chart_product_order").addClass("hidden");
+        block.find(".container__item__text").addClass("hidden");
+        block.find(".chart_error").removeClass("hidden");
+    },
+});
+$.ajax({ 
+    type: "GET",   
+    url: 'json/customers.json',   
+    async: false,
+    success : function(data) {
+        customersJson = data;
+    },
+    error : function() {
+        let block = $("#chart_customers").parents().eq(1);
+        $("#chart_customers").addClass("hidden");
+        block.find(".container__item__text").addClass("hidden");
+        block.find(".chart_error").removeClass("hidden");
+    },
+});
+$.ajax({ 
+    type: "GET",   
+    url: 'json/month_sales.json',   
+    async: false,
+    success : function(data) {
+        monthSalesJson = data;
+    },
+    error : function() {
+        let block = $("#chart_month_sales").parents().eq(1);
+        $("#chart_month_sales").addClass("hidden");
+        block.find(".container__item__text").addClass("hidden");
+        block.find(".chart_error").removeClass("hidden");
+    },
+});
+$.ajax({ 
+    type: "GET",   
+    url: 'json/department_sales.json',   
+    async: false,
+    success : function(data) {
+        departmentSalesJson = data;
+    },
+    error : function() {
+        let block = $("#chart_department_sales").parents().eq(1);
+        $("#chart_department_sales").addClass("hidden");
+        block.find(".container__item__text").addClass("hidden");
+        block.find(".chart_error").removeClass("hidden");
+    },
+});
+
+Container.add(revenueJson, productOrderJson, customersJson, monthSalesJson, departmentSalesJson);
 Aside.add();
 
 const mainWidth = () => {
@@ -36,7 +113,6 @@ $('.header__profile__wrap').on('click', function () {
 $('.header__pop .close').on('click', function () {
     $(this).parents(".header__pop__wrap").toggleClass('hidden');
 });
-
 
 $('.header__messages').on('click', function () {
     $('.messages').toggleClass('hidden');
@@ -130,22 +206,7 @@ setTimeout(window.onload = () => {
     resizeing();
 }, 300);
 
-let revenueJson = {};
-$.ajax({ 
-    type: "GET",   
-    url: 'json/revenue.json',   
-    async: false,
-    success : function(data) {
-        revenueJson = data;
-    },
-    error : function() {
-        let block = $("#chart_revenue").parents().eq(1);
-        $("#chart_revenue").addClass("hidden");
-        block.find(".container__item__text").addClass("hidden");
-        block.find(".chart_error").removeClass("hidden");
-    },
-});
-let revenueData = new Chart(document.getElementById('chart_revenue').getContext('2d'), {
+const revenueData = new Chart(document.getElementById('chart_revenue').getContext('2d'), {
     type: 'line',
     data: {
         labels: revenueJson.xAxis,
@@ -198,24 +259,8 @@ let revenueData = new Chart(document.getElementById('chart_revenue').getContext(
             display: false,
         },
     },
-});
-
-let productOrderJson = {};
-$.ajax({ 
-    type: "GET",   
-    url: 'json/product_order.json',   
-    async: false,
-    success : function(data) {
-        productOrderJson = data;
-    },
-    error : function() {
-        let block = $("#chart_product_order").parents().eq(1);
-        $("#chart_product_order").addClass("hidden");
-        block.find(".container__item__text").addClass("hidden");
-        block.find(".chart_error").removeClass("hidden");
-    },
-});
-let productOrderData = new Chart(document.getElementById('chart_product-order').getContext('2d'), {
+}),
+productOrderData = new Chart(document.getElementById('chart_product-order').getContext('2d'), {
     type: 'polarArea',
     data: {
         labels: productOrderJson.xAxis,
@@ -241,24 +286,8 @@ let productOrderData = new Chart(document.getElementById('chart_product-order').
             },
         },
     },
-});
-
-let customersJson = {};
-$.ajax({ 
-    type: "GET",   
-    url: 'json/customers.json',   
-    async: false,
-    success : function(data) {
-        customersJson = data;
-    },
-    error : function() {
-        let block = $("#chart_customers").parents().eq(1);
-        $("#chart_customers").addClass("hidden");
-        block.find(".container__item__text").addClass("hidden");
-        block.find(".chart_error").removeClass("hidden");
-    },
-});
-let customersData = new Chart(document.getElementById('chart_customers').getContext('2d'), {
+}),
+customersData = new Chart(document.getElementById('chart_customers').getContext('2d'), {
     type: 'line',
 
     data: {
@@ -321,24 +350,8 @@ let customersData = new Chart(document.getElementById('chart_customers').getCont
             }],
         },
     },
-});
-
-let monthSalesJson = {};
-$.ajax({ 
-    type: "GET",   
-    url: 'json/month_sales.json',   
-    async: false,
-    success : function(data) {
-        monthSalesJson = data;
-    },
-    error : function() {
-        let block = $("#chart_month_sales").parents().eq(1);
-        $("#chart_month_sales").addClass("hidden");
-        block.find(".container__item__text").addClass("hidden");
-        block.find(".chart_error").removeClass("hidden");
-    },
-});
-let monthSalesData = new Chart(document.getElementById('chart_month-sales').getContext('2d'), {
+}),
+monthSalesData = new Chart(document.getElementById('chart_month-sales').getContext('2d'), {
     type: 'bar',
     data: {
         labels: monthSalesJson.xAxis,
@@ -396,24 +409,8 @@ let monthSalesData = new Chart(document.getElementById('chart_month-sales').getC
            display: false,
         },
     },
-});
-
-let departmentSalesJson = {};
-$.ajax({ 
-    type: "GET",   
-    url: 'json/department_sales.json',   
-    async: false,
-    success : function(data) {
-        departmentSalesJson = data;
-    },
-    error : function() {
-        let block = $("#chart_department_sales").parents().eq(1);
-        $("#chart_department_sales").addClass("hidden");
-        block.find(".container__item__text").addClass("hidden");
-        block.find(".chart_error").removeClass("hidden");
-    },
-});
-let departmentSalesData = new Chart(document.getElementById('chart_department-sales').getContext('2d'), {
+}),
+departmentSalesData = new Chart(document.getElementById('chart_department-sales').getContext('2d'), {
     type: 'doughnut',
     data: {
         labels: departmentSalesJson.xAxis,
@@ -576,8 +573,7 @@ const exchangeBase = (start = '', end = '', basedOn = '', basedFor = '') => {
 }
 
 const drawExchangeChartBase = (head, allRates, basedOn) => {
-
-    let exchangeRate = new Chart(document.getElementById('chart_exchange').getContext('2d'), {
+    const exchangeRate = new Chart(document.getElementById('chart_exchange').getContext('2d'), {
             type: 'line',
             data: {
                 labels: head,

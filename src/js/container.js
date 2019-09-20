@@ -1,24 +1,24 @@
 export let Container = {
-    add() {
+    add(revenue, productOrder, customers, monthSales, deaprtmentSales) {
         let $container = $('.container'),
             $row = $container.find('.row');
 
-            Container.addChart($row, 'medium', 'chart_revenue', 'Revenue');
-            Container.addTextInGraphTop($('.container__item').last(), 'container__item__text container__item__text_left', '$433,534,300', 'Sold 12.332 Items');
-            Container.addChart($row, 'medium', 'chart_product-order', 'Product Order');
+            Container.addChart($row, 'medium', 'chart_revenue', revenue.title);
+            Container.addTextInGraphTop($('.container__item').last(), 'container__item__text container__item__text_left', revenue.money, revenue.sold);
+            Container.addChart($row, 'medium', 'chart_product-order', productOrder.title);
             Container.addDoubleBlock($row, 'medium');
-            Container.addChart($row, 'big', 'chart_customers', 'Customers');
-            Container.addTextInGraphTop($('.container__item').last(), 'container__item__text container__item__text_center', '284,123');
-            Container.addTextInGraphBottom($('.container__item').last(), 'container__item__text container__item__text_bottom', 'Yesterday - 22 October 2016', '06:00 AM > 11:00 PM');
+            Container.addChart($row, 'big', 'chart_customers', customers.title);
+            Container.addTextInGraphTop($('.container__item').last(), 'container__item__text container__item__text_center', customers.sold);
+            Container.addTextInGraphBottom($('.container__item').last(), 'container__item__text container__item__text_bottom', customers.date, customers.time);
             Container.addChart($row, 'big', 'chart_exchange', 'Exchange rates');
             Container.addOptionsExchange($('.container__item').last().find(".options").find(".options__popup"));
-            Container.addChart($row, 'big', 'chart_month-sales', 'Monthly Sales');
-            Container.addChart($row, 'big', 'chart_department-sales', 'Department Sales');
+            Container.addChart($row, 'big', 'chart_month-sales', monthSales.title);
+            Container.addChart($row, 'big', 'chart_department-sales', deaprtmentSales.title);
             
     },
 
     addChart($list, size = '', graphId = '', title = '', height = '80%', width = '80%') {
-        let blockSize = Container.getGrindClass(size);
+        let blockSize = Container.getGrind(size);
         $($list).append(`<div class="container__item container_${size} ${blockSize}">
             <div class="container__item__head">
                 <div class="container__item__title text_dark-blue">${title}</div>
@@ -33,7 +33,7 @@ export let Container = {
     },
 
     addDoubleBlock($list, size = '') {
-        let blockSize = Container.getGrindClass(size);
+        let blockSize = Container.getGrindDouble(size);
         $($list).append(`<div class="container_${size} container__double-block ${blockSize}"></div>`);
         Container.addHalfBlock($('.container__double-block'), 'light-sky-blue-bg', 'img/basket.png', 'Shopping basket', 'text_light-blue', '$433,534,300', 'Sold 12.332 Items');
         Container.addHalfBlock($('.container__double-block'), 'light-green-bg', 'img/box.png', 'Box', 'text_light-green', '53.345', 'Order');
@@ -122,9 +122,19 @@ export let Container = {
         </div>`);
     },
 
-    getGrindClass(size) {
+    getGrind(size) {
         if (size === 'medium') {
             return 'col-lg-4 col-md-6 col-xs-12';
+        } else if (size === 'big') {
+            return 'col-lg-6 col-md-12 col-xs-12';
+        }
+
+        return 'col-lg-4 col-md-6 col-xs-12';
+    },
+
+    getGrindDouble(size) {
+        if (size === 'medium') {
+            return 'col-lg-4 col-md-12 col-xs-12';
         } else if (size === 'big') {
             return 'col-lg-6 col-md-12 col-xs-12';
         }
