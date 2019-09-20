@@ -99,7 +99,7 @@ $('.header__center__mini').on('click', function () {
 });
 
 $('body').on('click', '.options__button', function () {
-    $(this).parent().siblings().toggleClass('hidden');
+    $(this).parent().find(".options__popup").toggleClass('hidden');
 });
 
 $('.sales__select i').on('click', function () {

@@ -50,8 +50,8 @@ export let Container = {
                 </div>
             </div>  
         </div>`);
-        Container.addOptions($list.find('.container__half-block').last());
-        Container.addWindowControl($list.find('.container__half-block').last());
+        Container.addOptions($list.find('.container__half-block').last(), textColor);
+        Container.addWindowControl($list.find('.container__half-block').last(),textColor);
     },
 
     addTextInGraphTop($list, position = '', title = '', subtitle = '') {
@@ -68,11 +68,11 @@ export let Container = {
         </div>`);
     },
 
-    addOptions($list) {
+    addOptions($list, textColor) {
         ($list).append(`
         <div class="options">
             <div class="options__button">
-                <i class="fas fa-ellipsis-h fa-lg"></i>
+                <i class="fas fa-ellipsis-h fa-lg ${textColor}"></i>
             </div>
             <div class="options__popup hidden">
                 <div class="options__item">
@@ -91,14 +91,14 @@ export let Container = {
         </div>`);
     },
 
-    addWindowControl($list) {
+    addWindowControl($list, textColor) {
         ($list).append(`
         <div class="window-control">
             <div class="window-control__button minimize">
-                <i class="far fa-window-minimize fa-lg"></i>
+                <i class="far fa-window-minimize fa-lg ${textColor}"></i>
             </div>
             <div class="window-control__button close">
-                <i class="fas fa-times fa-lg"></i>
+                <i class="fas fa-times fa-lg ${textColor}"></i>
             </div>
         </div>`);
     },
