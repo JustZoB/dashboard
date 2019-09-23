@@ -49,6 +49,10 @@ p {
     display: none !important;
 }
 
+i {
+    user-select: none;
+}
+
 .window-control {
     position: absolute;
     top: 20px;
@@ -64,6 +68,10 @@ p {
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        
+        &:hover {
+            @extend .text_blue;
+        }
     }
 }
 
@@ -81,6 +89,10 @@ p {
         justify-content: center;
         align-items: center;
         cursor: pointer;
+
+        &:hover {
+            @extend .text_blue;
+        }
     }
     &__popup {
         position: absolute;
@@ -113,12 +125,16 @@ p {
 .container__double-block {
     .window-control {
         &__button {
-            @extend .text_ligth-gray;
+            &:hover {
+                @extend .text_blue;
+            }
         }
     }
     .options {
         &__button {
-            @extend .text_ligth-gray;
+            &:hover {
+                @extend .text_blue;
+            } 
         }
     }
 }

@@ -16,6 +16,8 @@
     flex-direction: column;
     align-items: center;
     padding: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
 
     &__header-wrap {
         width: 100%;
@@ -51,6 +53,9 @@
                 i {
                     @extend .text_blue;
                     cursor: pointer;
+                    &:hover {
+                        @extend .text_dark-blue;
+                    }
                 }
                 .options__popup {
                     top: 0px;

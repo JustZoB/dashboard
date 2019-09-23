@@ -71,8 +71,8 @@ export let Container = {
     addOptions($list, textColor) {
         ($list).append(`
         <div class="options">
-            <div class="options__button">
-                <i class="fas fa-ellipsis-h fa-lg ${textColor}"></i>
+            <div class="options__button ${textColor}">
+                <i class="fas fa-ellipsis-h fa-lg"></i>
             </div>
             <div class="options__popup hidden">
                 <div class="options__item">
@@ -94,11 +94,11 @@ export let Container = {
     addWindowControl($list, textColor) {
         ($list).append(`
         <div class="window-control">
-            <div class="window-control__button minimize">
-                <i class="far fa-window-minimize fa-lg ${textColor}"></i>
+            <div class="window-control__button minimize ${textColor}">
+                <i class="far fa-window-minimize fa-lg"></i>
             </div>
-            <div class="window-control__button close">
-                <i class="fas fa-times fa-lg ${textColor}"></i>
+            <div class="window-control__button close ${textColor}">
+                <i class="fas fa-times fa-lg"></i>
             </div>
         </div>`);
     },

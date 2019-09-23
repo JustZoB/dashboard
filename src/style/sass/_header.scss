@@ -137,6 +137,7 @@
             
             display: flex;
             align-items: center;
+
             i {
                 cursor: pointer;
             }
@@ -238,6 +239,7 @@
             height: 50px;
             border-radius: 100px;
             margin: 0 7px;
+            user-select: none;
         }
         i {
             @extend .text_ligth-gray;
@@ -341,6 +343,7 @@
                 width: 100px;
                 height: 100px;
                 border-radius: 100px;
+                user-select: none;
             }
         }
         &__name {
@@ -348,6 +351,9 @@
             display: flex;
             justify-content: center;
             padding: 10px 0;
+            h2 {
+                margin: 0;
+            }
         }
         &__online {
             width: 100%;
@@ -375,10 +381,16 @@
             i {
                 margin: 0 10px;
             }
+            &__sign-out {
+                @extend .text_red;
+            }
             & > div {
                 display: flex;
-                margin: 3px 0;
+                padding: 5px 0;
                 cursor: pointer;
+                &:hover {
+                    @extend .dark-gray-bg;
+                }
             }
         }
     }

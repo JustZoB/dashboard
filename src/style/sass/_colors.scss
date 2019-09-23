@@ -1,5 +1,6 @@
 $white: #ffffff;
 $gray: #fafafa;
+$dark-gray: #dddddd;
 
 $light-sky-blue: #bceaec;
 $lighter-blue: #8fbff0;
@@ -19,6 +20,9 @@ $yellow: #ecda41;
 }
 .gray-bg {
     background-color: $gray;
+}
+.dark-gray-bg {
+    background-color: $dark-gray;
 }
 .light-green-bg {
     background-color: $lighter-green;
