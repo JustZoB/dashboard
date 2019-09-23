@@ -190,11 +190,7 @@ const eventsClose = (classes) => {
     });
 }
 
-$("i").each((key, elem) => {
-    elem.setAttribute('unselectable', 'on');
-    elem.onselectstart = function() { return false; };
-    elem.parent().setAttribute('unselectable', 'on');
-});
+
 
 eventsClose('.options__popup');
 eventsClose('.header__pop__wrap');
