@@ -190,6 +190,10 @@ const eventsClose = (classes) => {
     });
 }
 
+$("i").each((key, elem) => {
+    elem.setAttribute('unselectable', 'on');
+});
+
 eventsClose('.options__popup');
 eventsClose('.header__pop__wrap');
 
