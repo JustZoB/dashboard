@@ -94,13 +94,6 @@ const mainWidth = () => {
     }
 }
 
-const mainCentering = () => {
-    let paddingLeft = ($(".main-wrap").width() - 1440 > 0) && ($(".main-wrap").width() > '1540') 
-    ? (50 +$(".main-wrap").width() - 1440) / 2 
-    : 50;
-    $('.main').css("padding-left", paddingLeft);
-}
-
 $('.header__center__mini').on('click', function () {
     $('.header__center__normal').toggleClass('active');
 });
@@ -202,7 +195,6 @@ eventsClose('.header__pop__wrap');
 
 const resizeing = () => { 
     mainWidth();
-    mainCentering();
 }
 
 $(window).on('resize', () => {

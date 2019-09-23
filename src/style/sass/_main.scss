@@ -19,6 +19,7 @@
     &__header-wrap {
         width: 100%;
         max-width: $lg;
+        margin: 0 auto;
     }
 
     &__header {
@@ -93,6 +94,7 @@
 .container {
     width: 100%;
     max-width: $lg;
+    margin: 0 auto;
 
     .row {
         display: flex;
