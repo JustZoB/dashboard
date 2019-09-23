@@ -4,17 +4,19 @@ $aside__name_width: 150px;
 
 .aside {
     @extend .white-bg;
-    position: relative;
+    position: fixed;
     
     left: 0;
+    top: 80px;
+    height: 100%;
     width: $aside__icon_width;
     z-index: 5;
     overflow-y: auto;
     transition: 0.3s ease-in-out;
 
     &.active {
-        left: 0;
         width: $aside__icon_width + $aside__name_width;
+        left: 0;
     }
 
     &__menu {

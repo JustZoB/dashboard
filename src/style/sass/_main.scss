@@ -1,13 +1,20 @@
 .content {
     position: relative;
-    display: flex;
-    top: 80px;
 }
 
 .main-wrap {
     position: relative;
+    padding: 80px 0 0 $aside__icon_width;
     width: 95%;
     transition: 0.3s ease-in-out;
+
+    &.active {
+        padding-left: $aside__name_width + $aside__icon_width;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding-left: 0;
+    }
 }
 
 .main {

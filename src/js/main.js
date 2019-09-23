@@ -437,7 +437,7 @@ departmentSalesData = new Chart(document.getElementById('chart_department-sales'
             position: 'right',
             labels: {
                 padding: 10,
-                fontSize: 14,
+                fontSize: 16,
                 fontFamily: "'Montserrat', serif",
             },
         },
