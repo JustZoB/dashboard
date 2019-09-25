@@ -1,5 +1,7 @@
 export let Modal = {
-    init(list) {
+    init(list, userset = {}) {
+        let dataSet = Modal.getDataSet(userset);
+        
         if (!$("body").find(".modalWindow__background").length) {
             $("body").append(`<div class="modalWindow__background hidden"></div>`);
         }
@@ -11,12 +13,87 @@ export let Modal = {
             $(thisModal).removeClass('hidden');
             $("body").css({"overflow" : "hidden"});
         });
-        Modal.cssModalWindow();
-        Modal.cssHeader();
-        Modal.cssTitle();
-        Modal.cssClose();
-        Modal.cssBackground();
-        Modal.cssContent();
+        Modal.cssModalWindow(thisModal, dataSet.options.modalWindow);
+        Modal.cssHeader(thisModal, dataSet.options);
+        Modal.cssTitle(thisModal, dataSet.options.title);
+        Modal.cssClose(thisModal);
+        Modal.cssBackground(dataSet.options.background);
+        Modal.cssContent(thisModal);
+    },
+
+    getDataSet(userset) {
+        let dataSet = { options: {} };
+        if (userset.options !== undefined) {
+            dataSet.options.modalWindow = userset.options.modalWindow !== undefined 
+            ? Modal.getDataModalWindowSetOnUser(userset.options.modalWindow) 
+            : dataSet.options.modalWindow = Modal.getDataModalWindowDefualt();
+
+            dataSet.options.header = userset.options.header !== undefined
+            ? Modal.getDataHeaderSetOnUser(userset.options.header)
+            : dataSet.options.header = Modal.getDataHeaderDefualt();
+
+            dataSet.options.background = userset.options.background !== undefined
+            ? Modal.getDataBackgroundSetOnUser(userset.options.background)
+            : dataSet.options.background = Modal.getDataBackgroundDefualt();
+        } else {
+            dataSet.options.modalWindow = Modal.getDataModalWindowDefualt();
+            dataSet.options.header = Modal.getDataHeaderDefualt();
+            dataSet.options.background = Modal.getDataBackgroundDefualt();
+        }
+
+        return dataSet;
+    },
+
+    getDataModalWindowSetOnUser(setting) {
+        return  {
+            minWidth: setting.minWidth !== undefined ? setting.minWidth : 400,
+            minHeight: setting.minHeight !== undefined ? setting.minHeight : 300,
+            width: setting.width !== undefined ? setting.width : "unset",
+            height: setting.height !== undefined ? setting.height : "unset",
+            top: setting.top !== undefined ? setting.top : "50%",
+            left: setting.left !== undefined ? setting.left : "50%",
+            backgroundColor: setting.backgroundColor !== undefined ? setting.backgroundColor : "white",
+            borderRadius: setting.borderRadius !== undefined ? setting.borderRadius : 7,
+        }
+    },
+
+    getDataModalWindowDefualt() {
+        return {
+            minWidth: 400,
+            minHeight: 300,
+            width: "unset",
+            height: "unset",
+            top: "50%",
+            left: "50%",
+            backgroundColor: "white",
+            borderRadius: 7,
+        }
+    },
+
+    getDataBackgroundSetOnUser(setting) {
+        return {
+            backgroundColor : setting.backgroundColor !== undefined ? setting.backgroundColor : "black",
+            opacity: setting.opacity !== undefined ? setting.opacity : "0.6",
+        }
+    },
+
+    getDataBackgroundDefualt() {
+        return {
+            backgroundColor : "black",
+            opacity: "0.6",
+        }
+    },
+
+    getDataHeaderSetOnUser(setting) {
+        return {
+            backgroundColor: setting.backgroundColor !== undefined ? setting.header.backgroundColor : "#595959",
+        }
+    },
+
+    getDataHeaderDefualt() {
+        return {
+            backgroundColor: "#595959",
+        }
     },
 
     appendModal(list) {
@@ -39,31 +116,32 @@ export let Modal = {
 
         return `.modal__${list}`;
     },
-
-    cssModalWindow() {
-        $(".modalWindow").css({
+    
+    cssModalWindow(thisModal, settings) {
+        $(thisModal).css({
             "position": "fixed",
-            "zIndex": 20,
-            "min-width": 400,
-            "min-height" : 300,
-            "top" : "50%",
-            "left" : "50%",
-            "background-color" : "white",
+            "zIndex": 100,
+            "width" : settings.width,
+            "height" : settings.height,
+            "min-width": settings.minWidth,
+            "min-height" : settings.minHeight,
+            "top" : settings.top,
+            "left" : settings.left,
+            "background-color" : settings.backgroundColor,
             "transform": "translate(-50%, -50%)",
-            "border-radius" : 7,
-            "border-top-left-radius" : 9,
-            "border-top-right-radius" : 9,
+            "border-radius" : settings.borderRadius,
+            "border-top-left-radius" : settings.borderRadius + 2,
+            "border-top-right-radius" : settings.borderRadius + 2,
         });
     }, 
 
-    cssHeader() {
-        $(".modalWindow__header").css({
+    cssHeader(thisModal, settings) {
+        $(thisModal).find(".modalWindow__header").css({
             "display" : "flex",
             "justify-content": "space-between",
-            "heigth" : 40,
-            "background-color" : "#595959",
-            "border-top-left-radius" : 7,
-            "border-top-right-radius" : 7,
+            "background-color" : settings.header.backgroundColor,
+            "border-top-left-radius" : settings.modalWindow.borderRadius,
+            "border-top-right-radius" : settings.modalWindow.borderRadius,
         });
     },
 
@@ -77,8 +155,8 @@ export let Modal = {
         });
     },
 
-    cssClose() {
-        $(".modalWindow__header__close-button").css({
+    cssClose(thisModal) {
+        $(thisModal).find(".modalWindow__header__close-button").css({
             "display": "flex",
             "justify-content": "center",
             "align-items": "center",
@@ -100,16 +178,16 @@ export let Modal = {
         });
     },
 
-    cssBackground() {
+    cssBackground(settings) {
         $(".modalWindow__background").css({
             "position" : "fixed",
-            "zIndex": 19,
-            "width": "100%",
-            "height" : "100%",
+            "zIndex": 99,
             "top" : 0,
+            "bottom" : 0,
+            "right" : 0,
             "left" : 0,
-            "background-color" : "black",
-            "opacity" : "0.6",
+            "background-color" : settings.backgroundColor,
+            "opacity" : settings.opacity,
         }).on('click', function () {
             $(this).addClass('hidden');
             $('.modalWindow').addClass('hidden');
@@ -117,8 +195,8 @@ export let Modal = {
         });
     },
 
-    cssContent() {
-        $(".modalWindow__content").css({
+    cssContent(thisModal) {
+        $(thisModal).find(".modalWindow__content").css({
             "margin" : 15,
         });
     },

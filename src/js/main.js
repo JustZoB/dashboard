@@ -646,5 +646,13 @@ $('.exchange__input').on('click', function () {
 let exchange = exchangeBase('2015-01-01', '2018-01-01', 'USD', 'RUB');
 drawExchangeChartBase(exchange.head, exchange.allRates, exchange.basedOn);
 
-Modal.init(".fa-user-friends");
+let setOpt = {
+    options: {
+        modalWindow: {
+            minWidth: 600,
+        }
+    }
+}
+
+Modal.init(".fa-user-friends", setOpt);
 Modal.init(".fa-tablet-alt");
