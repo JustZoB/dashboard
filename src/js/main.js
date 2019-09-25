@@ -1,6 +1,7 @@
 /* global Chart */
 import { Container } from './container.js';
 import { Aside } from './aside.js';
+import { Modal } from './modal.js'
 
 let revenueJson = {},
     productOrderJson = {},
@@ -295,7 +296,6 @@ customersData = new Chart(document.getElementById('chart_customers').getContext(
     type: 'line',
 
     data: {
-        
         labels: customersJson.xAxis,
         datasets: [{
             fill: false,
@@ -645,3 +645,6 @@ $('.exchange__input').on('click', function () {
 
 let exchange = exchangeBase('2015-01-01', '2018-01-01', 'USD', 'RUB');
 drawExchangeChartBase(exchange.head, exchange.allRates, exchange.basedOn);
+
+Modal.init(".fa-user-friends");
+Modal.init(".fa-tablet-alt");
