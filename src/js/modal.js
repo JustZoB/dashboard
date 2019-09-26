@@ -123,6 +123,24 @@ export let Modal = {
     },
 
     appendModal(list, userDataSet, title, defualtSet) {
+        let oneTag = [
+            "area", 
+            "base", 
+            "br", 
+            "col", 
+            "command", 
+            "embed", 
+            "hr", 
+            "img", 
+            "input", 
+            "keygen", 
+            "link", 
+            "meta", 
+            "param", 
+            "source", 
+            "track", 
+            "wbr"
+        ];
         if ((list[0]) === '.') {
             list = 'C' + list.slice(1);
         } else if ((list[0]) === '#') {
@@ -140,60 +158,64 @@ export let Modal = {
                 <div class="modalWindow__content"></div>
             </div>
         `);
-
+        
         if (userDataSet !== undefined) {
-            userDataSet.forEach(element => {
-                let thisModal = $(`.modal__${list}`),
-                    oneTag = [
-                        "area", 
-                        "base", 
-                        "br", 
-                        "col", 
-                        "command", 
-                        "embed", 
-                        "hr", 
-                        "img", 
-                        "input", 
-                        "keygen", 
-                        "link", 
-                        "meta", 
-                        "param", 
-                        "source", 
-                        "track", 
-                        "wbr"
-                    ];
-
-                if (oneTag.some(elem => elem === element.tag)) {
-                    thisModal.find(".modalWindow__content").append(`
-                        <${element.tag}>
-                    `);
-                    if (element.text !== undefined) {
-                        $(`<p>${element.text}</p>`).insertBefore( $(element.tag).last() );
-                    }
-                } else {
-                    thisModal.find(".modalWindow__content").append(`
-                        <${element.tag}></${element.tag}>
-                    `);
-                    if (element.text !== undefined) {
-                        $(element.tag).last().append(element.text);
-                    }
-                }
-
-                if (element.attributes !== undefined) {
-                    for (const [name, value] of Object.entries(element.attributes)) {
-                        $(element.tag).last().attr(name, value);
-                    }
-                }
-
-                if (element.styles !== undefined) {
-                    Modal.cssTag($(element.tag).last(), element.styles, defualtSet[element.tag]);
-                } else {
-                    Modal.cssTagDefault($(element.tag).last(), defualtSet[element.tag]);
-                }
-            });
+            Modal.appendUserData(oneTag, $(`.modal__${list}`).find(".modalWindow__content"), defualtSet, userDataSet);
         }
 
         return `.modal__${list}`;
+    },
+
+    appendUserData(oneTag, appendTo, defualtSet, userDataSet) {
+        let properties = {
+            display : "display",
+            flexDirection : "flex-direction",
+            margin : "margin",
+            padding : "padding",
+            border : "border",
+            cursor : "cursor",
+            borderColor : "border-color",
+            fontFamaly : "font-family",
+            fontWeight : "font-weight",
+            width : "width",
+            heigth : "heigth",
+            color : "color",
+            backgroundColor : "background-color",
+        }
+
+        userDataSet.forEach(element => {
+            if (oneTag.some(elem => elem === element.tag)) {
+                appendTo.append(`
+                    <${element.tag}>
+                `);
+                if (element.text !== undefined) {
+                    $(`<p>${element.text}</p>`).insertBefore( $(element.tag).last() );
+                }
+            } else {
+                appendTo.append(`
+                    <${element.tag}></${element.tag}>
+                `);
+                if (element.text !== undefined) {
+                    $(element.tag).last().append(element.text);
+                }
+            }
+
+            if (element.attributes !== undefined) {
+                for (const [name, value] of Object.entries(element.attributes)) {
+                    $(element.tag).last().attr(name, value);
+                }
+            }
+
+            if (element.styles !== undefined) {
+                Modal.cssTag(properties, $(element.tag).last(), element.styles, defualtSet[element.tag]);
+            } else {
+                Modal.cssTagDefault(properties, $(element.tag).last(), defualtSet[element.tag]);
+            }
+
+            if (element.objects !== undefined) {
+                Modal.appendUserData(oneTag, $(element.tag).last(), defualtSet, element.objects);
+            }
+        });
     },
     
     cssModalWindow(thisModal, settings) {
@@ -280,67 +302,43 @@ export let Modal = {
         });
     },
 
-    cssTag(thisTag, userStyleSet, defualtSet = undefined) {
+    cssTag(properties, thisTag, userStyleSet, defualtSet = undefined) {
         if (defualtSet !== undefined) {
-            thisTag.css({
-                "margin" : userStyleSet.margin !== undefined ? userStyleSet.margin : defualtSet.margin !== undefined ? defualtSet.margin : 0,
-                "padding" : userStyleSet.padding !== undefined ? userStyleSet.padding : defualtSet.padding !== undefined ? defualtSet.padding : 0,
-                "border" : userStyleSet.border !== undefined ? userStyleSet.border : defualtSet.border !== undefined ? defualtSet.border : 0,
-                "border-color" : userStyleSet.borderColor !== undefined ? userStyleSet.borderColor : defualtSet.borderColor !== undefined ? defualtSet.borderColor : "unset",
-                "font-size" : userStyleSet.fontSize !== undefined ? userStyleSet.fontSize : defualtSet.fontSize !== undefined ? defualtSet.fontSize : 14,
-                "font-family" : userStyleSet.fontFamaly !== undefined ? userStyleSet.fontFamaly : defualtSet.fontFamaly !== undefined ? defualtSet.fontFamaly : 0,
-                "font-weight" : userStyleSet.fontWeight !== undefined ? userStyleSet.fontWeight : defualtSet.fontWeight !== undefined ? defualtSet.fontWeight : 400,
-                "width" : userStyleSet.width !== undefined ? userStyleSet.width : defualtSet.width !== undefined ? defualtSet.width : "unset",
-                "heigth" : userStyleSet.heigth !== undefined ? userStyleSet.heigth : defualtSet.heigth !== undefined ? defualtSet.heigth : "unset",
-                "color" : userStyleSet.color !== undefined ? userStyleSet.color : defualtSet.color !== undefined ? defualtSet.color : "unset",
-                "background-color" : userStyleSet.backgroundColor !== undefined ? userStyleSet.backgroundColor : defualtSet.backgroundColor !== undefined ? defualtSet.backgroundColor : "unset",
-            });
+            for (let [key, value] of Object.entries(properties)) {
+                Modal.setCssForTagUserDefualt(thisTag, userStyleSet[key], defualtSet[key], value);
+            }
         } else {
-            thisTag.css({
-                "margin" : userStyleSet.margin !== undefined ? userStyleSet.margin : 0,
-                "padding" : userStyleSet.padding !== undefined ? userStyleSet.padding : 0,
-                "border" : userStyleSet.border !== undefined ? userStyleSet.border : 0,
-                "border-color" : userStyleSet.borderColor !== undefined ? userStyleSet.borderColor : "unset",
-                "font-size" : userStyleSet.fontSize !== undefined ? userStyleSet.fontSize : 14,
-                "font-family" : userStyleSet.fontFamaly !== undefined ? userStyleSet.fontFamaly : 0,
-                "font-weight" : userStyleSet.fontWeight !== undefined ? userStyleSet.fontWeight : 400,
-                "width" : userStyleSet.width !== undefined ? userStyleSet.width : "unset",
-                "heigth" : userStyleSet.heigth !== undefined ? userStyleSet.heigth : "unset",
-                "color" : userStyleSet.color !== undefined ? userStyleSet.color : "unset",
-                "background-color" : userStyleSet.backgroundColor !== undefined ? userStyleSet.backgroundColor : "unset",
-            });
+            for (let [key, value] of Object.entries(properties)) {
+                Modal.setCssForTagUser(thisTag, userStyleSet[key], value);
+            }
+        }
+    },
+    
+    cssTagDefault(properties, thisTag, defualtSet = undefined) {
+        if (defualtSet !== undefined) {
+            for (let [key, value] of Object.entries(properties)) {
+                Modal.setCssForTagDefualt(thisTag, defualtSet[key], value);
+            }
         }
     },
 
-    cssTagDefault(thisTag, defualtSet = undefined) {
+    setCssForTagUserDefualt(thisTag, userSet, defualtSet, property) {
+        if (userSet !== undefined) {
+            thisTag.css(property, userSet);
+        } else if (defualtSet !== undefined) {
+            thisTag.css(property, defualtSet);
+        }
+    },
+
+    setCssForTagUser(thisTag, userSet, property) {
+        if (userSet !== undefined) {
+            thisTag.css(property, userSet);
+        }
+    },
+
+    setCssForTagDefualt(thisTag, defualtSet, property) {
         if (defualtSet !== undefined) {
-            thisTag.css({
-                "margin" : defualtSet.margin !== undefined ? defualtSet.margin : 0,
-                "padding" : defualtSet.padding !== undefined ? defualtSet.padding : 0,
-                "border" : defualtSet.border !== undefined ? defualtSet.border : 0,
-                "border-color" : defualtSet.borderColor !== undefined ? defualtSet.borderColor : "unset",
-                "font-size" : defualtSet.fontSize !== undefined ? defualtSet.fontSize : 14,
-                "font-family" : defualtSet.fontFamaly !== undefined ? defualtSet.fontFamaly : 0,
-                "font-weight" : defualtSet.fontWeight !== undefined ? defualtSet.fontWeight : 400,
-                "width" : defualtSet.width !== undefined ? defualtSet.width : "unset",
-                "heigth" : defualtSet.heigth !== undefined ? defualtSet.heigth : "unset",
-                "color" : defualtSet.color !== undefined ? defualtSet.color : "unset",
-                "background-color" : defualtSet.backgroundColor !== undefined ? defualtSet.backgroundColor : "unset",
-            });
-        } else {
-            thisTag.css({
-                "margin" : 0,
-                "padding" : 0,
-                "border" : 0,
-                "border-color" : "unset",
-                "font-size" : 14,
-                "font-family" : "unset",
-                "font-weight" : 400,
-                "width" : "unset",
-                "heigth" : "unset",
-                "color" : "unset",
-                "background-color" : "unset",
-            });
+            thisTag.css(property, defualtSet);
         }
     },
 }

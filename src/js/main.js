@@ -646,10 +646,11 @@ $('.exchange__input').on('click', function () {
 let exchange = exchangeBase('2015-01-01', '2018-01-01', 'USD', 'RUB');
 drawExchangeChartBase(exchange.head, exchange.allRates, exchange.basedOn);
 
+let modalWidth = 600;
 let setOpt = {
     options: {
         modalWindow: {
-            width: 400,
+            width: modalWidth,
         }
     }
 }
@@ -662,12 +663,18 @@ let setData = {
                 type: "text",
                 placeholder: "First name",
             },
+            styles: {
+                width: modalWidth - 74,
+            }
         },
         {
             tag: "input",
             attributes: {
                 type: "text",
                 placeholder: "Last name",
+            },
+            styles: {
+                width: modalWidth - 74,
             }
         },
         {
@@ -675,6 +682,9 @@ let setData = {
             attributes: {
                 type: "text",
                 placeholder: "Email",
+            },
+            styles: {
+                width: modalWidth - 74,
             }
         },
         {
@@ -684,7 +694,7 @@ let setData = {
                 placeholder: "Password",
             },
             styles: {
-                width: 100,
+                width: (modalWidth - 30) / 2  - 45,
             }
         },
         {
@@ -694,21 +704,31 @@ let setData = {
                 placeholder: "Confirm",
             },
             styles: {
-                width: 100,
+                width: (modalWidth - 30) / 2  - 45,
             }
         },
         {
-            tag: "input",
-            attributes: {
-                type: "submit",
-            },
+            tag: "div",
             styles: {
-                width: 150,
-                border: 0,
-                fontWeight: "bold",
-                backgroundColor: "#0080D0",
-                color: "white",
-            }
+                display: "flex",
+                flexDirection: "row-reverse"
+            },
+            objects: [
+                {
+                    tag: "input",
+                    attributes: {
+                        type: "submit",
+                    },
+                    styles: {
+                        width: (modalWidth - 30)/ 2 - 23,
+                        border: 0,
+                        fontWeight: "bold",
+                        backgroundColor: "#0080D0",
+                        color: "white",
+                        cursor: "pointer",
+                    }
+                },
+            ]
         },
     ],
     title: "Registration",
