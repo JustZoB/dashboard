@@ -649,10 +649,70 @@ drawExchangeChartBase(exchange.head, exchange.allRates, exchange.basedOn);
 let setOpt = {
     options: {
         modalWindow: {
-            minWidth: 600,
+            width: 400,
         }
     }
 }
 
-Modal.init(".fa-user-friends", setOpt);
+let setData = {
+    objects: [
+        {
+            tag: "input",
+            attributes: {
+                type: "text",
+                placeholder: "First name",
+            },
+        },
+        {
+            tag: "input",
+            attributes: {
+                type: "text",
+                placeholder: "Last name",
+            }
+        },
+        {
+            tag: "input",
+            attributes: {
+                type: "text",
+                placeholder: "Email",
+            }
+        },
+        {
+            tag: "input",
+            attributes: {
+                type: "password",
+                placeholder: "Password",
+            },
+            styles: {
+                width: 100,
+            }
+        },
+        {
+            tag: "input",
+            attributes: {
+                type: "password",
+                placeholder: "Confirm",
+            },
+            styles: {
+                width: 100,
+            }
+        },
+        {
+            tag: "input",
+            attributes: {
+                type: "submit",
+            },
+            styles: {
+                width: 150,
+                border: 0,
+                fontWeight: "bold",
+                backgroundColor: "#0080D0",
+                color: "white",
+            }
+        },
+    ],
+    title: "Registration",
+}
+
+Modal.init(".fa-user-friends", setOpt, setData);
 Modal.init(".fa-tablet-alt");
