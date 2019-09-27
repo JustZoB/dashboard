@@ -647,15 +647,14 @@ let exchange = exchangeBase('2015-01-01', '2018-01-01', 'USD', 'RUB');
 drawExchangeChartBase(exchange.head, exchange.allRates, exchange.basedOn);
 
 let modalWidth = 600;
-let setOpt = {
-    options: {
-        modalWindow: {
-            width: modalWidth,
-        }
-    }
-}
-
 let setData = {
+    title: "Registration",
+    styles: 
+    {
+        modal: {
+            minWidth: modalWidth,
+        },
+    },
     objects: [
         {
             tag: "input",
@@ -731,8 +730,7 @@ let setData = {
             ]
         },
     ],
-    title: "Registration",
 }
 
-Modal.init(".fa-user-friends", setOpt, setData);
+Modal.init(".fa-user-friends", setData);
 Modal.init(".fa-tablet-alt");

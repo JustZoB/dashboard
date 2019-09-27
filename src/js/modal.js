@@ -1,22 +1,29 @@
 export let Modal = {
-    init(list, userOptionsSet = {}, userDataSet = {}) {
+    init(list, userDataSet = {}) {
         const defualtSet = {
-            modalWindow: {
+            modal: {
+                position: "fixed",
+                zIndex: 100,
+                transform: "translate(-50%, -50%)",
                 minWidth: 400,
                 minHeight: 300,
-                width: "unset",
-                height: "unset",
                 top: "50%",
                 left: "50%",
                 backgroundColor: "white",
                 borderRadius: 7,
+                borderTopLeftRadius : 9,
+                borderTopRightRadius : 9,
             },
             background: {
                 backgroundColor : "black",
                 opacity: "0.6",
             },
             header: {
+                display : "flex",
+                justifyContent: "space-between",
                 backgroundColor: "#595959",
+                borderTopLeftRadius : 7,
+                borderTopRightRadius : 7,
             },
             input: {
                 border: "1px solid",
@@ -26,103 +33,72 @@ export let Modal = {
                 margin: 10,
             },
         }
-        let dataSet = Modal.getDataSet(userOptionsSet, defualtSet);
+        let properties = {
+            backgroundColor : "background-color",
+            bottom: "bottom",
+            border : "border",
+            borderRadius : "border-radius",
+            borderTopLeftRadius : "border-top-left-radius",
+            borderTopRightRadius : "border-top-right-radius",
+            borderBottomLeftRadius : "border-bottom-left-radius",
+            borderBottomRightRadius : "border-bottom-right-radius",
+            borderColor : "border-color",
+            color : "color",
+            cursor : "cursor",
+            display : "display",
+            flexDirection : "flex-direction",
+            float : "float",
+            fontSize : "font-size",
+            fontStyle : "font-style",
+            fontFamaly : "font-family",
+            fontWeight : "font-weight",
+            justifyContent : "justify-content",
+            heigth : "heigth",
+            left: "left",
+            lineHeight : "line-height",
+            listStyleType : "list-style-type",
+            margin : "margin",
+            marginBottom : "margin-bottom",
+            marginTop : "margin-top",
+            marginLeft : "margin-left",
+            marginRight : "margin-right",
+            maxHeight : "max-height",
+            maxWidth : "max-width",
+            minHeight : "min-height",
+            minWidth : "min-width",
+            opacity : "opacity",
+            overflow : "overflow",
+            padding : "padding",
+            paddingBottom : "padding-bottom",
+            paddingTop : "padding-top",
+            paddingLeft : "padding-left",
+            paddingRight : "padding-right",
+            position : "position",
+            right: "right",
+            top: "top",
+            transform : "transform",
+            transition : "transition",
+            textAlign : "text-align",
+            verticalAlign : "vertical-align",
+            width : "width",
+            whiteSpace : "white-space",
+            zIndex : "z-index",
+        } 
         
         if (!$("body").find(".modalWindow__background").length) {
             $("body").append(`<div class="modalWindow__background hidden"></div>`);
         }
         let title = (userDataSet.title !== undefined) ? userDataSet.title : "",
-            thisModal = Modal.appendModal(list, userDataSet.objects, title, defualtSet);        
+            thisModal = Modal.appendModal(list, properties, userDataSet, title, defualtSet);        
         
         $(list).on('click', function () {
             $(".modalWindow__background").removeClass('hidden');
             $(thisModal).removeClass('hidden');
             $("body").css({"overflow" : "hidden"});
         });
-        Modal.cssModalWindow(thisModal, dataSet.options.modalWindow);
-        Modal.cssHeader(thisModal, dataSet.options);
-        Modal.cssTitle(thisModal, dataSet.options.title);
-        Modal.cssClose(thisModal);
-        Modal.cssBackground(dataSet.options.background);
-        Modal.cssContent(thisModal);
     },
 
-    getDataSet(userset, defualtSet) {
-        let dataSet = { options: {} };
-        if (userset.options !== undefined) {
-            dataSet.options.modalWindow = userset.options.modalWindow !== undefined 
-            ? Modal.getDataModalWindowSetOnUser(userset.options.modalWindow, defualtSet.modalWindow) 
-            : dataSet.options.modalWindow = Modal.getDataModalWindowDefualt(defualtSet.modalWindow);
-
-            dataSet.options.header = userset.options.header !== undefined
-            ? Modal.getDataHeaderSetOnUser(userset.options.header, defualtSet.header)
-            : dataSet.options.header = Modal.getDataHeaderDefualt(defualtSet.header);
-
-            dataSet.options.background = userset.options.background !== undefined
-            ? Modal.getDataBackgroundSetOnUser(userset.options.background, defualtSet.background)
-            : dataSet.options.background = Modal.getDataBackgroundDefualt(defualtSet.background);
-        } else {
-            dataSet.options.modalWindow = Modal.getDataModalWindowDefualt(defualtSet.modalWindow);
-            dataSet.options.header = Modal.getDataHeaderDefualt(defualtSet.header);
-            dataSet.options.background = Modal.getDataBackgroundDefualt(defualtSet.background);
-        }
-
-        return dataSet;
-    },
-
-    getDataModalWindowSetOnUser(setting, defualtSet) {
-        return  {
-            minWidth: setting.minWidth !== undefined ? setting.minWidth : defualtSet.minWidth,
-            minHeight: setting.minHeight !== undefined ? setting.minHeight : defualtSet.minHeight,
-            width: setting.width !== undefined ? setting.width : defualtSet.width,
-            height: setting.height !== undefined ? setting.height : defualtSet.height,
-            top: setting.top !== undefined ? setting.top : defualtSet.top,
-            left: setting.left !== undefined ? setting.left : defualtSet.left,
-            backgroundColor: setting.backgroundColor !== undefined ? setting.backgroundColor : defualtSet.backgroundColor,
-            borderRadius: setting.borderRadius !== undefined ? setting.borderRadius : defualtSet.borderRadius,
-        }
-    },
-
-    getDataModalWindowDefualt(defualtSet) {
-        return {
-            minWidth: defualtSet.minWidth,
-            minHeight: defualtSet.minHeight,
-            width: defualtSet.width,
-            height: defualtSet.height,
-            top: defualtSet.top,
-            left: defualtSet.left,
-            backgroundColor: defualtSet.backgroundColor,
-            borderRadius: defualtSet.borderRadius,
-        }
-    },
-
-    getDataBackgroundSetOnUser(setting, defualtSet) {
-        return {
-            backgroundColor : setting.backgroundColor !== undefined ? setting.backgroundColor : defualtSet.backgroundColor,
-            opacity: setting.opacity !== undefined ? setting.opacity : defualtSet.opacity,
-        }
-    },
-
-    getDataBackgroundDefualt(defualtSet) {
-        return {
-            backgroundColor : defualtSet.backgroundColor,
-            opacity: defualtSet.opacity,
-        }
-    },
-
-    getDataHeaderSetOnUser(setting, defualtSet) {
-        return {
-            backgroundColor: setting.backgroundColor !== undefined ? setting.header.backgroundColor : defualtSet.backgroundColor,
-        }
-    },
-
-    getDataHeaderDefualt(defualtSet) {
-        return {
-            backgroundColor: defualtSet.backgroundColor,
-        }
-    },
-
-    appendModal(list, userDataSet, title, defualtSet) {
+    appendModal(list, properties, userDataSet, title = undefined, defualtSet) {
         let oneTag = [
             "area", 
             "base", 
@@ -146,7 +122,7 @@ export let Modal = {
         } else if ((list[0]) === '#') {
             list = 'I' + list.slice(1);
         }
-
+        
         $("body").append(`
             <div class="modalWindow modal__${list} hidden">
                 <div class="modalWindow__header">
@@ -158,94 +134,86 @@ export let Modal = {
                 <div class="modalWindow__content"></div>
             </div>
         `);
-        
+        Modal.setCssForModal($(`.modal__${list}`), properties, userDataSet, defualtSet);
+        Modal.cssTitle();
+        Modal.cssContent($(`.modal__${list}`));
+        Modal.cssClose($(`.modal__${list}`));
+        Modal.cssBackground();
         if (userDataSet !== undefined) {
-            Modal.appendUserData(oneTag, $(`.modal__${list}`).find(".modalWindow__content"), defualtSet, userDataSet);
+            if (userDataSet.objects !== undefined) {
+                Modal.appendUserData(oneTag, properties, $(`.modal__${list}`).find(".modalWindow__content"), defualtSet, userDataSet.objects);
+            }
         }
 
         return `.modal__${list}`;
     },
 
-    appendUserData(oneTag, appendTo, defualtSet, userDataSet) {
-        let properties = {
-            display : "display",
-            flexDirection : "flex-direction",
-            margin : "margin",
-            padding : "padding",
-            border : "border",
-            cursor : "cursor",
-            borderColor : "border-color",
-            fontFamaly : "font-family",
-            fontWeight : "font-weight",
-            width : "width",
-            heigth : "heigth",
-            color : "color",
-            backgroundColor : "background-color",
-        }
-
-        userDataSet.forEach(element => {
-            if (oneTag.some(elem => elem === element.tag)) {
-                appendTo.append(`
-                    <${element.tag}>
-                `);
-                if (element.text !== undefined) {
-                    $(`<p>${element.text}</p>`).insertBefore( $(element.tag).last() );
+    setCssForModal(thisModal, properties, userDataSet, defualtSet) {
+        let objects = [
+            {
+                name: "modal",
+                object: $(thisModal),
+            },
+            {
+                name: "background",
+                object: $(".modalWindow__background"),
+            },
+            {
+                name: "header",
+                object: $(thisModal).find(".modalWindow__header"),
+            },
+        ]
+        objects.forEach(item => {
+            if (userDataSet.styles !== undefined) {
+                if (userDataSet.styles[item.name] !== undefined) {
+                    Modal.cssTag(properties, item.object, userDataSet.styles[item.name], defualtSet[item.name]);
+                } else {
+                    Modal.cssTagDefault(properties, item.object, defualtSet[item.name]);
                 }
             } else {
-                appendTo.append(`
-                    <${element.tag}></${element.tag}>
-                `);
-                if (element.text !== undefined) {
-                    $(element.tag).last().append(element.text);
-                }
-            }
-
-            if (element.attributes !== undefined) {
-                for (const [name, value] of Object.entries(element.attributes)) {
-                    $(element.tag).last().attr(name, value);
-                }
-            }
-
-            if (element.styles !== undefined) {
-                Modal.cssTag(properties, $(element.tag).last(), element.styles, defualtSet[element.tag]);
-            } else {
-                Modal.cssTagDefault(properties, $(element.tag).last(), defualtSet[element.tag]);
-            }
-
-            if (element.objects !== undefined) {
-                Modal.appendUserData(oneTag, $(element.tag).last(), defualtSet, element.objects);
+                Modal.cssTagDefault(properties, item.object, defualtSet[item.name]);
             }
         });
+    },
+
+    appendUserData(oneTag, properties, appendTo, defualtSet, userDataSet) {
+        if (userDataSet !== undefined) {
+            userDataSet.forEach(element => {
+                if (oneTag.some(elem => elem === element.tag)) {
+                    appendTo.append(`
+                        <${element.tag}>
+                    `);
+                    if (element.text !== undefined) {
+                        $(`<p>${element.text}</p>`).insertBefore( $(element.tag).last() );
+                    }
+                } else {
+                    appendTo.append(`
+                        <${element.tag}></${element.tag}>
+                    `);
+                    if (element.text !== undefined) {
+                        $(element.tag).last().append(element.text);
+                    }
+                }
+    
+                if (element.attributes !== undefined) {
+                    for (const [name, value] of Object.entries(element.attributes)) {
+                        $(element.tag).last().attr(name, value);
+                    }
+                }
+    
+                if (element.styles !== undefined) {
+                    Modal.cssTag(properties, $(element.tag).last(), element.styles, defualtSet[element.tag]);
+                } else {
+                    Modal.cssTagDefault(properties, $(element.tag).last(), defualtSet[element.tag]);
+                }
+    
+                if (element.objects !== undefined) {
+                    Modal.appendUserData(oneTag, properties, $(element.tag).last(), defualtSet, element.objects);
+                }
+            });
+        }
     },
     
-    cssModalWindow(thisModal, settings) {
-        $(thisModal).css({
-            "position": "fixed",
-            "zIndex": 100,
-            "transform": "translate(-50%, -50%)",
-            "width" : settings.width,
-            "height" : settings.height,
-            "min-width": settings.minWidth,
-            "min-height" : settings.minHeight,
-            "top" : settings.top,
-            "left" : settings.left,
-            "background-color" : settings.backgroundColor,
-            "border-radius" : settings.borderRadius,
-            "border-top-left-radius" : settings.borderRadius + 2,
-            "border-top-right-radius" : settings.borderRadius + 2,
-        });
-    }, 
-
-    cssHeader(thisModal, settings) {
-        $(thisModal).find(".modalWindow__header").css({
-            "display" : "flex",
-            "justify-content": "space-between",
-            "background-color" : settings.header.backgroundColor,
-            "border-top-left-radius" : settings.modalWindow.borderRadius,
-            "border-top-right-radius" : settings.modalWindow.borderRadius,
-        });
-    },
-
     cssTitle() {
         $(".modalWindow__header__title").css({
             "margin" : 15
@@ -253,6 +221,12 @@ export let Modal = {
         $(".modalWindow__header__title").find("h2").css({
             "margin" : 0,
             "color" : "white",
+        });
+    },
+
+    cssContent(thisModal) {
+        $(thisModal).find(".modalWindow__content").css({
+            "margin" : 15
         });
     },
 
@@ -279,7 +253,7 @@ export let Modal = {
         });
     },
 
-    cssBackground(settings) {
+    cssBackground() {
         $(".modalWindow__background").css({
             "position" : "fixed",
             "zIndex": 99,
@@ -287,8 +261,6 @@ export let Modal = {
             "bottom" : 0,
             "right" : 0,
             "left" : 0,
-            "background-color" : settings.backgroundColor,
-            "opacity" : settings.opacity,
         }).on('click', function () {
             $(this).addClass('hidden');
             $('.modalWindow').addClass('hidden');
@@ -296,20 +268,20 @@ export let Modal = {
         });
     },
 
-    cssContent(thisModal) {
-        $(thisModal).find(".modalWindow__content").css({
-            "margin" : 15,
-        });
-    },
-
     cssTag(properties, thisTag, userStyleSet, defualtSet = undefined) {
         if (defualtSet !== undefined) {
             for (let [key, value] of Object.entries(properties)) {
-                Modal.setCssForTagUserDefualt(thisTag, userStyleSet[key], defualtSet[key], value);
+                if (userStyleSet[key] !== undefined) {
+                    thisTag.css(value, userStyleSet[key]);
+                } else if (defualtSet[key] !== undefined) {
+                    thisTag.css(value, defualtSet[key]);
+                }
             }
         } else {
             for (let [key, value] of Object.entries(properties)) {
-                Modal.setCssForTagUser(thisTag, userStyleSet[key], value);
+                if (userStyleSet[key] !== undefined) {
+                    thisTag.css(value, userStyleSet[key]);
+                }
             }
         }
     },
@@ -317,28 +289,10 @@ export let Modal = {
     cssTagDefault(properties, thisTag, defualtSet = undefined) {
         if (defualtSet !== undefined) {
             for (let [key, value] of Object.entries(properties)) {
-                Modal.setCssForTagDefualt(thisTag, defualtSet[key], value);
+                if (defualtSet[key] !== undefined) {
+                    thisTag.css(value, defualtSet[key]);
+                }
             }
-        }
-    },
-
-    setCssForTagUserDefualt(thisTag, userSet, defualtSet, property) {
-        if (userSet !== undefined) {
-            thisTag.css(property, userSet);
-        } else if (defualtSet !== undefined) {
-            thisTag.css(property, defualtSet);
-        }
-    },
-
-    setCssForTagUser(thisTag, userSet, property) {
-        if (userSet !== undefined) {
-            thisTag.css(property, userSet);
-        }
-    },
-
-    setCssForTagDefualt(thisTag, defualtSet, property) {
-        if (defualtSet !== undefined) {
-            thisTag.css(property, defualtSet);
         }
     },
 }
