@@ -646,7 +646,7 @@ $('.exchange__input').on('click', function () {
 let exchange = exchangeBase('2015-01-01', '2018-01-01', 'USD', 'RUB');
 drawExchangeChartBase(exchange.head, exchange.allRates, exchange.basedOn);
 
-let modalWidth = 600;
+let modalWidth = 400;
 let setData = {
     title: "Registration",
     styles: 
@@ -662,9 +662,6 @@ let setData = {
                 type: "text",
                 placeholder: "First name",
             },
-            styles: {
-                width: modalWidth - 74,
-            }
         },
         {
             tag: "input",
@@ -672,9 +669,6 @@ let setData = {
                 type: "text",
                 placeholder: "Last name",
             },
-            styles: {
-                width: modalWidth - 74,
-            }
         },
         {
             tag: "input",
@@ -682,29 +676,35 @@ let setData = {
                 type: "text",
                 placeholder: "Email",
             },
-            styles: {
-                width: modalWidth - 74,
-            }
         },
         {
-            tag: "input",
-            attributes: {
-                type: "password",
-                placeholder: "Password",
-            },
+            tag: "div",
             styles: {
-                width: (modalWidth - 30) / 2  - 45,
-            }
-        },
-        {
-            tag: "input",
-            attributes: {
-                type: "password",
-                placeholder: "Confirm",
+                display: "flex",
+                justifyContent: "space-between",
             },
-            styles: {
-                width: (modalWidth - 30) / 2  - 45,
-            }
+            objects: [
+                {
+                    tag: "input",
+                    attributes: {
+                        type: "password",
+                        placeholder: "Password",
+                    },
+                    styles: {
+                        width: "40%",
+                    }
+                },
+                {
+                    tag: "input",
+                    attributes: {
+                        type: "password",
+                        placeholder: "Confirm",
+                    },
+                    styles: {
+                        width: "40%",
+                    }
+                }
+            ]
         },
         {
             tag: "div",
@@ -719,7 +719,7 @@ let setData = {
                         type: "submit",
                     },
                     styles: {
-                        width: (modalWidth - 30)/ 2 - 23,
+                        width: "45%",
                         border: 0,
                         fontWeight: "bold",
                         backgroundColor: "#0080D0",

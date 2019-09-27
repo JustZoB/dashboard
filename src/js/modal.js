@@ -5,7 +5,9 @@ export let Modal = {
                 position: "fixed",
                 zIndex: 100,
                 transform: "translate(-50%, -50%)",
-                minWidth: 400,
+                minWidth: 300,
+                width: "60%",
+                maxWidth: 600,
                 minHeight: 300,
                 top: "50%",
                 left: "50%",
@@ -25,7 +27,7 @@ export let Modal = {
                 opacity: "0.6",
             },
             content: {
-                margin: 15,
+                margin: "2%",
             },
             header: {
                 display : "flex",
@@ -44,9 +46,9 @@ export let Modal = {
             input: {
                 border: "1px solid",
                 borderColor: "gray",
-                width: 200,
-                padding: 10,
-                margin: 10,
+                width: "92%",
+                padding: "2%",
+                margin: "2%",
             },
             close: {
                 display: "flex",
@@ -62,8 +64,8 @@ export let Modal = {
             }
         }
         let properties = {
+            alignItems: "align-items",
             backgroundColor : "background-color",
-            bottom: "bottom",
             border : "border",
             borderRadius : "border-radius",
             borderTopLeftRadius : "border-top-left-radius",
@@ -71,15 +73,16 @@ export let Modal = {
             borderBottomLeftRadius : "border-bottom-left-radius",
             borderBottomRightRadius : "border-bottom-right-radius",
             borderColor : "border-color",
+            bottom: "bottom",
             color : "color",
             cursor : "cursor",
             display : "display",
             flexDirection : "flex-direction",
-            float : "float",
             fontSize : "font-size",
             fontStyle : "font-style",
             fontFamaly : "font-family",
             fontWeight : "font-weight",
+            float : "float",
             justifyContent : "justify-content",
             heigth : "heigth",
             left: "left",
@@ -103,13 +106,13 @@ export let Modal = {
             paddingRight : "padding-right",
             position : "position",
             right: "right",
-            top: "top",
-            transform : "transform",
-            transition : "transition",
             textAlign : "text-align",
+            top: "top",
+            transition : "transition",
+            transform : "transform",
             verticalAlign : "vertical-align",
-            width : "width",
             whiteSpace : "white-space",
+            width : "width",
             zIndex : "z-index",
         } 
         
@@ -254,11 +257,13 @@ export let Modal = {
     },
 
     eventsClose(thisModal) {
-        $(thisModal).find(".modalWindow__header__close-button").on('click', function () {
+        $(thisModal).find(".modalWindow__header__close-button")
+        .on('click', function () {
             $(".modalWindow__background").addClass('hidden');
             $('.modalWindow').addClass('hidden');
             $("body").css({"overflow" : "auto"});
-        }).hover(function() {
+        })
+        .hover(function() {
             $(this).find("i").css("color", "gray");
         }, function() {
             $(this).find("i").css("color", "white");
