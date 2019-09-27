@@ -15,8 +15,17 @@ export let Modal = {
                 borderTopRightRadius : 9,
             },
             background: {
+                position : "fixed",
+                zIndex: 99,
+                top : 0,
+                bottom : 0,
+                right : 0,
+                left : 0,
                 backgroundColor : "black",
                 opacity: "0.6",
+            },
+            content: {
+                margin: 15,
             },
             header: {
                 display : "flex",
@@ -25,6 +34,13 @@ export let Modal = {
                 borderTopLeftRadius : 7,
                 borderTopRightRadius : 7,
             },
+            title: {
+                margin: 15,
+            },
+            titleH2: {
+                margin : 0,
+                color : "white",
+            },
             input: {
                 border: "1px solid",
                 borderColor: "gray",
@@ -32,6 +48,18 @@ export let Modal = {
                 padding: 10,
                 margin: 10,
             },
+            close: {
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginRight : 15,
+                marginLeft : 15,
+                marginTop : 10,
+                marginBottom : 10,
+                padding : 10,
+                cursor : "pointer",
+                color : "white",
+            }
         }
         let properties = {
             backgroundColor : "background-color",
@@ -87,6 +115,8 @@ export let Modal = {
         
         if (!$("body").find(".modalWindow__background").length) {
             $("body").append(`<div class="modalWindow__background hidden"></div>`);
+            Modal.eventsBackground();
+            Modal.cssTagDefault(properties, $(".modalWindow__background"), defualtSet.background);
         }
         let title = (userDataSet.title !== undefined) ? userDataSet.title : "",
             thisModal = Modal.appendModal(list, properties, userDataSet, title, defualtSet);        
@@ -135,10 +165,7 @@ export let Modal = {
             </div>
         `);
         Modal.setCssForModal($(`.modal__${list}`), properties, userDataSet, defualtSet);
-        Modal.cssTitle();
-        Modal.cssContent($(`.modal__${list}`));
-        Modal.cssClose($(`.modal__${list}`));
-        Modal.cssBackground();
+        Modal.eventsClose($(`.modal__${list}`));
         if (userDataSet !== undefined) {
             if (userDataSet.objects !== undefined) {
                 Modal.appendUserData(oneTag, properties, $(`.modal__${list}`).find(".modalWindow__content"), defualtSet, userDataSet.objects);
@@ -155,12 +182,24 @@ export let Modal = {
                 object: $(thisModal),
             },
             {
-                name: "background",
-                object: $(".modalWindow__background"),
-            },
-            {
                 name: "header",
                 object: $(thisModal).find(".modalWindow__header"),
+            },
+            {
+                name: "close",
+                object: $(thisModal).find(".modalWindow__header__close-button"),
+            },
+            {
+                name: "content",
+                object: $(thisModal).find(".modalWindow__content"),
+            },
+            {
+                name: "title",
+                object: $(thisModal).find(".modalWindow__header__title"),
+            },
+            {
+                name: "titleH2",
+                object: $(thisModal).find(".modalWindow__header__title").find("h2"),
             },
         ]
         objects.forEach(item => {
@@ -213,36 +252,9 @@ export let Modal = {
             });
         }
     },
-    
-    cssTitle() {
-        $(".modalWindow__header__title").css({
-            "margin" : 15
-        });
-        $(".modalWindow__header__title").find("h2").css({
-            "margin" : 0,
-            "color" : "white",
-        });
-    },
 
-    cssContent(thisModal) {
-        $(thisModal).find(".modalWindow__content").css({
-            "margin" : 15
-        });
-    },
-
-    cssClose(thisModal) {
-        $(thisModal).find(".modalWindow__header__close-button").css({
-            "display": "flex",
-            "justify-content": "center",
-            "align-items": "center",
-            "marginRight" : 15,
-            "marginLeft" : 15,
-            "marginTop" : 10,
-            "marginBottom" : 10,
-            "padding" : 10,
-            "cursor" : "pointer",
-            "color" : "white",
-        }).on('click', function () {
+    eventsClose(thisModal) {
+        $(thisModal).find(".modalWindow__header__close-button").on('click', function () {
             $(".modalWindow__background").addClass('hidden');
             $('.modalWindow').addClass('hidden');
             $("body").css({"overflow" : "auto"});
@@ -253,15 +265,8 @@ export let Modal = {
         });
     },
 
-    cssBackground() {
-        $(".modalWindow__background").css({
-            "position" : "fixed",
-            "zIndex": 99,
-            "top" : 0,
-            "bottom" : 0,
-            "right" : 0,
-            "left" : 0,
-        }).on('click', function () {
+    eventsBackground() {
+        $(".modalWindow__background").on('click', function () {
             $(this).addClass('hidden');
             $('.modalWindow').addClass('hidden');
             $("body").css({"overflow" : "auto"});
