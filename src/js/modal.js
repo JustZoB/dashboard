@@ -228,14 +228,17 @@ export let Modal = {
             if (userDataSet.styles !== undefined) {
                 if (userDataSet.styles[item.name] !== undefined) {
                     Modal.cssTag(properties, item.object, userDataSet.styles[item.name], defualtSet[item.name]);
-                    Modal.setUserMediasQuery(mediaMaxQuerys, mediaMinQuerys, item, userDataSet.styles[item.name], defualtSet[item.name]);
+                    Modal.setUserMediasQuery(Modal.setMinMediaQuery, mediaMinQuerys, item, userDataSet.styles[item.name], defualtSet[item.name]);
+                    Modal.setUserMediasQuery(Modal.setMaxMediaQuery, mediaMaxQuerys, item, userDataSet.styles[item.name], defualtSet[item.name]);
                 } else if (defualtSet[item.name] !== undefined) {
                     Modal.cssTagDefault(properties, item.object, defualtSet[item.name]);
-                    Modal.setDefualtMediasQuery(mediaMaxQuerys, mediaMinQuerys, item, defualtSet[item.name]);
+                    Modal.setDefualtMediasQuery(Modal.setMinMediaQuery, mediaMinQuerys, item, defualtSet[item.name]);
+                    Modal.setDefualtMediasQuery(Modal.setMaxMediaQuery, mediaMaxQuerys, item, defualtSet[item.name]);
                 }
             } else if (defualtSet[item.name] !== undefined) {
                 Modal.cssTagDefault(properties, item.object, defualtSet[item.name]);
-                Modal.setDefualtMediasQuery(mediaMaxQuerys, mediaMinQuerys, item, defualtSet[item.name]);
+                Modal.setDefualtMediasQuery(Modal.setMinMediaQuery, mediaMinQuerys, item, defualtSet[item.name]);
+                Modal.setDefualtMediasQuery(Modal.setMaxMediaQuery, mediaMaxQuerys, item, defualtSet[item.name]);
             }
         });
     },
@@ -327,32 +330,20 @@ export let Modal = {
     },
 
 
-    setUserMediasQuery(mediaMaxQuerys, mediaMinQuerys, item, userElement, defualtElement) {
-        mediaMinQuerys.forEach(medias => {
+    setUserMediasQuery(setMediaQuery, mediaQuerys, item, userElement, defualtElement) {
+        mediaQuerys.forEach(medias => {
             if (userElement[medias.name] !== undefined) {
-                Modal.setMinMediaQuery(item.object, medias.width, userElement[medias.name]);
+                setMediaQuery(item.object, medias.width, userElement[medias.name]);
             } else if (defualtElement[medias.name] !== undefined) {
-                Modal.setMinMediaQuery(item.object, medias.width, defualtElement[medias.name].width);
-            }
-        });
-        mediaMaxQuerys.forEach(medias => {
-            if (userElement[medias.name] !== undefined) {
-                Modal.setMaxMediaQuery(item.object, medias.width, userElement[medias.name]);
-            } else if (defualtElement[medias.name] !== undefined) {
-                Modal.setMaxMediaQuery(item.object, medias.width, defualtElement[medias.name].width);
+                setMediaQuery(item.object, medias.width, defualtElement[medias.name].width);
             }
         });
     },
 
-    setDefualtMediasQuery(mediaMaxQuerys, mediaMinQuerys, item, defualtElement) {
-        mediaMinQuerys.forEach(medias => {
+    setDefualtMediasQuery(setMediaQuery, mediaQuerys, item, defualtElement) {
+        mediaQuerys.forEach(medias => {
             if (defualtElement[medias.name] !== undefined) {
-                Modal.setMinMediaQuery(item.object, medias.width, defualtElement[medias.name].width);
-            }
-        });
-        mediaMaxQuerys.forEach(medias => {
-            if (defualtElement[medias.name] !== undefined) {
-                Modal.setMaxMediaQuery(item.object, medias.width, defualtElement[medias.name].width);
+                setMediaQuery(item.object, medias.width, defualtElement[medias.name].width);
             }
         });
     },
