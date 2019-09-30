@@ -732,4 +732,3 @@ let setData = {
 }
 
 Modal.init(".fa-user-friends", setData);
-Modal.init(".fa-tablet-alt");

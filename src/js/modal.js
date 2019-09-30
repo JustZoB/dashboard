@@ -120,21 +120,22 @@ export let Modal = {
             whiteSpace : "white-space",
             width : "width",
             zIndex : "z-index",
-        } 
-        
-        if (!$("body").find(".modalWindow__background").length) {
-            $("body").append(`<div class="modalWindow__background hidden"></div>`);
-            Modal.eventsBackground();
-            Modal.cssTagDefault(properties, $(".modalWindow__background"), defualtSet.background);
         }
-        let title = (userDataSet.title !== undefined) ? userDataSet.title : "",
-            thisModal = Modal.appendModal(list, properties, userDataSet, title, defualtSet);        
-        
-        $(list).on('click', function () {
-            $(".modalWindow__background").removeClass('hidden');
-            $(thisModal).removeClass('hidden');
-            $("body").css({"overflow" : "hidden"});
-        });
+        if (userDataSet.objects !== undefined) {
+            if (!$("body").find(".modalWindow__background").length) {
+                $("body").append(`<div class="modalWindow__background hidden"></div>`);
+                Modal.eventsBackground();
+                Modal.cssTagDefault(properties, $(".modalWindow__background"), defualtSet.background);
+            }
+            let title = (userDataSet.title !== undefined) ? userDataSet.title : "",
+                thisModal = Modal.appendModal(list, properties, userDataSet, title, defualtSet);        
+            
+            $(list).on('click', function () {
+                $(".modalWindow__background").removeClass('hidden');
+                $(thisModal).removeClass('hidden');
+                $("body").css({"overflow" : "hidden"});
+            });
+        }
     },
 
     appendModal(list, properties, userDataSet, title = undefined, defualtSet) {
@@ -175,11 +176,7 @@ export let Modal = {
         `);
         Modal.setCssForModal($(`.modal__${list}`), properties, userDataSet, defualtSet);
         Modal.eventsClose($(`.modal__${list}`));
-        if (userDataSet !== undefined) {
-            if (userDataSet.objects !== undefined) {
-                Modal.appendUserData(oneTag, properties, $(`.modal__${list}`).find(".modalWindow__content"), defualtSet, userDataSet.objects);
-            }
-        }
+        Modal.appendUserData(oneTag, properties, $(`.modal__${list}`).find(".modalWindow__content"), defualtSet, userDataSet.objects);
 
         return `.modal__${list}`;
     },
@@ -244,41 +241,39 @@ export let Modal = {
     },
 
     appendUserData(oneTag, properties, appendTo, defualtSet, userDataSet) {
-        if (userDataSet !== undefined) {
-            userDataSet.forEach(element => {
-                if (oneTag.some(elem => elem === element.tag)) {
-                    appendTo.append(`
-                        <${element.tag}>
-                    `);
-                    if (element.text !== undefined) {
-                        $(`<p>${element.text}</p>`).insertBefore( $(element.tag).last() );
-                    }
-                } else {
-                    appendTo.append(`
-                        <${element.tag}></${element.tag}>
-                    `);
-                    if (element.text !== undefined) {
-                        $(element.tag).last().append(element.text);
-                    }
+        userDataSet.forEach(element => {
+            if (oneTag.some(elem => elem === element.tag)) {
+                appendTo.append(`
+                    <${element.tag}>
+                `);
+                if (element.text !== undefined) {
+                    $(`<p>${element.text}</p>`).insertBefore( $(element.tag).last() );
                 }
-    
-                if (element.attributes !== undefined) {
-                    for (const [name, value] of Object.entries(element.attributes)) {
-                        $(element.tag).last().attr(name, value);
-                    }
+            } else {
+                appendTo.append(`
+                    <${element.tag}></${element.tag}>
+                `);
+                if (element.text !== undefined) {
+                    $(element.tag).last().append(element.text);
                 }
-    
-                if (element.styles !== undefined) {
-                    Modal.cssTag(properties, $(element.tag).last(), element.styles, defualtSet[element.tag]);
-                } else {
-                    Modal.cssTagDefault(properties, $(element.tag).last(), defualtSet[element.tag]);
+            }
+
+            if (element.attributes !== undefined) {
+                for (const [name, value] of Object.entries(element.attributes)) {
+                    $(element.tag).last().attr(name, value);
                 }
-    
-                if (element.objects !== undefined) {
-                    Modal.appendUserData(oneTag, properties, $(element.tag).last(), defualtSet, element.objects);
-                }
-            });
-        }
+            }
+
+            if (element.styles !== undefined) {
+                Modal.cssTag(properties, $(element.tag).last(), element.styles, defualtSet[element.tag]);
+            } else {
+                Modal.cssTagDefault(properties, $(element.tag).last(), defualtSet[element.tag]);
+            }
+
+            if (element.objects !== undefined) {
+                Modal.appendUserData(oneTag, properties, $(element.tag).last(), defualtSet, element.objects);
+            }
+        });
     },
 
     eventsClose(thisModal) {
