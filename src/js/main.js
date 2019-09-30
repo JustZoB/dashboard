@@ -646,13 +646,12 @@ $('.exchange__input').on('click', function () {
 let exchange = exchangeBase('2015-01-01', '2018-01-01', 'USD', 'RUB');
 drawExchangeChartBase(exchange.head, exchange.allRates, exchange.basedOn);
 
-let modalWidth = 400;
 let setData = {
     title: "Registration",
     styles: 
     {
         modal: {
-            minWidth: modalWidth,
+            left: "50%",
         },
     },
     objects: [
@@ -719,7 +718,7 @@ let setData = {
                         type: "submit",
                     },
                     styles: {
-                        width: "45%",
+                        width: "44.5%",
                         border: 0,
                         fontWeight: "bold",
                         backgroundColor: "#0080D0",

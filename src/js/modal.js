@@ -5,16 +5,22 @@ export let Modal = {
                 position: "fixed",
                 zIndex: 100,
                 transform: "translate(-50%, -50%)",
-                minWidth: 300,
-                width: "60%",
-                maxWidth: 600,
-                minHeight: 300,
+                width: 600,
                 top: "50%",
                 left: "50%",
                 backgroundColor: "white",
                 borderRadius: 7,
                 borderTopLeftRadius : 9,
                 borderTopRightRadius : 9,
+                mediaMaxWidth768: {
+                    width: 500,
+                },
+                mediaMaxWidth580: {
+                    width: "95%",
+                },
+                mediaMinWidth768: {
+                    width: 600,
+                }
             },
             background: {
                 position : "fixed",
@@ -204,16 +210,35 @@ export let Modal = {
                 name: "titleH2",
                 object: $(thisModal).find(".modalWindow__header__title").find("h2"),
             },
-        ]
+        ],
+        mediaMaxQuerys = [
+            {
+                name: "mediaMaxWidth768",
+                width: 768,
+            },
+            {
+                name: "mediaMaxWidth580",
+                width: 580,
+            }
+        ],
+        mediaMinQuerys = [
+            {
+                name: "mediaMinWidth768",
+                width: 768,
+            },
+        ];
         objects.forEach(item => {
             if (userDataSet.styles !== undefined) {
                 if (userDataSet.styles[item.name] !== undefined) {
                     Modal.cssTag(properties, item.object, userDataSet.styles[item.name], defualtSet[item.name]);
-                } else {
+                    Modal.setUserMediasQuery(mediaMaxQuerys, mediaMinQuerys, item, userDataSet.styles[item.name], defualtSet[item.name]);
+                } else if (defualtSet[item.name] !== undefined) {
                     Modal.cssTagDefault(properties, item.object, defualtSet[item.name]);
+                    Modal.setDefualtMediasQuery(mediaMaxQuerys, mediaMinQuerys, item, defualtSet[item.name]);
                 }
-            } else {
+            } else if (defualtSet[item.name] !== undefined) {
                 Modal.cssTagDefault(properties, item.object, defualtSet[item.name]);
+                Modal.setDefualtMediasQuery(mediaMaxQuerys, mediaMinQuerys, item, defualtSet[item.name]);
             }
         });
     },
@@ -304,5 +329,52 @@ export let Modal = {
                 }
             }
         }
+    },
+
+
+    setUserMediasQuery(mediaMaxQuerys, mediaMinQuerys, item, userElement, defualtElement) {
+        mediaMinQuerys.forEach(medias => {
+            if (userElement[medias.name] !== undefined) {
+                Modal.setMinMediaQuery(item.object, medias.width, userElement[medias.name]);
+            } else if (defualtElement[medias.name] !== undefined) {
+                Modal.setMinMediaQuery(item.object, medias.width, defualtElement[medias.name].width);
+            }
+        });
+        mediaMaxQuerys.forEach(medias => {
+            if (userElement[medias.name] !== undefined) {
+                Modal.setMaxMediaQuery(item.object, medias.width, userElement[medias.name]);
+            } else if (defualtElement[medias.name] !== undefined) {
+                Modal.setMaxMediaQuery(item.object, medias.width, defualtElement[medias.name].width);
+            }
+        });
+    },
+
+    setDefualtMediasQuery(mediaMaxQuerys, mediaMinQuerys, item, defualtElement) {
+        mediaMinQuerys.forEach(medias => {
+            if (defualtElement[medias.name] !== undefined) {
+                Modal.setMinMediaQuery(item.object, medias.width, defualtElement[medias.name].width);
+            }
+        });
+        mediaMaxQuerys.forEach(medias => {
+            if (defualtElement[medias.name] !== undefined) {
+                Modal.setMaxMediaQuery(item.object, medias.width, defualtElement[medias.name].width);
+            }
+        });
+    },
+
+    setMinMediaQuery(element, width, setWidth) {
+        $(window).on('resize', () => {
+            if ($(window).width() > width) {
+                element.css({ "width" : setWidth }) 
+            }
+        });
+    },
+
+    setMaxMediaQuery(element, width, setWidth) {
+        $(window).on('resize', () => {
+            if ($(window).width() < width) {
+                element.css({ "width" : setWidth }) 
+            }
+        });
     },
 }
