@@ -12,10 +12,6 @@ export let Modal = {
             $('.modal').addClass('hidden');
             $("body").css({"overflow" : "auto"});
             $('.modal__content').empty();
-        }).hover(function() {
-            $(this).find("i").css("color", "gray");
-        }, function() {
-            $(this).find("i").css("color", "white");
         });
     },
 
@@ -32,24 +28,26 @@ export let Modal = {
                     modalData = data;
                 },
                 error : function() {
-                    console.error("Can't get url");
+                    console.error("Can't get url, no such file or wrong path");
                     errors = true;
                 },
             });
             if (typeof modalData !== type) {
-                console.error(`Data is not an ${type}`);
+                console.error(`Data is not this type: ${type}`);
                 errors = true;
             }
             if (!errors) {
                 $(".modal__background").removeClass('hidden');
                 $('.modal').removeClass('hidden');
                 $("body").css({"overflow" : "none"});
-                Modal.append(modalData);
+                if (type === "object") {
+                    Modal.appendJson(modalData);
+                }
             }
         });
     },
 
-    append(modalData) {
+    appendJson(modalData) {
         modalData.forEach(element => {
             if (!element.buttonFloatRight) {
                 $(".modal__content").append(`<${element.tag}/>`);

@@ -20,8 +20,7 @@
         @extend .darker-gray-bg;
         display: flex;
         justify-content: space-between;
-        border-top-left-radius: 7px;
-        border-top-right-radius: 7px;
+        border-radius: 7px 7px 0 0;
 
         &__title {
             margin: 15px;
@@ -38,6 +37,9 @@
             margin: 10px 15px;
             padding: 10px;
             cursor: pointer;
+            &:hover {
+                color: $gray;
+            }
         }
     }
     &__content {
@@ -49,6 +51,7 @@
             padding: 2%;
             border: 1px solid;
             border-color: gray;
+            font-size: 14px;
         }
         input[type=submit] {
             @extend .text_white;

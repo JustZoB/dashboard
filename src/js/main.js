@@ -286,7 +286,7 @@ productOrderData = new Chart(document.getElementById('chart_product-order').getC
             position: 'bottom',
             labels: {
                 fontSize: 14,
-                fontFamily: "'Montserrat', serif",
+                fontFamily: "'Montserrat', sans-serif",
             },
         },
     },
@@ -330,7 +330,7 @@ customersData = new Chart(document.getElementById('chart_customers').getContext(
             position: 'top',
             labels: {
                 fontSize: 14,
-                fontFamily: "'Montserrat', serif",
+                fontFamily: "'Montserrat', sans-serif",
             },
         },
         scales: {
@@ -440,7 +440,7 @@ departmentSalesData = new Chart(document.getElementById('chart_department-sales'
             labels: {
                 padding: 10,
                 fontSize: 16,
-                fontFamily: "'Montserrat', serif",
+                fontFamily: "'Montserrat', sans-serif",
             },
         },
     },
