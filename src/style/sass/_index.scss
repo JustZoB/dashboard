@@ -149,9 +149,19 @@ i {
             border-color: gray;
             font-size: 14px;
         }
+        input[type=text] {
+            width: 41%;
+        }
+        input[type=email] {
+            width: 90.5%;
+        }
+        input[type=password] {
+            width: 41%;
+        }
         input[type=submit] {
             @extend .text_white;
-            width: 50%;
+            width: 45%;
+            margin-right: 3.5%;
             border: 0;
             font-weight: bold;
             background-color: #0080D0;
