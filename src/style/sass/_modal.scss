@@ -1,0 +1,77 @@
+.modal {
+    @extend .white-bg;
+    position: fixed;
+    width: 600px;
+    top: 50%;
+    left: 50%;
+    border-radius: 9px 9px 7px 7px;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+    @media screen and (max-width: 768px) {
+        width: 500px,
+    }
+
+    @media screen and (max-width: 580px) {
+        width: 95%,
+    }
+
+    &__header {
+        @extend .darker-gray-bg;
+        display: flex;
+        justify-content: space-between;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+
+        &__title {
+            margin: 15px;
+            h2 {
+                @extend .text_white;
+                margin: 0;
+            }
+        }
+        &__close {
+            @extend .text_white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 15px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    }
+    &__content {
+        margin: 2%;
+
+        input {
+            width: 92%;
+            margin: 2%;
+            padding: 2%;
+            border: 1px solid;
+            border-color: gray;
+        }
+        input[type=submit] {
+            @extend .text_white;
+            width: 44.5%;
+            border: 0;
+            font-weight: bold;
+            background-color: #0080D0;
+            cursor: pointer;
+        }
+    }
+    &__background {
+        @extend .black-bg;
+        position: fixed;
+        z-index: 99;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        opacity: 0.6;
+    }
+    &__button {
+        &_right {
+            text-align: right;
+        }
+    }
+}

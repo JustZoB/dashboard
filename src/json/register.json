@@ -1,0 +1,45 @@
+[
+    {
+        "tag": "input",
+        "attributes": {
+            "type": "text",
+            "placeholder": "First name"
+        }
+    },
+    {
+        "tag": "input",
+        "attributes": {
+            "type": "text",
+            "placeholder": "Last name"
+        }
+    },
+    {
+        "tag": "input",
+        "attributes": {
+            "type": "email",
+            "placeholder": "Email"
+        }
+    }, 
+    {
+        "tag": "input",
+        "attributes": {
+            "type": "password",
+            "placeholder": "Password"
+        }
+    }, 
+    {
+        "tag": "input",
+        "attributes": {
+            "type": "password",
+            "placeholder": "Confirm"
+        }
+    }, 
+    {
+        "tag": "input",
+        "attributes": {
+            "type": "submit",
+            "placeholder": "Submit"
+        },
+        "buttonFloatRight": true
+    }
+]
