@@ -28,7 +28,7 @@ export let Modal = {
                     modalData = data;
                 },
                 error : function() {
-                    console.error("Can't get url, no such file or wrong path");
+                    console.error(`"${url}" 404 (Not found)`);
                     errors = true;
                 },
             });
