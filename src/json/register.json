@@ -31,14 +31,14 @@
         "tag": "input",
         "attributes": {
             "type": "password",
-            "placeholder": "Confirm"
+            "placeholder": "Confirm password"
         }
     }, 
     {
         "tag": "input",
         "attributes": {
             "type": "submit",
-            "placeholder": "Submit"
+            "value": "Registy"
         },
         "buttonFloatRight": true
     }
