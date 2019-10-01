@@ -17,7 +17,7 @@ export let Modal = {
 
     dynamic(url, type, name) {
         Modal.simple();
-        $(name).on('click', function () {
+        $(`[name=${name}]`).on('click', function () {
             let modalData = {},
                 errors = false;
             $.ajax({ 
@@ -32,15 +32,18 @@ export let Modal = {
                     errors = true;
                 },
             });
-            if (typeof modalData !== type) {
-                console.error(`Data is not this type: ${type}`);
-                errors = true;
+            if (type === "json") {
+                if (typeof modalData !== "object") {
+                    console.error(`Data is not this type: ${type}`);
+                    errors = true;
+                }
             }
+            
             if (!errors) {
                 $(".modal__background").removeClass('hidden');
                 $('.modal').removeClass('hidden');
                 $("body").css({"overflow" : "none"});
-                if (type === "object") {
+                if (type === "json") {
                     Modal.appendJson(modalData);
                 }
             }
