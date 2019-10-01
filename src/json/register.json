@@ -1,45 +1,48 @@
-[
-    {
-        "tag": "input",
-        "attributes": {
-            "type": "text",
-            "placeholder": "First name"
-        }
-    },
-    {
-        "tag": "input",
-        "attributes": {
-            "type": "text",
-            "placeholder": "Last name"
-        }
-    },
-    {
-        "tag": "input",
-        "attributes": {
-            "type": "email",
-            "placeholder": "Email"
-        }
-    }, 
-    {
-        "tag": "input",
-        "attributes": {
-            "type": "password",
-            "placeholder": "Password"
-        }
-    }, 
-    {
-        "tag": "input",
-        "attributes": {
-            "type": "password",
-            "placeholder": "Confirm password"
-        }
-    }, 
-    {
-        "tag": "input",
-        "attributes": {
-            "type": "submit",
-            "value": "Registy"
+{
+    "title": "Registarion",
+    "objects": [
+        {
+            "tag": "input",
+            "attributes": {
+                "type": "text",
+                "placeholder": "First name"
+            }
         },
-        "buttonFloatRight": true
-    }
-]
+        {
+            "tag": "input",
+            "attributes": {
+                "type": "text",
+                "placeholder": "Last name"
+            }
+        },
+        {
+            "tag": "input",
+            "attributes": {
+                "type": "email",
+                "placeholder": "Email"
+            }
+        }, 
+        {
+            "tag": "input",
+            "attributes": {
+                "type": "password",
+                "placeholder": "Password"
+            }
+        }, 
+        {
+            "tag": "input",
+            "attributes": {
+                "type": "password",
+                "placeholder": "Confirm password"
+            }
+        }, 
+        {
+            "tag": "input",
+            "attributes": {
+                "type": "submit",
+                "value": "Registy"
+            },
+            "buttonFloatRight": true
+        }
+    ]
+}

@@ -5,6 +5,7 @@ export let Modal = {
             $('.modal').addClass('hidden');
             $("body").css({"overflow" : "auto"});
             $('.modal__content').empty();
+            $(".modal__header__title").empty();
         });
         
         $(".modal__header__close").on('click', function () {
@@ -12,6 +13,7 @@ export let Modal = {
             $('.modal').addClass('hidden');
             $("body").css({"overflow" : "auto"});
             $('.modal__content').empty();
+            $(".modal__header__title").empty();
         });
     },
 
@@ -38,7 +40,7 @@ export let Modal = {
                     errors = true;
                 }
             }
-            
+            console.log(modalData);
             if (!errors) {
                 $(".modal__background").removeClass('hidden');
                 $('.modal').removeClass('hidden');
@@ -51,7 +53,8 @@ export let Modal = {
     },
 
     appendJson(modalData) {
-        modalData.forEach(element => {
+        $(".modal__header__title").append(`<h2>${modalData.title}</h2>`);
+        modalData.objects.forEach(element => {
             if (!element.buttonFloatRight) {
                 $(".modal__content").append(`<${element.tag}/>`);
             } else {

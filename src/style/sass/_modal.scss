@@ -50,23 +50,6 @@
     }
     &__content {
         margin: 2%;
-
-        input {
-            width: 92%;
-            margin: 2%;
-            padding: 2%;
-            border: 1px solid;
-            border-color: gray;
-            font-size: 14px;
-        }
-        input[type=submit] {
-            @extend .text_white;
-            width: 50%;
-            border: 0;
-            font-weight: bold;
-            background-color: #0080D0;
-            cursor: pointer;
-        }
     }
     &__background {
         @extend .black-bg;
