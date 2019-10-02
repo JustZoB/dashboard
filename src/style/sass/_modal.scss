@@ -22,6 +22,9 @@
         width: 95%,
     }
 
+    &_secondry {
+        box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+    }
     &__header {
         @extend .darker-gray-bg;
         display: flex;

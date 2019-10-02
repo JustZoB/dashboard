@@ -1,0 +1,41 @@
+{
+    "title": "Ad",
+    "objects": [
+        {
+            "tag": "input",
+            "attributes": {
+                "type": "text",
+                "placeholder": "Card number"
+            }
+        },
+        {
+            "tag": "input",
+            "attributes": {
+                "type": "text",
+                "placeholder": "Date"
+            }
+        },
+        {
+            "tag": "input",
+            "attributes": {
+                "type": "text",
+                "placeholder": "Card Name"
+            }
+        },
+        {
+            "tag": "input",
+            "attributes": {
+                "type": "text",
+                "placeholder": "CVC2/CVV2"
+            }
+        }, 
+        {
+            "tag": "input",
+            "attributes": {
+                "type": "submit",
+                "value": "Confirm"
+            },
+            "buttonFloatRight": true
+        }
+    ]
+}

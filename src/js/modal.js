@@ -1,8 +1,8 @@
 export let Modal = {
-    simple() {
+    events() {
         $(".modal__background").on('click', function () {
             $(".modal__background").addClass('hidden');
-            $('.modal').addClass('hidden');
+            $('.modal').addClass('hidden').removeAttr("name");
             $("body").css({"overflow" : "auto"});
             $('.modal__content').empty();
             $(".modal__header__title").empty();
@@ -10,15 +10,37 @@ export let Modal = {
         
         $(".modal__header__close").on('click', function () {
             $(".modal__background").addClass('hidden');
-            $('.modal').addClass('hidden');
+            $('.modal').addClass('hidden').removeAttr("name");
             $("body").css({"overflow" : "auto"});
             $('.modal__content').empty();
             $(".modal__header__title").empty();
         });
     },
 
-    dynamic(url, type, name) {
-        Modal.simple();
+    secondryEvents(name) {
+        let modal = $(`[name=${name}]`);
+
+        $(".modal__background").off('click');
+        $(".modal__background").on('click', function () {
+            modal.detach();
+            if ($(".modal_secondry").length === 0) {
+                $(".modal__background").on('click', function () {
+                    $(".modal__background").addClass('hidden');
+                    $('.modal').addClass('hidden').removeAttr("name");
+                    $("body").css({"overflow" : "auto"});
+                    $('.modal__content').empty();
+                    $(".modal__header__title").empty();
+                });
+            }
+        });
+
+        modal.find(".modal__header__close").on('click', function () {
+            modal.detach();
+        });
+    },
+
+    dynamic(url, type, name, callback) {
+        Modal.events();
         $(`[name=${name}]`).on('click', function () {
             let modalData = {},
                 errors = false;
@@ -40,32 +62,53 @@ export let Modal = {
                     errors = true;
                 }
             }
-            console.log(modalData);
+            
             if (!errors) {
                 $(".modal__background").removeClass('hidden');
-                $('.modal').removeClass('hidden');
-                $("body").css({"overflow" : "none"});
+                if ($(".modal").attr("name") === undefined) {
+                    $(".modal").attr("name", `modal_${name}`).removeClass('hidden');
+                    $("body").css({"overflow" : "hidden"});
+                } else {
+                    Modal.createNewModal(`modal_${name}`);
+                }                
                 if (type === "json") {
-                    Modal.appendJson(modalData);
+                    Modal.appendJson(`modal_${name}`, modalData);
+                }
+            }
+            if (callback !== undefined) {
+                callback();
+            }
+        });
+    },
+
+    appendJson(name, modalData) {
+        let modal = $(`[name=${name}]`);
+        modal.find(".modal__header__title").append(`<h2 name="NewModalHere">${modalData.title}</h2>`);
+        modalData.objects.forEach(element => {
+            if (!element.buttonFloatRight) {
+                modal.find(".modal__content").append(`<${element.tag}/>`);
+            } else {
+                modal.find(".modal__content").append(`<div class="modal__button_right"><${element.tag}/></div>`);
+            }
+            
+            if (element.attributes !== undefined) {
+                for (const [name, value] of Object.entries(element.attributes)) {
+                    modal.find(element.tag).last().attr(name, value);
                 }
             }
         });
     },
 
-    appendJson(modalData) {
-        $(".modal__header__title").append(`<h2>${modalData.title}</h2>`);
-        modalData.objects.forEach(element => {
-            if (!element.buttonFloatRight) {
-                $(".modal__content").append(`<${element.tag}/>`);
-            } else {
-                $(".modal__content").append(`<div class="modal__button_right"><${element.tag}/></div>`);
-            }
-            
-            if (element.attributes !== undefined) {
-                for (const [name, value] of Object.entries(element.attributes)) {
-                    $(element.tag).last().attr(name, value);
-                }
-            }
-        });
-    }
+    createNewModal(name) {
+        $("body").append(`<div class="modal modal_secondry" name=${name}>
+            <div class="modal__header">
+                <div class="modal__header__title"></div>
+                <div class="modal__header__close">
+                    <i class="fas fa-times fa-lg"></i>
+                </div>
+            </div>
+            <div class="modal__content"></div>
+        </div>`);
+        Modal.secondryEvents(name);
+    },
 }
