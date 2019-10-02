@@ -1,12 +1,6 @@
 export let Modal = {
     events() {
-        $(".modal__background").on('click', function () {
-            $(".modal__background").addClass('hidden');
-            $('.modal').addClass('hidden').removeAttr("name");
-            $("body").css({"overflow" : "auto"});
-            $('.modal__content').empty();
-            $(".modal__header__title").empty();
-        });
+        Modal.backgroundEvent();
         
         $(".modal__header__close").on('click', function () {
             $(".modal__background").addClass('hidden');
@@ -23,20 +17,25 @@ export let Modal = {
         $(".modal__background").off('click');
         $(".modal__background").on('click', function () {
             modal.detach();
-            if ($(".modal_secondry").length === 0) {
-                $(".modal__background").on('click', function () {
-                    $(".modal__background").addClass('hidden');
-                    $('.modal').addClass('hidden').removeAttr("name");
-                    $("body").css({"overflow" : "auto"});
-                    $('.modal__content').empty();
-                    $(".modal__header__title").empty();
-                });
-            }
+            Modal.backgroundEvent();
         });
 
         modal.find(".modal__header__close").on('click', function () {
             modal.detach();
+            Modal.backgroundEvent();
         });
+    },
+
+    backgroundEvent() {
+        if ($(".modal_secondry").length === 0) {
+            $(".modal__background").on('click', function () {
+                $(".modal__background").addClass('hidden');
+                $('.modal').addClass('hidden').removeAttr("name");
+                $("body").css({"overflow" : "auto"});
+                $('.modal__content').empty();
+                $(".modal__header__title").empty();
+            });
+        }
     },
 
     dynamic(url, type, name, callback) {
