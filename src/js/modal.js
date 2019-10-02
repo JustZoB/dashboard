@@ -1,45 +1,55 @@
 export let Modal = {
-    events() {
-        Modal.backgroundEvent();
-        
-        $(".modal__header__close").on('click', function () {
-            $(".modal__background").addClass('hidden');
-            $('.modal').addClass('hidden').removeAttr("name");
-            $("body").css({"overflow" : "auto"});
-            $('.modal__content').empty();
-            $(".modal__header__title").empty();
-        });
-    },
-
-    secondryEvents(name) {
-        let modal = $(`[name=${name}]`);
-
-        $(".modal__background").off('click');
-        $(".modal__background").on('click', function () {
-            modal.detach();
-            Modal.backgroundEvent();
-        });
-
-        modal.find(".modal__header__close").on('click', function () {
-            modal.detach();
-            Modal.backgroundEvent();
-        });
-    },
-
     backgroundEvent() {
-        if ($(".modal_secondry").length === 0) {
-            $(".modal__background").on('click', function () {
+        $(".modal__background").off();
+        $(".modal__background").on('click', function () {
+            let highModal = Modal.getHighModal();
+            if (highModal.hasClass("modal_simple")) {
+                $(highModal).addClass('hidden').css("zIndex", 9000);
+            } else if (highModal.hasClass("modal_secondry")) {
+                highModal.detach();
+            } else if (highModal.hasClass("modal_dynamic")) {
+                Modal.emptyDynamic();
+            }
+            if (+Modal.getHighModal().css("zIndex") === 9000) {
                 $(".modal__background").addClass('hidden');
-                $('.modal').addClass('hidden').removeAttr("name");
                 $("body").css({"overflow" : "auto"});
-                $('.modal__content').empty();
-                $(".modal__header__title").empty();
-            });
-        }
+            }
+        });
+    },
+
+    eventsDynamic() {
+        Modal.backgroundEvent();
+
+        $(".modal__header__close").on('click', function () {
+            Modal.emptyDynamic();
+        });
+    },
+
+    emptyDynamic() {
+        let dynamic = $('.modal_dynamic');
+        dynamic.addClass('hidden').removeAttr("name").css("zIndex", 9000);
+        dynamic.find('.modal__content').empty();
+        dynamic.find(".modal__header__title").empty();
+    },
+
+    simple(name, modalName) {
+        Modal.backgroundEvent();
+        $(`[name=${name}]`).on('click', function () {
+            $(".modal__background").removeClass('hidden');
+            $(`[name=${modalName}]`).removeClass('hidden');
+            $("body").css({"overflow" : "hidden"});
+            Modal.setZIndex(modalName);
+        });
+
+        $(".modal__header__close").on('click', function () {
+            $(`[name=${modalName}]`).addClass('hidden').css("zIndex", 9000);
+            $(".modal__background").addClass('hidden');
+            $("body").css({"overflow" : "auto"});
+        });
     },
 
     dynamic(url, type, name, callback) {
-        Modal.events();
+        Modal.eventsDynamic();
         $(`[name=${name}]`).on('click', function () {
             let modalData = {},
                 errors = false;
@@ -64,8 +74,8 @@ export let Modal = {
             
             if (!errors) {
                 $(".modal__background").removeClass('hidden');
-                if ($(".modal").attr("name") === undefined) {
-                    $(".modal").attr("name", `modal_${name}`).removeClass('hidden');
+                if ($(".modal_dynamic").attr("name") === undefined) {
+                    $(".modal_dynamic").attr("name", `modal_${name}`).removeClass('hidden');
                     $("body").css({"overflow" : "hidden"});
                 } else {
                     Modal.createNewModal(`modal_${name}`);
@@ -74,6 +84,8 @@ export let Modal = {
                     Modal.appendJson(`modal_${name}`, modalData);
                 }
             }
+            Modal.setZIndex(`modal_${name}`);
+            
             if (callback !== undefined) {
                 callback();
             }
@@ -82,7 +94,7 @@ export let Modal = {
 
     appendJson(name, modalData) {
         let modal = $(`[name=${name}]`);
-        modal.find(".modal__header__title").append(`<h2 name="NewModalHere">${modalData.title}</h2>`);
+        modal.find(".modal__header__title").append(`<h2>${modalData.title}</h2>`);
         modalData.objects.forEach(element => {
             if (!element.buttonFloatRight) {
                 modal.find(".modal__content").append(`<${element.tag}/>`);
@@ -108,6 +120,30 @@ export let Modal = {
             </div>
             <div class="modal__content"></div>
         </div>`);
-        Modal.secondryEvents(name);
+        $(`[name=${name}]`).find(".modal__header__close").on('click', function () {
+            $(`[name=${name}]`).detach();
+        });
+    },
+
+    setZIndex(name) {
+        let zIndex = $(`.modal_dynamic`).css("zIndex");
+        $(`.modal`).each((key, elem) => {
+            if (zIndex < $(elem).css("zIndex")) {
+                zIndex = $(elem).css("zIndex");
+            }
+        });
+        $(`[name=${name}]`).css("zIndex", +zIndex + 1);
+    },
+
+    getHighModal() {
+        let zIndex = $(`.modal_dynamic`).css("zIndex"),
+            highModal = $(`.modal_dynamic`);
+        $(`.modal`).each((key, elem) => {
+            if (zIndex < $(elem).css("zIndex")) {
+                zIndex = $(elem).css("zIndex");
+                highModal = $(elem);
+            }
+        });
+        return highModal;
     },
 }

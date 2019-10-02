@@ -8,11 +8,12 @@
     @extend .white-bg;
     position: fixed;
     width: 600px;
+    max-height: 100%;
     top: 50%;
     left: 50%;
     border-radius: 9px 9px 7px 7px;
     transform: translate(-50%, -50%);
-    z-index: 100;
+    z-index: 9000;
 
     @media screen and (max-width: 768px) {
         width: 500px,
@@ -53,6 +54,7 @@
     }
     &__content {
         margin: 2%;
+        min-height: 100px;
     }
     &__background {
         @extend .black-bg;
