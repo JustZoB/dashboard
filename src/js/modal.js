@@ -1,25 +1,38 @@
 export let Modal = {
+    closeLastModal() {
+        let highModal = Modal.getHighModal();
+        if (highModal.hasClass("modal_simple")) {
+            $(highModal).addClass('hidden').css("zIndex", 9000);
+        } else if (highModal.hasClass("modal_secondry")) {
+            highModal.detach();
+        } else if (highModal.hasClass("modal_dynamic")) {
+            Modal.emptyDynamic();
+        }
+        if (+Modal.getHighModal().css("zIndex") === 9000) {
+            $(".modal__background").addClass('hidden');
+            $("body").css({"overflow" : "auto"});
+        }
+    },
+
     backgroundEvent() {
         $(".modal__background").off();
         $(".modal__background").on('click', function () {
-            let highModal = Modal.getHighModal();
-            if (highModal.hasClass("modal_simple")) {
-                $(highModal).addClass('hidden').css("zIndex", 9000);
-            } else if (highModal.hasClass("modal_secondry")) {
-                highModal.detach();
-            } else if (highModal.hasClass("modal_dynamic")) {
-                Modal.emptyDynamic();
-            }
-            if (+Modal.getHighModal().css("zIndex") === 9000) {
-                $(".modal__background").addClass('hidden');
-                $("body").css({"overflow" : "auto"});
-            }
+            Modal.closeLastModal();
         });
+    },
+
+    escapeEvent() {
+        $(document).off();
+        $(document).keyup(function(e) {
+            if (e.key === "Escape") {
+                Modal.closeLastModal();
+            }
+       });
     },
 
     eventsDynamic() {
         Modal.backgroundEvent();
-
+        Modal.escapeEvent();
         $(".modal__header__close").on('click', function () {
             Modal.emptyDynamic();
         });
@@ -34,6 +47,7 @@ export let Modal = {
 
     simple(name, modalName) {
         Modal.backgroundEvent();
+        Modal.escapeEvent();
         $(`[name=${name}]`).on('click', function () {
             $(".modal__background").removeClass('hidden');
             $(`[name=${modalName}]`).removeClass('hidden');

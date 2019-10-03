@@ -167,6 +167,11 @@ $('body').on('click', '.container__item .minimize', function () {
     $block.find('.container__item__text').toggleClass('hidden');
     $block.find('.chart').toggleClass('hidden');
     $block.find('canvas').toggleClass('hidden');
+    if ($block.find(".chart__wrap").css("padding-bottom") !== 0) {
+        $block.find(".chart__wrap").css("padding-bottom", 0);
+    } else {
+        $block.find(".chart__wrap").css("padding-bottom", "100%");
+    }
 });
 
 $('.header__menu').on('click', function () {
