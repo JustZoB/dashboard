@@ -2,13 +2,13 @@ export let Modal = {
     closeLastModal() {
         let highModal = Modal.getHighModal();
         if (highModal.hasClass("modal_simple")) {
-            $(highModal).addClass('hidden').css("zIndex", 9000);
+            $(highModal).addClass('hidden').css("z-index", 9000);
         } else if (highModal.hasClass("modal_secondry")) {
             highModal.detach();
         } else if (highModal.hasClass("modal_dynamic")) {
             Modal.emptyDynamic();
         }
-        if (+Modal.getHighModal().css("zIndex") === 9000) {
+        if (parseInt(Modal.getHighModal().css("z-index")) === 9000) {
             $(".modal__background").addClass('hidden');
             $("body").css({"overflow" : "auto"});
         }
@@ -40,7 +40,7 @@ export let Modal = {
 
     emptyDynamic() {
         let dynamic = $('.modal_dynamic');
-        dynamic.addClass('hidden').removeAttr("name").css("zIndex", 9000);
+        dynamic.addClass('hidden').removeAttr("name").css("z-index", 9000);
         dynamic.find('.modal__content').empty();
         dynamic.find(".modal__header__title").empty();
     },
@@ -56,7 +56,7 @@ export let Modal = {
         });
 
         $(".modal__header__close").on('click', function () {
-            $(`[name=${modalName}]`).addClass('hidden').css("zIndex", 9000);
+            $(`[name=${modalName}]`).addClass('hidden').css("z-index", 9000);
             $(".modal__background").addClass('hidden');
             $("body").css({"overflow" : "auto"});
         });
@@ -140,21 +140,21 @@ export let Modal = {
     },
 
     setZIndex(name) {
-        let zIndex = $(`.modal_dynamic`).css("zIndex");
+        let zIndex = $(`.modal_dynamic`).css("z-index");
         $(`.modal`).each((key, elem) => {
-            if (zIndex < $(elem).css("zIndex")) {
-                zIndex = $(elem).css("zIndex");
+            if (zIndex < $(elem).css("z-index")) {
+                zIndex = $(elem).css("z-index");
             }
         });
-        $(`[name=${name}]`).css("zIndex", +zIndex + 1);
+        $(`[name=${name}]`).css("z-index", parseInt(zIndex) + 1);
     },
 
     getHighModal() {
-        let zIndex = $(`.modal_dynamic`).css("zIndex"),
+        let zIndex = $(`.modal_dynamic`).css("z-index"),
             highModal = $(`.modal_dynamic`);
         $(`.modal`).each((key, elem) => {
-            if (zIndex < $(elem).css("zIndex")) {
-                zIndex = $(elem).css("zIndex");
+            if (zIndex < $(elem).css("z-index")) {
+                zIndex = $(elem).css("z-index");
                 highModal = $(elem);
             }
         });
