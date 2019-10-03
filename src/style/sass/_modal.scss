@@ -5,72 +5,78 @@
 }
 
 .modal {
-    @extend .white-bg;
     position: fixed;
-    width: 600px;
-    max-height: 100%;
     top: 50%;
     left: 50%;
-    border-radius: 9px 9px 7px 7px;
-    transform: translate(-50%, -50%);
-    transition: all 500ms;
-    opacity: 1;
+    transform: translate(-50%, -50%);  
     z-index: 9000;
 
-    &.unseen {
-        transform: translate(-50%, -25%);
-        opacity: 0;
-    }
-    @media screen and (max-width: 768px) {
-        width: 500px,
-    }
+    &__container {
+        width: 600px;
+        max-height: 100%;
+        border-radius: 9px 9px 7px 7px;
+        background-color: white;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
 
-    @media screen and (max-width: 580px) {
-        width: 95%,
+        @media screen and (max-width: 768px) {
+            width: 500px,
+        }
+    
+        @media screen and (max-width: 580px) {
+            width: 95%,
+        }
+        
+        @keyframes animatetop {
+            from { margin-top: 100px; opacity: 0 } 
+            to { margin-top: 0; opacity: 1 }
+        }
     }
 
     &_secondry {
         box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
     }
     &__header {
-        @extend .darker-gray-bg;
         display: flex;
         justify-content: space-between;
         border-radius: 7px 7px 0 0;
+        background-color: #595959;
 
         &__title {
             margin: 15px;
+
             h2 {
-                @extend .text_white;
                 margin: 0;
+                color: white;
             }
         }
         &__close {
-            @extend .text_white;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 10px 15px;
             padding: 10px;
+            color: white;
             cursor: pointer;
+
             &:hover {
                 color: gray;
             }
         }
     }
     &__content {
-        margin: 2%;
         min-height: 100px;
+        padding: 2%;
     }
     &__background {
-        @extend .black-bg;
         position: fixed;
-        z-index: 99;
         top: 0;
         bottom: 0;
         right: 0;
         left: 0;
+        background-color: black;
         opacity: 0.6;
+        z-index: 99;
     }
     &__button {
         &_right {

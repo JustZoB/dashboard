@@ -186,7 +186,7 @@ $('.header__menu').on('click', function () {
 });
 
 const eventsClose = (classes) => {
-    $(document).mouseup((e) => {
+    $("body").mouseup((e) => {
         $(classes).each((key, elem) => {
             if ((!$(elem).is(e.target)) && ($(elem).has(e.target).length === 0) 
             && (!$(elem).prev().is(e.target)) && ($(elem).prev().has(e.target).length === 0)) {
