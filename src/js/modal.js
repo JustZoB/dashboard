@@ -2,13 +2,13 @@ export let Modal = {
     closeLastModal() {
         let highModal = Modal.getHighModal();
         if (highModal.hasClass("modal_simple")) {
-            $(highModal).addClass('hidden').css("z-index", 9000);
+            $(highModal).addClass('unseen').css("z-index", 9000);
         } else if (highModal.hasClass("modal_secondry")) {
             highModal.detach();
         } else if (highModal.hasClass("modal_dynamic")) {
             Modal.emptyDynamic();
         }
-        if (parseInt(Modal.getHighModal().css("z-index")) === 9000) {
+        if (highModal.css("z-index") - 1 === 9000) {
             $(".modal__background").addClass('hidden');
             $("body").css({"overflow" : "auto"});
         }
@@ -40,23 +40,26 @@ export let Modal = {
 
     emptyDynamic() {
         let dynamic = $('.modal_dynamic');
-        dynamic.addClass('hidden').removeAttr("name").css("z-index", 9000);
+        dynamic.addClass('unseen').removeAttr("name").css("z-index", 9000);
         dynamic.find('.modal__content').empty();
         dynamic.find(".modal__header__title").empty();
     },
 
-    simple(name, modalName) {
+    simple(name, modalName, options = {}) {
         Modal.backgroundEvent();
         Modal.escapeEvent();
-        $(`[name=${name}]`).on('click', function () {
+        if (options.eventOn === undefined) {
+            options.eventOn = 'click';
+        }
+        $(`[name=${name}]`).on(options.eventOn, function () {
             $(".modal__background").removeClass('hidden');
-            $(`[name=${modalName}]`).removeClass('hidden');
+            $(`[name=${modalName}]`).removeClass('unseen');
             $("body").css({"overflow" : "hidden"});
             Modal.setZIndex(modalName);
         });
 
         $(".modal__header__close").on('click', function () {
-            $(`[name=${modalName}]`).addClass('hidden').css("z-index", 9000);
+            $(`[name=${modalName}]`).addClass('unseen').css("z-index", 9000);
             $(".modal__background").addClass('hidden');
             $("body").css({"overflow" : "auto"});
         });
@@ -89,7 +92,7 @@ export let Modal = {
             if (!errors) {
                 $(".modal__background").removeClass('hidden');
                 if ($(".modal_dynamic").attr("name") === undefined) {
-                    $(".modal_dynamic").attr("name", `modal_${name}`).removeClass('hidden');
+                    $(".modal_dynamic").attr("name", `modal_${name}`).removeClass('unseen');
                     $("body").css({"overflow" : "hidden"});
                 } else {
                     Modal.createNewModal(`modal_${name}`);
