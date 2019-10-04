@@ -9,7 +9,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);  
-    z-index: 9000;
+    z-index: 100;
 
     &__container {
         width: 600px;
@@ -28,7 +28,7 @@
         }
         
         @keyframes animatetop {
-            from { margin-top: 100px; opacity: 0 } 
+            from { margin-top: 20%; opacity: 0 } 
             to { margin-top: 0; opacity: 1 }
         }
     }

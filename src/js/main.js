@@ -649,8 +649,7 @@ $('.exchange__input').on('click', function () {
 let exchange = exchangeBase('2015-01-01', '2018-01-01', 'USD', 'RUB');
 drawExchangeChartBase(exchange.head, exchange.allRates, exchange.basedOn);
 
-Modal.simple("SimpleModalHere", "modal_SimpleModalHere");
-
-Modal.dynamic("json/register.json", "json", "UseModalHere", function() {
-    Modal.dynamic("json/ad.json", "json", "NewModalHere");
+Modal.simple("simple_1", "modal_simple_1");
+Modal.dynamic("json/register.json", "json", "dynamic_1", function() {
+    Modal.dynamic("json/ad.json", "json", "dynamic_2");
 });
