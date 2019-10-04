@@ -8,7 +8,7 @@ export let Modal = {
             if (e.key === 'Escape') {
                 Modal.closeLastModal();
             }
-       });
+        });
     },
 
     closeLastModal() {
@@ -32,15 +32,24 @@ export let Modal = {
         $('.modal_dynamic').addClass('hidden').removeAttr('name').css('z-index', 100).empty();
     },
 
-    simple(name, modalName, options = {}) {
-        if (options.eventOn === undefined) { // дефолтный объект
-            options.eventOn = 'click';
+    getDefaultOptions(options) {
+        let optionsDefault = {
+            eventOn: 'click',
+            disableScroll: 'true'
         }
+        for (const key in optionsDefault) {
+            if (options[key] === undefined) {
+                options[key] = optionsDefault[key];
+            }
+        }
+
+        return options;
+    },
+
+    simple(name, modalName, options = {}) {
+        options = Modal.getDefaultOptions(options);
         $(`[name=${name}]`).on(options.eventOn, function () {
-            $('body').append(`<div class='modal__background ${modalName}'></div>`).css({'overflow' : 'hidden'});
-            $(`[name=${modalName}]`).removeClass('hidden');
-            Modal.eventsBackground();
-            Modal.setZIndex(modalName);
+            Modal.showSimple(modalName, options);
         });
 
         $(`[name=${modalName}]`).find('.modal__header__close').on('click', function () {
@@ -50,7 +59,20 @@ export let Modal = {
         });
     },
 
-    dynamic(url, type, name, callback) {
+    showSimple(modalName, options = {}) {
+        options = Modal.getDefaultOptions(options);
+        $('body').append(`<div class='modal__background ${modalName}'></div>`);
+        if (options.disableScroll) {
+            $('body').css({'overflow' : 'hidden'});
+        }
+        $(`[name=${modalName}]`).removeClass('hidden');
+        Modal.eventsBackground();
+        Modal.setZIndex(modalName);
+    },
+
+    dynamic(url, type, name, callback, options = {}) {
+        options = Modal.getDefaultOptions(options);
+
         $(`[name=${name}]`).on('click', function () {
             let modalData = {},
                 errors = false;
@@ -61,8 +83,8 @@ export let Modal = {
                 success : function(data) {
                     modalData = data;
                 },
-                error : function() {
-                    console.error(`"${url}" 404 (Not found)`); // 503 ?
+                error : function(jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus, errorThrown);
                     errors = true;
                 },
             });
@@ -76,7 +98,7 @@ export let Modal = {
             if (!errors) {
                 let modalName = `modal_${name}`;
                 if ($('.modal_dynamic').attr('name') === undefined) {
-                    Modal.appendDynamicElements(modalName);
+                    Modal.appendDynamicElements(modalName, options.disableScroll);
                 } else {
                     Modal.createNewModal(modalName);
                 }
@@ -92,7 +114,7 @@ export let Modal = {
         });
     },
 
-    appendDynamicElements(name) {
+    appendDynamicElements(name, disableScroll) {
         $('.modal_dynamic').append(`
             <div class='modal__container'>
                 <div class='modal__header'>
@@ -106,7 +128,10 @@ export let Modal = {
             .attr('name', name)
             .removeClass('hidden');
 
-        $('body').append(`<div class='modal__background ${name}'></div>`).css({'overflow' : 'hidden'});
+        $('body').append(`<div class='modal__background ${name}'></div>`);
+        if (disableScroll) {
+            $('body').css({'overflow' : 'hidden'});
+        }
         Modal.eventsBackground();
         $(`[name=${name}]`).find('.modal__header__close').on('click', function () {
             Modal.closeLastModal();
