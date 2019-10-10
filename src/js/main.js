@@ -650,6 +650,6 @@ let exchange = exchangeBase('2015-01-01', '2018-01-01', 'USD', 'RUB');
 drawExchangeChartBase(exchange.head, exchange.allRates, exchange.basedOn);
 
 Modal.simple("simple_1");
-Modal.dynamic("json/register.json", "json", "dynamic_1", function() {
-    Modal.dynamic("json/ad.json", "json", "dynamic_2");
+Modal.dynamic("json/register.json", "dynamic_1", "json", function() {
+    Modal.dynamic("http://httpbin.org/anything", "dynamic_2");
 });
