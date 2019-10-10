@@ -1,5 +1,5 @@
 export let Modal = {
-    eventsBackground() {
+    init() {
         $('.modal__background').on('click', function () {
             Modal.closeLastModal();
         });
@@ -11,26 +11,27 @@ export let Modal = {
         });
     },
 
+    closeModalOnCloseButton(name) {
+        $(`[name=${name}]`).find('.modal__header__close').on('click', function () {
+            Modal.closeLastModal();
+        });
+    },
+
     closeLastModal() {
         let $highModal = Modal.getHighModal();
-        $(`.modal__background.${$highModal.attr('name')}`).detach();
         
         if ($highModal.hasClass('modal_simple')) {
             $($highModal).addClass('hidden').css('z-index', 100);
+            $(`.modal__background`).addClass("hidden");
+            $('body').css({'overflow' : 'auto'});
         } else if ($('.modal_dynamic').length > 1) {
             $highModal.detach();
+            $(`.modal__background`).css('z-index', $highModal.css('z-index') - 2);
         } else {
-            Modal.emptyDynamic();
-        }
-
-        $(`.modal__background.${Modal.getHighModal().attr("name")}`).removeClass("hidden");
-        if ($highModal.css('z-index') === '100') {
+            $('.modal_dynamic').addClass('hidden').removeAttr('name').css('z-index', 100).empty();
+            $(`.modal__background`).addClass("hidden");
             $('body').css({'overflow' : 'auto'});
         }
-    },
-
-    emptyDynamic() {
-        $('.modal_dynamic').addClass('hidden').removeAttr('name').css('z-index', 100).empty();
     },
 
     configureOptionsList(options) {
@@ -53,21 +54,16 @@ export let Modal = {
             Modal.showSimple(`modal_${name}`, options);
         });
 
-        $(`[name=${`modal_${name}`}]`).find('.modal__header__close').on('click', function () {
-            $(`[name=${`modal_${name}`}]`).addClass('hidden').css('z-index', 100);
-            $(`.modal__background.${`modal_${name}`}`).detach();
-            $('body').css({'overflow' : 'auto'});
-        });
+        Modal.closeModalOnCloseButton(`modal_${name}`);
     },
 
     showSimple(modalName, options = {}) {
         options = Modal.configureOptionsList(options);
-        $('body').append(`<div class='modal__background ${modalName}'></div>`);
+
         if (options.disableScroll) {
             $('body').css({'overflow' : 'hidden'});
         }
         $(`[name=${modalName}]`).removeClass('hidden');
-        Modal.eventsBackground();
         Modal.setZIndex(modalName);
     },
 
@@ -138,14 +134,11 @@ export let Modal = {
             .attr('name', name)
             .removeClass('hidden');
 
-        $('body').append(`<div class='modal__background ${name}'></div>`);
         if (disableScroll) {
             $('body').css({'overflow' : 'hidden'});
         }
-        Modal.eventsBackground();
-        $(`[name=${name}]`).find('.modal__header__close').on('click', function () {
-            Modal.closeLastModal();
-        });
+
+        Modal.closeModalOnCloseButton(name);
     },
 
     createNewModal(name) {
@@ -161,15 +154,9 @@ export let Modal = {
                     <div class="preloader"></div>
                 </div>
             </div>
-        </div>
-        <div class='modal__background ${name}'></div>`);
+        </div>`);
 
-        Modal.eventsBackground();
-        $(`[name=${name}]`).find('.modal__header__close').on('click', function () {
-            $(`[name=${name}]`).detach();
-            $(`.modal__background.${name}`).detach();
-            $(`.modal__background.${Modal.getHighModal().attr("name")}`).removeClass("hidden");
-        });
+        Modal.closeModalOnCloseButton(name);
     },
 
     appendJson(name, modalData) {
@@ -207,8 +194,7 @@ export let Modal = {
             }
         });
         $(`[name=${name}]`).css('z-index', parseInt(zIndex) + 1);
-        $(`.modal__background`).addClass("hidden");
-        $(`.modal__background.${name}`).css('z-index', parseInt(zIndex)).removeClass("hidden");
+        $(`.modal__background`).removeClass("hidden").css('z-index', zIndex);
     },
 
     getHighModal() {
