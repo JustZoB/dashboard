@@ -14,7 +14,7 @@ export let Modal = {
     closeLastModal() {
         let $highModal = Modal.getHighModal();
         $(`.modal__background.${$highModal.attr('name')}`).detach();
-
+        
         if ($highModal.hasClass('modal_simple')) {
             $($highModal).addClass('hidden').css('z-index', 100);
         } else if ($('.modal_dynamic').length > 1) {
@@ -22,7 +22,8 @@ export let Modal = {
         } else {
             Modal.emptyDynamic();
         }
-        
+
+        $(`.modal__background.${Modal.getHighModal().attr("name")}`).removeClass("hidden");
         if ($highModal.css('z-index') === '100') {
             $('body').css({'overflow' : 'auto'});
         }
@@ -32,7 +33,7 @@ export let Modal = {
         $('.modal_dynamic').addClass('hidden').removeAttr('name').css('z-index', 100).empty();
     },
 
-    getDefaultOptions(options) {
+    configureOptionsList(options) {
         let optionsDefault = {
             eventOn: 'click',
             disableScroll: 'true'
@@ -46,21 +47,21 @@ export let Modal = {
         return options;
     },
 
-    simple(name, modalName, options = {}) {
-        options = Modal.getDefaultOptions(options);
+    simple(name, options = {}) {
+        options = Modal.configureOptionsList(options);
         $(`[name=${name}]`).on(options.eventOn, function () {
-            Modal.showSimple(modalName, options);
+            Modal.showSimple(`modal_${name}`, options);
         });
 
-        $(`[name=${modalName}]`).find('.modal__header__close').on('click', function () {
-            $(`[name=${modalName}]`).addClass('hidden').css('z-index', 100);
-            $(`.modal__background.${modalName}`).detach();
+        $(`[name=${`modal_${name}`}]`).find('.modal__header__close').on('click', function () {
+            $(`[name=${`modal_${name}`}]`).addClass('hidden').css('z-index', 100);
+            $(`.modal__background.${`modal_${name}`}`).detach();
             $('body').css({'overflow' : 'auto'});
         });
     },
 
     showSimple(modalName, options = {}) {
-        options = Modal.getDefaultOptions(options);
+        options = Modal.configureOptionsList(options);
         $('body').append(`<div class='modal__background ${modalName}'></div>`);
         if (options.disableScroll) {
             $('body').css({'overflow' : 'hidden'});
@@ -71,7 +72,7 @@ export let Modal = {
     },
 
     dynamic(url, type, name, callback, options = {}) {
-        options = Modal.getDefaultOptions(options);
+        options = Modal.configureOptionsList(options);
 
         $(`[name=${name}]`).on('click', function () {
             let modalData = {},
@@ -185,7 +186,8 @@ export let Modal = {
             }
         });
         $(`[name=${name}]`).css('z-index', parseInt(zIndex) + 1);
-        $(`.modal__background.${name}`).css('z-index', parseInt(zIndex));
+        $(`.modal__background`).addClass("hidden");
+        $(`.modal__background.${name}`).css('z-index', parseInt(zIndex)).removeClass("hidden");
     },
 
     getHighModal() {
