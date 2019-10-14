@@ -52,8 +52,10 @@ export let Modal = {
         options = Modal.configureOptionsList(options);
         $(`[name=${name}]`).on(options.eventOn, function () {
             Modal.showSimple(`modal_${name}`, options);
+            Modal.modalPosition(`[name=modal_${name}]`);
         });
 
+        Modal.modalOnResizePosition(`[name=modal_${name}]`);
         Modal.closeModalOnCloseButton(`modal_${name}`);
     },
 
@@ -69,7 +71,7 @@ export let Modal = {
 
     dynamic(url, name, type, callback, options = {}) {
         options = Modal.configureOptionsList(options);
-        
+
         $(`[name=${name}]`).on('click', function () {
             let modalName = `modal_${name}`;
 
@@ -92,10 +94,14 @@ export let Modal = {
                 Modal.appendHtml(modalName, modalData);
             }
 
+            Modal.modalPosition(`[name=modal_${name}]`);
+
             if (callback !== undefined) {
                 callback();
             }
         });
+
+        Modal.modalOnResizePosition(`[name=modal_${name}]`);
     },
 
     getModalData(url, callback) {
@@ -208,5 +214,23 @@ export let Modal = {
         });
 
         return $highModal;
+    },
+
+    modalPosition(modal) {
+        $(modal).css("left", ($(window).width() - $(modal).width()) / 2);
+        $(modal).css("top", ($(window).height() - $(modal).height()) / 2);
+        console.log($(modal).width());
+        console.log($(modal).height());
+    },
+
+    modalOnResizePosition(modal) {
+        let resizeTimer;
+
+        $(window).on('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                Modal.modalPosition(modal);
+            }, 250);
+        });
     },
 }
